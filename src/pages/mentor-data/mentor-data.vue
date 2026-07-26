@@ -209,9 +209,10 @@
 import { computed, reactive, ref } from 'vue'
 import { onBackPress, onShow, onUnload } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
+import { API_BASE_URL } from '@/utils/api'
 
 const userStore = useUserStore()
-const PROFILE_API_BASE_URL = 'http://127.0.0.1:3000/api'
+const PROFILE_API_BASE_URL = API_BASE_URL
 const submitted = ref(false)
 
 const isEditMode = () => {

@@ -399,10 +399,11 @@ import { computed, reactive, ref } from 'vue'
 import { onBackPress, onShow, onUnload } from '@dcloudio/uni-app'
 // 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
+import { API_BASE_URL } from '@/utils/api'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
-const PROFILE_API_BASE_URL = 'http://127.0.0.1:3000/api'
+const PROFILE_API_BASE_URL = API_BASE_URL
 // 标记表单是否执行提交操作
 const submitted = ref(false)
 

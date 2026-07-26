@@ -23,10 +23,11 @@
 
 <script setup>
 import { useUserStore } from '@/store/user'
+import { API_BASE_URL } from '@/utils/api'
 import { safeSwitchTab } from '@/utils/navigation'
 
 const userStore = useUserStore()
-const PROFILE_API_BASE_URL = 'http://127.0.0.1:3000/api'
+const PROFILE_API_BASE_URL = API_BASE_URL
 let choosing = false
 
 const chooseRole = (role) => {

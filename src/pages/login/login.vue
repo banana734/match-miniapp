@@ -9,7 +9,7 @@
       <!-- 登录说明面板 -->
       <view class="login-tip-panel">
         <text class="tip-title">当前阶段说明</text>
-        <text class="tip-text">现在先接通最小登录链路：小程序拿到微信登录 code，本地后端返回开发阶段可用的唯一身份。</text>
+        <text class="tip-text">现在会优先走真实微信登录；如果后端还没配置微信密钥，系统会临时回退到开发登录。</text>
       </view>
 
       <!-- 微信登录按钮 -->
@@ -26,12 +26,13 @@ import { ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 // 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
+import { API_BASE_URL } from '@/utils/api'
 import { safeSwitchTab } from '@/utils/navigation'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
 // 后端登录接口基础地址
-const AUTH_API_BASE_URL = 'http://127.0.0.1:3000/api'
+const AUTH_API_BASE_URL = API_BASE_URL
 // 登录按钮加载状态
 const loading = ref(false)
 // 防止页面重复触发自动跳转
@@ -135,7 +136,7 @@ const handleWechatLogin = () => {
           })
 
           uni.showToast({
-            title: '登录成功',
+            title: result.loginMode === 'wechat' ? '微信登录成功' : '开发登录成功',
             icon: 'success'
           })
 

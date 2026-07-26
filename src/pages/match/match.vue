@@ -108,10 +108,11 @@
 import { computed, ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
+import { API_BASE_URL } from '@/utils/api'
 import { safeSwitchTab } from '@/utils/navigation'
 
 const userStore = useUserStore()
-const MATCH_API_BASE_URL = 'http://127.0.0.1:3000/api'
+const MATCH_API_BASE_URL = API_BASE_URL
 
 const showDetailPopup = ref(false)
 const activeItem = ref(null)

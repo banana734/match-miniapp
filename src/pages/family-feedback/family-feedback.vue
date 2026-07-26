@@ -86,9 +86,10 @@
 import { reactive, ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
+import { API_BASE_URL } from '@/utils/api'
 
 const userStore = useUserStore()
-const MATCH_API_BASE_URL = 'http://127.0.0.1:3000/api'
+const MATCH_API_BASE_URL = API_BASE_URL
 
 const textMap = {
   subtitle: '先记录本次试课的基础信息，后面我们再继续补充更详细的反馈。',

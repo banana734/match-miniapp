@@ -9,7 +9,7 @@ const {
   getAdminFamilyFeedbacks,
   getAdminMentorFeedbacks
 } = require('./routes/admin')
-const { postWechatLogin } = require('./routes/auth')
+const { postWechatLogin } = require('./routes/auth-real')
 const { getMatchList } = require('./routes/match')
 const { bindRole, saveProfile, getProfileDetail } = require('./routes/profile')
 const {
