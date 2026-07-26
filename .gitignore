@@ -1,0 +1,16 @@
+node_modules/
+.npm-cache/
+dist/
+dev-mp.log
+dev-mp-error.log
+
+server/node_modules/
+server/server.log
+server/server-error.log
+server/server.out.log
+server/server.err.log
+server/db/mysql.local.json
+server/db/match-cloud-migration.sql
+
+.DS_Store
+Thumbs.db

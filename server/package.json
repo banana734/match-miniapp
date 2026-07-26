@@ -1,0 +1,13 @@
+{
+  "name": "match-miniapp-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "node app.js",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.23.1"
+  }
+}

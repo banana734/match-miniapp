@@ -1,0 +1,20 @@
+﻿{
+  "name": "鍙屽悜鍖归厤灏忕▼搴?,
+  "appid": "__UNI__MATCH001",
+  "description": "瀹跺涵涓庡弸瀵煎笀鍙屽悜鍖归厤",
+  "versionName": "0.1.0",
+  "versionCode": "1",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "wx568e776b1530359a",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "postcss": true,
+      "minified": true
+    },
+    "usingComponents": true
+  },
+  "vueVersion": "3"
+}
+

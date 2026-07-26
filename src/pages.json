@@ -1,0 +1,99 @@
+﻿{
+  "pages": [
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "微信登录"
+      }
+    },
+    {
+      "path": "pages/role-first/role-first",
+      "style": {
+        "navigationBarTitleText": "身份选择"
+      }
+    },    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/message/message",
+      "style": {
+        "navigationBarTitleText": "联系"
+      }
+    },
+    {
+      "path": "pages/My/My",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/match/match",
+      "style": {
+        "navigationBarTitleText": "匹配"
+      }
+    },
+    {
+      "path": "pages/family-data/family-data",
+      "style": {
+        "navigationBarTitleText": "家庭资料"
+      }
+    },
+    {
+      "path": "pages/mentor-data/mentor-data",
+      "style": {
+        "navigationBarTitleText": "导师资料"
+      }
+    },
+    {
+      "path": "pages/notice/notice",
+      "style": {
+        "navigationBarTitleText": "提示"
+      }
+    },
+    {
+      "path": "pages/mentor-feedback/mentor-feedback",
+      "style": {
+        "navigationBarTitleText": "导师反馈"
+      }
+    },
+    {
+      "path": "pages/family-feedback/family-feedback",
+      "style": {
+        "navigationBarTitleText": "家长反馈"
+      }
+    }
+  ],
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#2F80ED",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/match/match",
+        "text": "匹配"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "联系"
+      },
+      {
+        "pagePath": "pages/My/My",
+        "text": "我的"
+      }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "双向匹配",
+    "navigationBarBackgroundColor": "#F7F8FC",
+    "backgroundColor": "#F7F8FC"
+  }
+}

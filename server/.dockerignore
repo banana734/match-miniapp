@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+server.log
+server-error.log
+server.out.log
+server.err.log
+db/mysql.local.json

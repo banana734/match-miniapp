@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Match 资料后台</title>
+    <link rel="stylesheet" href="/admin/admin.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Match Admin v1</p>
+          <h1>导师与家长资料后台</h1>
+          <p class="subtitle">
+            这里先做成只读后台，方便你直观看到 MySQL 里已经存进去的资料。
+          </p>
+        </div>
+        <button id="refreshButton" class="primary-btn" type="button">刷新数据</button>
+      </header>
+
+      <section class="summary-grid">
+        <article class="summary-card">
+          <span class="summary-label">家长资料</span>
+          <strong id="familyCount" class="summary-value">0</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">导师资料</span>
+          <strong id="mentorCount" class="summary-value">0</strong>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="tab-row">
+          <button class="tab-btn active" data-tab="family" type="button">家长资料</button>
+          <button class="tab-btn" data-tab="mentor" type="button">导师资料</button>
+        </div>
+
+        <div id="familyPanel" class="table-panel active">
+          <div class="panel-head">
+            <h2>家长资料列表</h2>
+            <span id="familyStatus" class="panel-status">加载中...</span>
+          </div>
+          <div id="familyTableWrap" class="table-wrap"></div>
+        </div>
+
+        <div id="mentorPanel" class="table-panel">
+          <div class="panel-head">
+            <h2>导师资料列表</h2>
+            <span id="mentorStatus" class="panel-status">加载中...</span>
+          </div>
+          <div id="mentorTableWrap" class="table-wrap"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="/admin/admin.js"></script>
+  </body>
+  </html>
