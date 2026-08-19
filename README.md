@@ -18,22 +18,3 @@
 4. 进入匹配池
 5. 查看详情
 6. 选择并绑定
-
-## 需要本机安装
-
-- Node.js 18 LTS
-- 微信开发者工具
-- VSCode
-
-## 启动命令
-
-```bash
-npm install
-npm run dev:mp-weixin
-```
-
-然后在微信开发者工具中导入：
-
-```text
-dist/dev/mp-weixin
-```
