@@ -1,16 +1,12 @@
 ﻿<template>
   <view class="container">
-    <view class="card login-card">
+    <view class="card card-gap-24 align-center">
       <!-- 页面主标题 -->
       <text class="title">微信授权登录</text>
       <!-- 页面提示副标题 -->
-      <text class="subtitle">先完成微信登录，再进入身份选择和后续匹配流程。</text>
+      <text class="subtitle subtitle-relaxed">先完成微信登录，再进入身份选择和后续匹配流程。</text>
 
-      <!-- 登录说明面板 -->
-      <view class="login-tip-panel">
-        <text class="tip-title">当前阶段说明</text>
-        <text class="tip-text">现在会优先走真实微信登录；如果后端还没配置微信密钥，系统会临时回退到开发登录。</text>
-      </view>
+      
 
       <!-- 微信登录按钮 -->
       <view class="primary-btn login-btn" @tap="handleWechatLogin">
@@ -31,8 +27,6 @@ import { safeSwitchTab } from '@/utils/navigation'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
-// 后端登录接口基础地址
-const AUTH_API_BASE_URL = API_BASE_URL
 // 登录按钮加载状态
 const loading = ref(false)
 // 防止页面重复触发自动跳转
@@ -87,7 +81,9 @@ const restoreEntry = () => {
     return
   }
 
-  if (userStore.boundRole || userStore.role) {
+  // 这里只认后端已经绑定过的身份，不再使用本地旧 role 缓存兜底，
+  // 否则数据库已删除绑定时，页面还是会被错误地带回首页。
+  if (userStore.boundRole) {
     goToHome()
     return
   }
@@ -112,7 +108,7 @@ const handleWechatLogin = () => {
     provider: 'weixin',
     success: (loginRes) => {
       uni.request({
-        url: `${AUTH_API_BASE_URL}/auth/wechat`,
+        url: `${API_BASE_URL}/auth/wechat`,
         method: 'POST',
         data: {
           code: loginRes.code,
@@ -141,7 +137,7 @@ const handleWechatLogin = () => {
           })
 
           setTimeout(() => {
-            if (userStore.boundRole || userStore.role) {
+            if (userStore.boundRole) {
               goToHome()
               return
             }
@@ -170,59 +166,3 @@ const handleWechatLogin = () => {
   })
 }
 </script>
-
-<style scoped lang="scss">
-/* 登录卡片整体布局 */
-.login-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24rpx;
-}
-
-/* 页面主标题样式 */
-.title {
-  display: block;
-  text-align: center;
-}
-
-/* 页面副标题样式 */
-.subtitle {
-  display: block;
-  text-align: center;
-  line-height: 1.7;
-}
-
-/* 登录说明面板 */
-.login-tip-panel {
-  width: 100%;
-  padding: 24rpx;
-  border-radius: 20rpx;
-  background: #f7f9fc;
-  border: 2rpx solid #e7ebf3;
-  box-sizing: border-box;
-}
-
-/* 面板标题 */
-.tip-title {
-  display: block;
-  font-size: 28rpx;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-/* 面板说明文字 */
-.tip-text {
-  display: block;
-  margin-top: 12rpx;
-  font-size: 24rpx;
-  line-height: 1.7;
-  color: #4b5563;
-}
-
-/* 登录按钮样式 */
-.login-btn {
-  width: 100%;
-  margin-top: 8rpx;
-}
-</style>

@@ -2,7 +2,7 @@ const http = require('http')
 const fs = require('fs')
 const path = require('path')
 const { URL } = require('url')
-
+//获取后端业务函数
 const {
   getAdminFamilies,
   getAdminMentors,
@@ -19,11 +19,11 @@ const {
   removeTrialRecord
 } = require('./routes/trial')
 
-const PORT = Number(process.env.PORT || 3000)
-const HOST = process.env.HOST || '0.0.0.0'
-const ADMIN_DIR = path.join(__dirname, 'admin')
-const ALLOW_ORIGIN = process.env.ALLOW_ORIGIN || '*'
-
+const PORT = Number(process.env.PORT || 3000)//端口号
+const HOST = process.env.HOST || '0.0.0.0'//服务器地址
+const ADMIN_DIR = path.join(__dirname, 'admin')//后台页面目录
+const ALLOW_ORIGIN = process.env.ALLOW_ORIGIN || '*'//跨域设置
+//？？？
 const contentTypeMap = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -31,24 +31,26 @@ const contentTypeMap = {
 }
 
 // 统一返回 JSON，并放开开发阶段的本地跨域。
-const sendJson = (res, statusCode, data) => {
-  res.writeHead(statusCode, {
+const sendJson = (res, statusCode, data) => {//响应对象，状态码，实际数据
+  res.writeHead(statusCode, {//说明
     'Content-Type': 'application/json; charset=utf-8',
     'Access-Control-Allow-Origin': ALLOW_ORIGIN,
     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type'
   })
-  res.end(JSON.stringify(data))
+  res.end(JSON.stringify(data))//结束响应发送数据给前端
 }
 
-const sendServerError = (res, error) => {
-  console.error(error)
+const sendServerError = (res, error) => {//统一处理服务器报错
+  console.error(error)//打印错误
   sendJson(res, 500, {
-    success: false,
-    message: error?.message || 'server error'
+    success: false,//操作失败
+    message: error?.message || 'server error'//信息
   })
 }
 
+
+//？？？网页静态服务，返回后台数据
 const sendFile = (res, filePath) => {
   if (!fs.existsSync(filePath)) {
     sendJson(res, 404, {
@@ -68,16 +70,18 @@ const sendFile = (res, filePath) => {
   res.end(fs.readFileSync(filePath))
 }
 
+
+
 // 读取 POST 请求体中的 JSON 内容。
 const readRequestBody = (req, callback) => {
-  let body = ''
+  let body = ''//接受文本数据
 
   req.on('data', (chunk) => {
     body += chunk
-  })
+  })//监听事件，拼接信息
 
-  req.on('end', () => {
-    let parsedBody = {}
+  req.on('end', () => {//接受完毕，开始处理
+    let parsedBody = {}//解析后的JSON数据
 
     try {
       parsedBody = body ? JSON.parse(body) : {}
@@ -94,19 +98,19 @@ const readRequestBody = (req, callback) => {
 }
 
 const handleRequest = async (req, res) => {
-  if (req.method === 'OPTIONS') {
+  if (req.method === 'OPTIONS') {//预处理
     sendJson(res, 200, { ok: true })
     return
   }
 
-  const requestUrl = new URL(req.url, `http://${req.headers.host}`)
+  const requestUrl = new URL(req.url, `http://${req.headers.host}`)//解析url
 
-  if (req.method === 'GET' && requestUrl.pathname === '/admin') {
+  if (req.method === 'GET' && requestUrl.pathname === '/admin') {//后台数据???
     sendFile(res, path.join(ADMIN_DIR, 'dashboard.html'))
     return
   }
 
-  if (req.method === 'GET' && requestUrl.pathname.startsWith('/admin/')) {
+  if (req.method === 'GET' && requestUrl.pathname.startsWith('/admin/')) {//后台显示
     const relativePath = requestUrl.pathname.replace('/admin/', '')
     const targetPath = path.join(ADMIN_DIR, relativePath)
 
@@ -122,16 +126,8 @@ const handleRequest = async (req, res) => {
     return
   }
 
-  if (req.method === 'GET' && requestUrl.pathname === '/api/ping') {
-    sendJson(res, 200, {
-      success: true,
-      message: 'backend is running',
-      date: '2026-07-25'
-    })
-    return
-  }
 
-  if (req.method === 'GET' && requestUrl.pathname === '/api/match/list') {
+  if (req.method === 'GET' && requestUrl.pathname === '/api/match/list') {//匹配页列表
     const data = await getMatchList(requestUrl.searchParams.get('role'))
     sendJson(res, 200, data)
     return
@@ -287,12 +283,12 @@ const handleRequest = async (req, res) => {
   })
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer((req, res) => {//启动服务器,交给handleRequest处理
   handleRequest(req, res).catch((error) => {
     sendServerError(res, error)
   })
 })
 
-server.listen(PORT, HOST, () => {
+server.listen(PORT, HOST, () => {//服务器开始监听
   console.log(`Server is running at http://${HOST}:${PORT}`)
 })

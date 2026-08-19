@@ -1,4 +1,4 @@
-const {
+﻿const {
   readUnifiedDb,
   writeUnifiedDb,
   getTrialRecords
@@ -24,19 +24,15 @@ const getLatestRoleCardRecord = (records = [], openid = '', role = 'family', car
     .sort((left, right) => getRecordTime(right) - getRecordTime(left))[0]
 }
 
-const toArray = (value) => {
-  return Array.isArray(value) ? value.filter(Boolean) : []
-}
-
 const buildStoredFeedback = (feedback = {}) => {
   return {
     trialDate: feedback.trialDate || '',
     trialDuration: feedback.trialDuration || '',
-    satisfactionPoints: toArray(feedback.satisfactionPoints),
+    satisfactionPoints: feedback.satisfactionPoints || [],
     satisfactionPointOther: feedback.satisfactionPointOther || '',
-    objectiveUnsatisfied: toArray(feedback.objectiveUnsatisfied),
+    objectiveUnsatisfied: feedback.objectiveUnsatisfied || [],
     objectiveUnsatisfiedOther: feedback.objectiveUnsatisfiedOther || '',
-    subjectiveUnsatisfied: toArray(feedback.subjectiveUnsatisfied),
+    subjectiveUnsatisfied: feedback.subjectiveUnsatisfied || [],
     subjectiveUnsatisfiedOther: feedback.subjectiveUnsatisfiedOther || '',
     continueChoice: feedback.continueChoice || '',
     continueChoiceOther: feedback.continueChoiceOther || ''
@@ -148,33 +144,10 @@ const buildTrialListPayload = (openid = '', role = 'family', records = []) => {
 
 const applyTrial = async (body = {}) => {
   const { openid = '', role = 'family', cardId } = body
-
-  if (!openid) {
-    return {
-      success: false,
-      message: '缺少 openid'
-    }
-  }
-
-  if (!cardId && cardId !== 0) {
-    return {
-      success: false,
-      message: '缺少 cardId'
-    }
-  }
-
   const db = await readUnifiedDb()
   const records = getTrialRecords(db)
   const sourcePool = await getPoolByViewerRole(role)
-  const targetCard = sourcePool.find((item) => String(item.id) === String(cardId))
-
-  if (!targetCard) {
-    return {
-      success: false,
-      message: '未找到对应卡片'
-    }
-  }
-
+  const targetCard = sourcePool.find((item) => String(item.id) === String(cardId)) || {}
   const activeRecords = getRoleCardRecords(records, openid, role, cardId)
     .filter((item) => isActiveStatus(item.status))
 
@@ -214,6 +187,7 @@ const applyTrial = async (body = {}) => {
     }
   }
 
+  const now = new Date().toISOString()
   const newRecord = {
     id: `trial-${Date.now()}`,
     openid,
@@ -222,8 +196,8 @@ const applyTrial = async (body = {}) => {
     status: 'pending',
     continueChoice: '',
     cardData: targetCard,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
+    createdAt: now,
+    updatedAt: now
   }
 
   records.unshift(newRecord)
@@ -239,15 +213,6 @@ const applyTrial = async (body = {}) => {
 }
 
 const getTrialList = async (openid = '', role = 'family') => {
-  if (!openid) {
-    return {
-      success: true,
-      role,
-      pending: [],
-      formal: []
-    }
-  }
-
   const db = await readUnifiedDb()
   const records = getTrialRecords(db)
 
@@ -266,35 +231,13 @@ const submitTrialFeedback = async (body = {}) => {
     feedback = {}
   } = body
 
-  if (!openid) {
-    return {
-      success: false,
-      message: '缺少 openid'
-    }
-  }
-
-  if (!cardId && cardId !== 0) {
-    return {
-      success: false,
-      message: '缺少 cardId'
-    }
-  }
-
   const db = await readUnifiedDb()
   const records = getTrialRecords(db)
   const activeRecords = getRoleCardRecords(records, openid, role, cardId)
     .filter((item) => isActiveStatus(item.status))
-
-  if (!activeRecords.length) {
-    return {
-      success: false,
-      message: '未找到对应试课记录'
-    }
-  }
-
   const latestActiveRecord = activeRecords
     .slice()
-    .sort((left, right) => getRecordTime(right) - getRecordTime(left))[0]
+    .sort((left, right) => getRecordTime(right) - getRecordTime(left))[0] || { id: '', cardData: {} }
 
   let nextStatus = 'rejected'
 
@@ -315,10 +258,10 @@ const submitTrialFeedback = async (body = {}) => {
   await saveTrialFeedbackRow({
     role,
     openid,
-    trialRecordId: latestActiveRecord?.id || '',
+    trialRecordId: latestActiveRecord.id,
     cardId,
-    targetTitle: latestActiveRecord?.cardData?.title || '',
-    targetSubtitle: latestActiveRecord?.cardData?.subtitle || '',
+    targetTitle: latestActiveRecord.cardData?.title || '',
+    targetSubtitle: latestActiveRecord.cardData?.subtitle || '',
     statusAfterFeedback: nextStatus,
     feedback: {
       ...feedback,
@@ -336,32 +279,10 @@ const submitTrialFeedback = async (body = {}) => {
 
 const removeTrialRecord = async (body = {}) => {
   const { openid = '', role = 'family', cardId } = body
-
-  if (!openid) {
-    return {
-      success: false,
-      message: '缺少 openid'
-    }
-  }
-
-  if (!cardId && cardId !== 0) {
-    return {
-      success: false,
-      message: '缺少 cardId'
-    }
-  }
-
   const db = await readUnifiedDb()
   const records = getTrialRecords(db)
   const activeRecords = getRoleCardRecords(records, openid, role, cardId)
     .filter((item) => isActiveStatus(item.status))
-
-  if (!activeRecords.length) {
-    return {
-      success: false,
-      message: '未找到待试课记录'
-    }
-  }
 
   activeRecords.forEach((item) => {
     item.status = 'removed'

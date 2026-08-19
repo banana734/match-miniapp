@@ -15,11 +15,11 @@ export const useUserStore = defineStore('user', () => {
 
   // 统一共用资料对象，同时兼容家长端、友导师端两套表单数据
   const profile = ref({
-    name: '',
-    phone: '',
-    parentName: '',
-    wechat: '',
-    major: '',
+    name: '',//名字
+    phone: '',//手机号
+    parentName: '',//家长称呼
+    wechat: '',//微信号
+    major: '',//专业
     mentorProject: '',
     coreMember: '',
     school: '',
@@ -58,7 +58,8 @@ export const useUserStore = defineStore('user', () => {
     intro: ''
   })
 
-  const persistUserState = () => {
+  const persistUserState = () => {// 将当前用户状态持久化到本地缓存。
+                                  // 这样即使关闭小程序，重新进入时也能恢复登录态、身份和资料信息。
     if (typeof uni === 'undefined') {
       return
     }
@@ -74,7 +75,8 @@ export const useUserStore = defineStore('user', () => {
     })
   }
 
-  const restoreUserState = () => {
+  const restoreUserState = () => {// 从本地缓存恢复用户状态。
+                                  // 如果之前已经保存过登录信息、身份或资料，这里会在 store 初始化时读回来。
     if (typeof uni === 'undefined') {
       return
     }
@@ -84,14 +86,16 @@ export const useUserStore = defineStore('user', () => {
     if (!savedState || typeof savedState !== 'object') {
       return
     }
-
+  // 依次恢复基础登录状态和身份信息；
+  // 如果某个字段不存在，就回退到默认值。
     role.value = savedState.role || ''
     boundRole.value = savedState.boundRole || ''
     token.value = savedState.token || ''
     openid.value = savedState.openid || ''
     isLoggedIn.value = Boolean(savedState.isLoggedIn && savedState.token)
     profileCompleted.value = savedState.profileCompleted ?? profileCompleted.value
-
+  // 如果缓存里有资料对象，就把它合并回当前 profile，
+  // 保留原始字段结构，同时用缓存值覆盖对应字段。
     if (savedState.profile && typeof savedState.profile === 'object') {
       profile.value = {
         ...profile.value,
@@ -121,11 +125,10 @@ export const useUserStore = defineStore('user', () => {
     token.value = payload.token || ''
     openid.value = payload.openid || ''
     isLoggedIn.value = Boolean(token.value)
-
-    if (payload.boundRole) {
-      boundRole.value = payload.boundRole
-      role.value = payload.boundRole
-    }
+    // 每次重新登录时，都以后端返回的最新绑定身份为准，
+    // 避免本地旧缓存导致已经重置过的账号仍然跳过选身份页面。
+    boundRole.value = payload.boundRole || ''
+    role.value = payload.boundRole || ''
 
     persistUserState()
   }

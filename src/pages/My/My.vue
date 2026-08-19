@@ -1,24 +1,23 @@
 ﻿<template>
   <view class="container">
-    <view class="card hero-card">
+    <view class="card card-gap-20 card-mb-20">
       <text class="title">我的</text>
       <text class="subtitle">当前登录信息和资料入口都放在这里。</text>
     </view>
 
-    <view class="card info-card">
-      <text class="section-title">当前身份</text>
-      <text class="content">{{ roleText }}</text>
+    <view class="card card-gap-20 card-mb-20">
+      <text class="section-title section-title-sm">当前身份</text>
+      <text class="content text-block">{{ roleText }}</text>
 
-      <text class="section-title">微信账号</text>
-      <text class="content account-text">{{ accountText }}</text>
+      <text class="section-title section-title-sm">微信账号</text>
+      <text class="content text-block break-all">{{ accountText }}</text>
 
-      <text class="section-title">资料状态</text>
-      <text class="content">{{ profileStatusText }}</text>
+      <text class="section-title section-title-sm">资料状态</text>
+      <text class="content text-block">{{ profileStatusText }}</text>
+      <view class="primary-btn action-top" @tap="goToProfileForm">查看或修改已填写资料</view>
     </view>
 
-    <view class="card action-card">
-      <view class="primary-btn action-btn" @tap="goToProfileForm">查看和修改已填写资料</view>
-    </view>
+   
   </view>
 </template>
 
@@ -27,17 +26,13 @@ import { computed } from 'vue'
 import { useUserStore } from '@/store/user'
 
 const userStore = useUserStore()
+const roleLabelMap = {
+  mentor: '友导师',
+  family: '家庭'
+}
 
 const roleText = computed(() => {
-  if (userStore.boundRole === 'mentor' || userStore.role === 'mentor') {
-    return '友导师'
-  }
-
-  if (userStore.boundRole === 'family' || userStore.role === 'family') {
-    return '家庭'
-  }
-
-  return '未选择'
+  return roleLabelMap[userStore.boundRole || userStore.role] || '未选择'
 })
 
 const accountText = computed(() => {
@@ -59,41 +54,3 @@ const goToProfileForm = () => {
   })
 }
 </script>
-
-<style scoped lang="scss">
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 20rpx;
-}
-
-.hero-card,
-.info-card,
-.action-card {
-  margin-bottom: 20rpx;
-}
-
-.title {
-  display: block;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 28rpx;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.subtitle,
-.content {
-  display: block;
-}
-
-.account-text {
-  word-break: break-all;
-}
-
-.action-btn {
-  margin-top: 12rpx;
-}
-</style>

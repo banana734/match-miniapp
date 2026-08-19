@@ -89,11 +89,5 @@
         "text": "我的"
       }
     ]
-  },
-  "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "双向匹配",
-    "navigationBarBackgroundColor": "#F7F8FC",
-    "backgroundColor": "#F7F8FC"
   }
 }

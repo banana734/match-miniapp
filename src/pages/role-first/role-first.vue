@@ -27,7 +27,6 @@ import { API_BASE_URL } from '@/utils/api'
 import { safeSwitchTab } from '@/utils/navigation'
 
 const userStore = useUserStore()
-const PROFILE_API_BASE_URL = API_BASE_URL
 let choosing = false
 
 const chooseRole = (role) => {
@@ -46,7 +45,7 @@ const chooseRole = (role) => {
   choosing = true
 
   uni.request({
-    url: `${PROFILE_API_BASE_URL}/profile/bind-role`,
+    url: `${API_BASE_URL}/profile/bind-role`,
     method: 'POST',
     data: {
       openid: userStore.openid,
@@ -62,7 +61,6 @@ const chooseRole = (role) => {
       }
 
       userStore.setBoundRole(res.data.boundRole || role)
-      userStore.setRole(res.data.boundRole || role)
       safeSwitchTab('/pages/home/home')
     },
     fail: () => {
@@ -79,91 +77,3 @@ const chooseRole = (role) => {
   })
 }
 </script>
-
-<style scoped lang="scss">
-.hero-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16rpx;
-  margin-bottom: 24rpx;
-  background: #f7f9fc;
-  border: 2rpx solid #e7ebf3;
-}
-
-.title {
-  font-size: 38rpx;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.subtitle {
-  text-align: center;
-  font-size: 26rpx;
-  line-height: 1.7;
-  color: #6b7280;
-}
-
-.role-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24rpx;
-}
-
-.role-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18rpx;
-  padding: 36rpx 28rpx;
-  border-radius: 28rpx;
-  border: 2rpx solid transparent;
-  box-shadow: 0 14rpx 30rpx rgba(31, 41, 55, 0.08);
-}
-
-.role-card-hover {
-  transform: scale(0.98);
-  opacity: 0.92;
-}
-
-.mentor-card {
-  background: linear-gradient(180deg, #f7fbff 0%, #edf5ff 100%);
-  border-color: #bfd7ff;
-}
-
-.family-card {
-  background: linear-gradient(180deg, #f7fff9 0%, #edf9f0 100%);
-  border-color: #bde6ca;
-}
-
-.role-badge {
-  width: fit-content;
-  padding: 10rpx 22rpx;
-  border-radius: 999rpx;
-  font-size: 24rpx;
-  font-weight: 600;
-}
-
-.section-title {
-  font-size: 34rpx;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.role-desc {
-  text-align: center;
-  font-size: 26rpx;
-  line-height: 1.7;
-  color: #4b5563;
-}
-
-.mentor {
-  background: #dcecff;
-  color: #2d6cdf;
-}
-
-.family {
-  background: #dff5e6;
-  color: #208a54;
-}
-</style>

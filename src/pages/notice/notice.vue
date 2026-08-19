@@ -1,9 +1,9 @@
 ﻿<template>
   <view class="container">
-    <view class="card">
+    <view class="card card-gap-20">
       <text class="title">请先填写匹配资料</text>
       <text class="subtitle">完成资料后，才能继续查看相关页面内容。</text>
-      <view class="primary-btn action-btn" @tap="goToProfileForm">去填写资料</view>
+      <view class="primary-btn action-btn action-top" @tap="goToProfileForm">去填写资料</view>
     </view>
   </view>
 </template>
@@ -15,19 +15,20 @@ import { useUserStore } from '@/store/user'
 import { safeSwitchTab } from '@/utils/navigation'
 
 const userStore = useUserStore()
-const goingToProfile = ref(false)
-const leavingToHome = ref(false)
+const skipCancelOnUnload = ref(false)
 
 const goHome = () => {
-  leavingToHome.value = true
+  skipCancelOnUnload.value = true
   safeSwitchTab('/pages/home/home')
 }
 
 const markCancelledAndGoHome = () => {
-  if (!goingToProfile.value && !leavingToHome.value) {
-    userStore.cancelProfile()
-    goHome()
+  if (skipCancelOnUnload.value) {
+    return
   }
+
+  userStore.cancelProfile()
+  goHome()
 }
 
 const goToProfileForm = () => {
@@ -35,7 +36,7 @@ const goToProfileForm = () => {
     ? '/pages/mentor-data/mentor-data'
     : '/pages/family-data/family-data'
 
-  goingToProfile.value = true
+  skipCancelOnUnload.value = true
   uni.navigateTo({
     url
   })
@@ -47,26 +48,8 @@ onBackPress(() => {
 })
 
 onUnload(() => {
-  if (!goingToProfile.value && !leavingToHome.value) {
+  if (!skipCancelOnUnload.value) {
     userStore.cancelProfile()
   }
 })
 </script>
-
-<style scoped lang="scss">
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 20rpx;
-}
-
-.title,
-.subtitle {
-  display: block;
-  text-align: center;
-}
-
-.action-btn {
-  margin-top: 12rpx;
-}
-</style>

@@ -394,16 +394,24 @@
 
 <script setup>
 // 导入vue核心API
-import { computed, reactive, ref } from 'vue'
+import { ref } from 'vue'
 // uni-app页面生命周期钩子
 import { onBackPress, onShow, onUnload } from '@dcloudio/uni-app'
 // 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
 import { API_BASE_URL } from '@/utils/api'
+import {
+  familyClassModeOptions,
+  familyDifficultyOptions,
+  familySubjectOptions,
+  familyTeacherTraitOptions,
+  familyTeachingStyleOptions
+} from '@/constants/profile-options'
+import { useOrderedTagGroup } from '@/composables/useOrderedTagGroup'
+import { useProfileForm } from '@/composables/useProfileForm'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
-const PROFILE_API_BASE_URL = API_BASE_URL
 // 标记表单是否执行提交操作
 const submitted = ref(false)
 
@@ -412,28 +420,8 @@ const isEditMode = () => {
   return currentPage?.options?.mode === 'edit'
 }
 
-// 问卷固定选项集合：需要辅导的科目
-const subjectOptions = ['语文', '数学', '英语', '化学', '生物', '政治', '历史', '体育', '绘画', '音乐', '地理', '其他']
-// 问卷固定选项：学习困难类型
-const difficultyOptions = ['基础知识不牢固', '解题思路不清晰，方法欠缺', '学习效率低，容易拖延', '对科目缺乏兴趣，动力不足', '考试时容易紧张，发挥失常', '其他']
-// 问卷固定选项：老师特质
-const teacherTraitOptions = [
-  '学科知识扎实，讲题能力强',
-  '讲解清晰有条理，能化繁为简',
-  '有耐心，善于鼓励，不轻易发脾气',
-  '能帮助孩子建立良好的学习习惯',
-  '性格开朗，有亲和力，能调动孩子积极性',
-  '认真负责，守时，沟通及时',
-  '能洞察孩子学习中的困难点，针对性解决'
-]
-// 问卷固定选项：偏好教学风格
-const teachingStyleOptions = ['启发引导型', '问题向导型', '鼓励陪伴型', '系统讲解型', '严格督促型']
-// 问卷固定选项：上课方式
-const classModeOptions = ['线上', '线下']
-
-// 本地表单数据，初始化从全局store读取缓存数据
-const form = reactive({
-  name: userStore.profile.name,
+const familyProfileDefaults = {
+  name: userStore.profile.name || '',
   area: userStore.profile.area || '',
   areaOther: userStore.profile.areaOther || '',
   parentName: userStore.profile.parentName || '',
@@ -458,38 +446,52 @@ const form = reactive({
   extraNote: userStore.profile.extraNote || '',
   classModes: [...(userStore.profile.classModes || [])],
   classFrequency: userStore.profile.classFrequency || '',
-  intro: userStore.profile.intro
+  intro: userStore.profile.intro || ''
+}
+
+const familyArrayFields = ['subjects', 'difficulties', 'teacherTraits', 'teachingStyles', 'classModes']
+
+const {
+  form,
+  syncFormFromProfile: applyProfileToForm,
+  createPayload
+} = useProfileForm(familyProfileDefaults, familyArrayFields)
+
+const subjectGroup = useOrderedTagGroup(form.subjects, familySubjectOptions, () => {
+  form.subjectOther = ''
 })
 
-// 用一份资料对象覆盖当前表单，用于后端回填。
-const syncFormFromProfile = (profile = {}) => {
-  form.name = profile.name || ''
-  form.area = profile.area || ''
-  form.areaOther = profile.areaOther || ''
-  form.parentName = profile.parentName || ''
-  form.phone = profile.phone || ''
-  form.wechat = profile.wechat || ''
-  form.age = profile.age || ''
-  form.gender = profile.gender || ''
-  form.grade = profile.grade || ''
-  form.subjects = [...(profile.subjects || [])]
-  form.subjectOther = profile.subjectOther || ''
-  form.difficulties = [...(profile.difficulties || [])]
-  form.difficultyOther = profile.difficultyOther || ''
-  form.teacherTraits = [...(profile.teacherTraits || [])]
-  form.teachingStyles = [...(profile.teachingStyles || [])]
-  form.mainFocus = profile.mainFocus || ''
-  form.mainFocusOther = profile.mainFocusOther || ''
-  form.learningState = profile.learningState || ''
-  form.communicationExpectation = profile.communicationExpectation || ''
-  form.communicationExpectationOther = profile.communicationExpectationOther || ''
-  form.understanding = profile.understanding || ''
-  form.feedbackWillingness = profile.feedbackWillingness || ''
-  form.extraNote = profile.extraNote || ''
-  form.classModes = [...(profile.classModes || [])]
-  form.classFrequency = profile.classFrequency || ''
-  form.intro = profile.intro || ''
-}
+const difficultyGroup = useOrderedTagGroup(form.difficulties, familyDifficultyOptions, () => {
+  form.difficultyOther = ''
+})
+
+const teacherTraitGroup = useOrderedTagGroup(form.teacherTraits, familyTeacherTraitOptions)
+const teachingStyleGroup = useOrderedTagGroup(form.teachingStyles, familyTeachingStyleOptions)
+const classModeGroup = useOrderedTagGroup(form.classModes, familyClassModeOptions)
+
+const selectedSubjects = subjectGroup.selected
+const unselectedSubjects = subjectGroup.unselected
+const toggleSubject = subjectGroup.toggle
+const getSubjectOrder = subjectGroup.order
+
+const selectedDifficulties = difficultyGroup.selected
+const unselectedDifficulties = difficultyGroup.unselected
+const toggleDifficulty = difficultyGroup.toggle
+const getDifficultyOrder = difficultyGroup.order
+
+const selectedTeacherTraits = teacherTraitGroup.selected
+const unselectedTeacherTraits = teacherTraitGroup.unselected
+const toggleTeacherTrait = teacherTraitGroup.toggle
+const getTeacherTraitOrder = teacherTraitGroup.order
+
+const selectedTeachingStyles = teachingStyleGroup.selected
+const unselectedTeachingStyles = teachingStyleGroup.unselected
+const toggleTeachingStyle = teachingStyleGroup.toggle
+const getTeachingStyleOrder = teachingStyleGroup.order
+
+const selectedClassModes = classModeGroup.selected
+const unselectedClassModes = classModeGroup.unselected
+const toggleClassMode = classModeGroup.toggle
 
 // 性别单选切换事件
 const handleGenderChange = (e) => {
@@ -508,118 +510,6 @@ const handleAreaChange = (e) => {
     form.areaOther = ''
   }
 }
-
-// 科目标签点击切换：选中加入数组，取消则删除；取消其他同步清空输入
-const toggleSubject = (subject) => {
-  const index = form.subjects.indexOf(subject)
-  if (index > -1) {
-    form.subjects.splice(index, 1)
-    if (subject === '其他') {
-      form.subjectOther = ''
-    }
-    return
-  }
-  form.subjects.push(subject)
-}
-
-// 获取选中科目的排序序号，未选中返回空
-const getSubjectOrder = (subject) => {
-  const index = form.subjects.indexOf(subject)
-  return index > -1 ? `${index + 1}. ` : ''
-}
-
-// 计算属性：已选中的科目列表
-const selectedSubjects = computed(() => {
-  return form.subjects.filter((subject) => subjectOptions.includes(subject))
-})
-// 计算属性：未选中的科目列表
-const unselectedSubjects = computed(() => {
-  return subjectOptions.filter((subject) => !form.subjects.includes(subject))
-})
-
-// 学习困难标签切换
-const toggleDifficulty = (difficulty) => {
-  const index = form.difficulties.indexOf(difficulty)
-  if (index > -1) {
-    form.difficulties.splice(index, 1)
-    if (difficulty === '其他') {
-      form.difficultyOther = ''
-    }
-    return
-  }
-  form.difficulties.push(difficulty)
-}
-
-// 获取困难排序序号
-const getDifficultyOrder = (difficulty) => {
-  const index = form.difficulties.indexOf(difficulty)
-  return index > -1 ? `${index + 1}. ` : ''
-}
-// 已选中困难
-const selectedDifficulties = computed(() => {
-  return form.difficulties.filter((difficulty) => difficultyOptions.includes(difficulty))
-})
-// 未选中困难
-const unselectedDifficulties = computed(() => {
-  return difficultyOptions.filter((difficulty) => !form.difficulties.includes(difficulty))
-})
-
-// 老师特质点击切换
-const toggleTeacherTrait = (trait) => {
-  const index = form.teacherTraits.indexOf(trait)
-  if (index > -1) {
-    form.teacherTraits.splice(index, 1)
-    return
-  }
-  form.teacherTraits.push(trait)
-}
-// 获取特质排序
-const getTeacherTraitOrder = (trait) => {
-  const index = form.teacherTraits.indexOf(trait)
-  return index > -1 ? `${index + 1}. ` : ''
-}
-const selectedTeacherTraits = computed(() => {
-  return form.teacherTraits.filter((trait) => teacherTraitOptions.includes(trait))
-})
-const unselectedTeacherTraits = computed(() => {
-  return teacherTraitOptions.filter((trait) => !form.teacherTraits.includes(trait))
-})
-
-// 教学风格切换
-const toggleTeachingStyle = (style) => {
-  const index = form.teachingStyles.indexOf(style)
-  if (index > -1) {
-    form.teachingStyles.splice(index, 1)
-    return
-  }
-  form.teachingStyles.push(style)
-}
-const getTeachingStyleOrder = (style) => {
-  const index = form.teachingStyles.indexOf(style)
-  return index > -1 ? `${index + 1}. ` : ''
-}
-const selectedTeachingStyles = computed(() => {
-  return form.teachingStyles.filter((style) => teachingStyleOptions.includes(style))
-})
-const unselectedTeachingStyles = computed(() => {
-  return teachingStyleOptions.filter((style) => !form.teachingStyles.includes(style))
-})
-
-// 上课方式标签切换
-const toggleClassMode = (mode) => {
-  const index = form.classModes.indexOf(mode)
-  if (index > -1) {
-    form.classModes.splice(index, 1)
-    return
-  }
-  form.classModes.push(mode)
-}
-const selectedClassModes = computed(() => {
-  return form.classModes.filter((mode) => classModeOptions.includes(mode))
-})
-const unselectedClassModes = computed(() => {
-  return classModeOptions.filter((mode) => !form.classModes.includes(mode))
-})
 
 // 辅导侧重点单选切换，清空其他输入
 const handleMainFocusChange = (e) => {
@@ -677,14 +567,14 @@ onShow(() => {
   }
 
   uni.request({
-    url: `${PROFILE_API_BASE_URL}/profile/detail?openid=${encodeURIComponent(userStore.openid)}&role=family`,
+    url: `${API_BASE_URL}/profile/detail?openid=${encodeURIComponent(userStore.openid)}&role=family`,
     method: 'GET',
     success: (res) => {
       if (!res.data?.success || !res.data?.found || !res.data?.profile) {
         return
       }
 
-      syncFormFromProfile(res.data.profile)
+      applyProfileToForm(res.data.profile)
       userStore.updateProfile(res.data.profile)
       userStore.completeProfile()
     }
@@ -729,17 +619,10 @@ const submitProfile = () => {
     return
   }
 
-  const payload = {
-    ...form,
-    subjects: [...form.subjects],
-    difficulties: [...form.difficulties],
-    teacherTraits: [...form.teacherTraits],
-    teachingStyles: [...form.teachingStyles],
-    classModes: [...form.classModes]
-  }
+  const payload = createPayload()
 
   uni.request({
-    url: `${PROFILE_API_BASE_URL}/profile/save`,
+    url: `${API_BASE_URL}/profile/save`,
     method: 'POST',
     data: {
       openid: userStore.openid,
@@ -780,78 +663,3 @@ const submitProfile = () => {
   })
 }
 </script>
-
-<style scoped lang="scss">
-/* 外层卡片布局 */
-.card {
-  display: flex;
-  flex-direction: column;
-}
-
-/* 页面主标题样式 */
-.title {
-  display: block;
-  text-align: center;
-}
-
-/* 副标题提示文字 */
-.subtitle {
-  display: block;
-  text-align: center;
-  margin-top: 12rpx;
-}
-
-/* 问题标题通用样式 */
-.question-label {
-  display: block;
-  margin-top: 24rpx;
-  margin-bottom: 12rpx;
-  font-size: 28rpx;
-  color: #333333;
-}
-
-/* 单选选项容器 */
-.option-group {
-  display: flex;
-  flex-direction: column;
-  gap: 16rpx;
-}
-
-/* 单个单选条目 */
-.option-item {
-  display: flex;
-  align-items: center;
-  gap: 12rpx;
-  font-size: 28rpx;
-  color: #333333;
-}
-
-/* 多选标签外层容器 */
-.subject-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16rpx;
-  align-items: flex-start;
-}
-
-/* 普通标签样式 */
-.subject-tag {
-  width: fit-content;
-  padding: 14rpx 22rpx;
-  border-radius: 999rpx;
-  background: #f1f3f7;
-  color: #333333;
-  font-size: 28rpx;
-}
-
-/* 标签选中激活样式 */
-.subject-tag.active {
-  background: #dbe9ff;
-  color: #2d6cdf;
-}
-
-/* 提交按钮上边距 */
-.submit-btn {
-  margin-top: 28rpx;
-}
-</style>

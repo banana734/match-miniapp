@@ -2,24 +2,24 @@
   <view class="container">
     <view class="card">
       <text class="title">{{ pageTitle }}</text>
-      <text class="subtitle">{{ textMap.subtitle }}</text>
+      <text class="subtitle">先记录本次试课的基础信息，后面我们再继续补充更详细的反馈。</text>
 
-      <text class="question-label">{{ textMap.questionTrialDate }}</text>
+      <text class="question-label">1. 试课日期</text>
       <picker mode="date" :value="form.trialDate" @change="handleTrialDateChange">
         <view class="input picker-value" :class="{ 'placeholder-text': !form.trialDate }">
-          {{ form.trialDate || textMap.trialDatePlaceholder }}
+          {{ form.trialDate || '请选择试课日期' }}
         </view>
       </picker>
 
-      <text class="question-label">{{ textMap.questionTrialDuration }}</text>
+      <text class="question-label">2. 试课时长</text>
       <input
         v-model="form.trialDuration"
         class="input"
-        :placeholder="textMap.trialDurationPlaceholder"
+        placeholder="请输入试课时长，如 60 分钟"
       />
 
-      <text class="question-label">{{ textMap.questionSatisfactionPoints }}</text>
-      <text class="question-note">{{ textMap.questionSatisfactionPointsNote }}</text>
+      <text class="question-label">3. [多选] 满意点（学生表现好的地方）</text>
+      <text class="question-note">请根据实际情况勾选或补充</text>
       <checkbox-group class="option-group" @change="handleSatisfactionPointsChange">
         <label v-for="item in satisfactionOptions" :key="item" class="option-item">
           <checkbox :value="item" :checked="form.satisfactionPoints.includes(item)" />
@@ -33,8 +33,8 @@
         placeholder="请输入其他满意点"
       />
 
-      <text class="question-label">{{ textMap.questionObjectiveUnsatisfied }}</text>
-      <text class="question-note">{{ textMap.questionObjectiveUnsatisfiedNote }}</text>
+      <text class="question-label">4. [多选] 不满意点</text>
+      <text class="question-note">（一）客观原因（与学生自身能力、状态等关系较大）</text>
       <checkbox-group class="option-group" @change="handleObjectiveUnsatisfiedChange">
         <label v-for="item in objectiveUnsatisfiedOptions" :key="item" class="option-item">
           <checkbox :value="item" :checked="form.objectiveUnsatisfied.includes(item)" />
@@ -48,8 +48,8 @@
         placeholder="请输入其他客观原因"
       />
 
-      <text class="question-label">{{ textMap.questionSubjectiveUnsatisfied }}</text>
-      <text class="question-note">{{ textMap.questionSubjectiveUnsatisfiedNote }}</text>
+      <text class="question-label">5. [多选] 不满意点</text>
+      <text class="question-note">（二）主观原因（与我的教学或互动方式有关）</text>
       <checkbox-group class="option-group" @change="handleSubjectiveUnsatisfiedChange">
         <label v-for="item in subjectiveUnsatisfiedOptions" :key="item" class="option-item">
           <checkbox :value="item" :checked="form.subjectiveUnsatisfied.includes(item)" />
@@ -63,7 +63,7 @@
         placeholder="请输入其他主观原因"
       />
 
-      <text class="question-label">{{ textMap.questionContinueChoice }}</text>
+      <text class="question-label">6. 是否愿意继续与该学生合作</text>
       <radio-group class="option-group" @change="handleContinueChoiceChange">
         <label v-for="item in continueChoiceOptions" :key="item" class="option-item">
           <radio :value="item" :checked="form.continueChoice === item" />
@@ -77,170 +77,75 @@
         placeholder="请输入其他合作意向"
       />
 
-      <view class="primary-btn submit-btn" @tap="submitFeedback">{{ textMap.submitButton }}</view>
+      <view class="primary-btn submit-btn" @tap="submitFeedback">保存反馈</view>
     </view>
   </view>
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
 import { API_BASE_URL } from '@/utils/api'
+import {
+  mentorTrialObjectiveUnsatisfiedOptions,
+  mentorTrialSatisfactionOptions,
+  mentorTrialSubjectiveUnsatisfiedOptions,
+  trialFeedbackContinueOptions,
+  trialFeedbackDefaultObjectName,
+  trialFeedbackIncompleteToast,
+  trialFeedbackSuccessToast,
+  trialFeedbackTitleSuffix
+} from '@/constants/trial-feedback-options'
+import { useTrialFeedbackPage } from '@/composables/useTrialFeedbackPage'
 
 const userStore = useUserStore()
-const MATCH_API_BASE_URL = API_BASE_URL
+const {
+  objectName,
+  cardId,
+  pageTitle,
+  form,
+  syncPageFromRoute,
+  handleDateChange,
+  handleChoiceGroupChange,
+  validate
+} = useTrialFeedbackPage(trialFeedbackDefaultObjectName, trialFeedbackTitleSuffix)
 
-const textMap = {
-  subtitle: '先记录本次试课的基础信息，后面我们再继续补充更详细的反馈。',
-  questionTrialDate: '1. 试课日期',
-  trialDatePlaceholder: '年/月/日',
-  questionTrialDuration: '2. 试课时长',
-  trialDurationPlaceholder: '请输入',
-  questionSatisfactionPoints: '3. [多选] 满意点（学生表现好的地方）',
-  questionSatisfactionPointsNote: '请根据实际情况勾选或补充',
-  questionObjectiveUnsatisfied: '4. [多选] 不满意点',
-  questionObjectiveUnsatisfiedNote: '（一）客观原因（与学生自身能力、状态等关系较大）',
-  questionSubjectiveUnsatisfied: '5. [多选] 不满意点',
-  questionSubjectiveUnsatisfiedNote: '（二）主观原因（与我的教学或互动方式有关）',
-  questionContinueChoice: '6. 是否愿意继续与该学生合作',
-  submitButton: '保存反馈',
-  incompleteToast: '请先补全反馈内容',
-  successToast: '反馈已保存',
-  defaultName: '该对象',
-  titleSuffix: '的试课反馈'
-}
-
-const satisfactionOptions = [
-  '态度积极，愿意配合',
-  '能主动提问或回应',
-  '理解能力较好，能跟上讲解',
-  '情绪稳定，无明显抵触',
-  '其他'
-]
-
-const objectiveUnsatisfiedOptions = [
-  '基础较弱，理解较慢',
-  '注意力不集中，容易走神',
-  '情绪较紧张或抗拒学习',
-  '未提前准备上课所需材料',
-  '其他'
-]
-
-const subjectiveUnsatisfiedOptions = [
-  '我的讲解方式学生不太适应',
-  '我未能有效调动学生积极性',
-  '我准备的内容难度不匹配',
-  '其他'
-]
-
-const continueChoiceOptions = [
-  '愿意',
-  '需要调整后再试一次',
-  '不愿意',
-  '其他'
-]
-
-const objectName = ref(textMap.defaultName)
-const cardId = ref('')
-const pageTitle = ref('试课反馈')
-
-// 当前先把反馈内容保存在页面本地，提交时只把试课流转结果发给后端。
-const form = reactive({
-  trialDate: '',
-  trialDuration: '',
-  satisfactionPoints: [],
-  satisfactionPointOther: '',
-  objectiveUnsatisfied: [],
-  objectiveUnsatisfiedOther: '',
-  subjectiveUnsatisfied: [],
-  subjectiveUnsatisfiedOther: '',
-  continueChoice: '',
-  continueChoiceOther: ''
-})
-
-const updatePageTitle = () => {
-  pageTitle.value = `${objectName.value}${textMap.titleSuffix}`
-  uni.setNavigationBarTitle({
-    title: pageTitle.value
-  })
-}
+const satisfactionOptions = mentorTrialSatisfactionOptions
+const objectiveUnsatisfiedOptions = mentorTrialObjectiveUnsatisfiedOptions
+const subjectiveUnsatisfiedOptions = mentorTrialSubjectiveUnsatisfiedOptions
+const continueChoiceOptions = trialFeedbackContinueOptions
 
 const handleTrialDateChange = (e) => {
-  form.trialDate = e.detail.value
+  handleDateChange('trialDate', e)
 }
 
 const handleSatisfactionPointsChange = (e) => {
-  form.satisfactionPoints = e.detail.value
-  if (!form.satisfactionPoints.includes('其他')) {
-    form.satisfactionPointOther = ''
-  }
+  handleChoiceGroupChange('satisfactionPoints', 'satisfactionPointOther', e)
 }
 
 const handleObjectiveUnsatisfiedChange = (e) => {
-  form.objectiveUnsatisfied = e.detail.value
-  if (!form.objectiveUnsatisfied.includes('其他')) {
-    form.objectiveUnsatisfiedOther = ''
-  }
+  handleChoiceGroupChange('objectiveUnsatisfied', 'objectiveUnsatisfiedOther', e)
 }
 
 const handleSubjectiveUnsatisfiedChange = (e) => {
-  form.subjectiveUnsatisfied = e.detail.value
-  if (!form.subjectiveUnsatisfied.includes('其他')) {
-    form.subjectiveUnsatisfiedOther = ''
-  }
+  handleChoiceGroupChange('subjectiveUnsatisfied', 'subjectiveUnsatisfiedOther', e)
 }
 
 const handleContinueChoiceChange = (e) => {
-  form.continueChoice = e.detail.value
-  if (form.continueChoice !== '其他') {
-    form.continueChoiceOther = ''
-  }
+  handleChoiceGroupChange('continueChoice', 'continueChoiceOther', e)
 }
 
 const submitFeedback = () => {
-  if (!form.trialDate || !form.trialDuration || !form.continueChoice) {
+  if (!validate()) {
     uni.showToast({
-      title: textMap.incompleteToast,
-      icon: 'none'
-    })
-    return
-  }
-
-  if (form.satisfactionPoints.includes('其他') && !form.satisfactionPointOther) {
-    uni.showToast({
-      title: textMap.incompleteToast,
-      icon: 'none'
-    })
-    return
-  }
-
-  if (form.objectiveUnsatisfied.includes('其他') && !form.objectiveUnsatisfiedOther) {
-    uni.showToast({
-      title: textMap.incompleteToast,
-      icon: 'none'
-    })
-    return
-  }
-
-  if (form.subjectiveUnsatisfied.includes('其他') && !form.subjectiveUnsatisfiedOther) {
-    uni.showToast({
-      title: textMap.incompleteToast,
-      icon: 'none'
-    })
-    return
-  }
-
-  if (form.continueChoice === '其他' && !form.continueChoiceOther) {
-    uni.showToast({
-      title: textMap.incompleteToast,
+      title: trialFeedbackIncompleteToast,
       icon: 'none'
     })
     return
   }
 
   uni.request({
-    url: `${MATCH_API_BASE_URL}/trial/feedback`,
+    url: `${API_BASE_URL}/trial/feedback`,
     method: 'POST',
     data: {
       openid: userStore.openid,
@@ -270,7 +175,7 @@ const submitFeedback = () => {
       }
 
       uni.showToast({
-        title: textMap.successToast,
+        title: trialFeedbackSuccessToast,
         icon: 'success'
       })
 
@@ -288,78 +193,6 @@ const submitFeedback = () => {
 }
 
 onShow(() => {
-  const pages = getCurrentPages()
-  const currentPage = pages[pages.length - 1]
-  const currentOptions = currentPage?.options || {}
-
-  if (currentOptions.name) {
-    objectName.value = decodeURIComponent(currentOptions.name)
-  }
-
-  if (currentOptions.id) {
-    cardId.value = decodeURIComponent(currentOptions.id)
-  }
-
-  updatePageTitle()
+  syncPageFromRoute()
 })
 </script>
-
-<style scoped lang="scss">
-.card {
-  display: flex;
-  flex-direction: column;
-}
-
-.title {
-  display: block;
-  text-align: center;
-}
-
-.subtitle {
-  display: block;
-  text-align: center;
-  margin-top: 12rpx;
-}
-
-.question-label {
-  display: block;
-  margin-top: 24rpx;
-  margin-bottom: 12rpx;
-  font-size: 28rpx;
-  color: #333333;
-}
-
-.question-note {
-  display: block;
-  margin-bottom: 12rpx;
-  font-size: 24rpx;
-  color: #666666;
-}
-
-.option-group {
-  display: flex;
-  flex-direction: column;
-  gap: 16rpx;
-}
-
-.option-item {
-  display: flex;
-  align-items: center;
-  gap: 12rpx;
-  font-size: 28rpx;
-  color: #333333;
-}
-
-.picker-value {
-  display: flex;
-  align-items: center;
-}
-
-.placeholder-text {
-  color: #999999;
-}
-
-.submit-btn {
-  margin-top: 28rpx;
-}
-</style>

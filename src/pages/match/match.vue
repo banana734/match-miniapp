@@ -1,8 +1,8 @@
 ﻿<template>
   <view class="container">
-    <view v-if="userStore.profileCompleted" class="card">
-      <text class="title">匹配</text>
-      <text class="subtitle">{{ poolSubtitle }}</text>
+    <view v-if="userStore.profileCompleted" class="card card-gap-14 card-mb-18">
+      <text class="title title-sm">匹配</text>
+      <text class="subtitle subtitle-sm">{{ poolSubtitle }}</text>
     </view>
 
     <view v-if="userStore.profileCompleted" class="match-list">
@@ -12,7 +12,7 @@
             <text class="match-name">{{ item.title }}</text>
             <text class="match-subtitle">{{ item.subtitle }}</text>
           </view>
-          <text class="match-badge">{{ item.badge }}</text>
+          <text class="match-badge match-badge-positive">{{ item.badge }}</text>
         </view>
 
         <view class="match-info">
@@ -112,8 +112,6 @@ import { API_BASE_URL } from '@/utils/api'
 import { safeSwitchTab } from '@/utils/navigation'
 
 const userStore = useUserStore()
-const MATCH_API_BASE_URL = API_BASE_URL
-
 const showDetailPopup = ref(false)
 const activeItem = ref(null)
 const mentorPool = ref([])
@@ -172,7 +170,7 @@ const loadTrialState = () => {
   const currentRole = userStore.role === 'mentor' ? 'mentor' : 'family'
 
   uni.request({
-    url: `${MATCH_API_BASE_URL}/trial/list?openid=${encodeURIComponent(userStore.openid)}&role=${currentRole}`,
+    url: `${API_BASE_URL}/trial/list?openid=${encodeURIComponent(userStore.openid)}&role=${currentRole}`,
     method: 'GET',
     success: (res) => {
       userStore.setTrialLists(res.data?.pending || [], res.data?.formal || [])
@@ -182,7 +180,7 @@ const loadTrialState = () => {
 
 const handleTrialLesson = (item) => {
   uni.request({
-    url: `${MATCH_API_BASE_URL}/trial/apply`,
+    url: `${API_BASE_URL}/trial/apply`,
     method: 'POST',
     data: {
       openid: userStore.openid,
@@ -230,7 +228,7 @@ const loadMatchPool = () => {
   const currentRole = userStore.role === 'mentor' ? 'mentor' : 'family'
 
   uni.request({
-    url: `${MATCH_API_BASE_URL}/match/list?role=${currentRole}`,
+    url: `${API_BASE_URL}/match/list?role=${currentRole}`,
     method: 'GET',
     success: (res) => {
       const dataList = Array.isArray(res.data?.list) ? res.data.list : []
@@ -271,284 +269,3 @@ onShow(() => {
   })
 })
 </script>
-
-<style scoped lang="scss">
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 14rpx;
-  margin-bottom: 18rpx;
-}
-
-.title,
-.subtitle {
-  display: block;
-  text-align: center;
-}
-
-.title {
-  font-size: 34rpx;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.subtitle {
-  font-size: 24rpx;
-  line-height: 1.6;
-  color: #6b7280;
-}
-
-.match-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16rpx;
-}
-
-.match-card {
-  background: #ffffff;
-  border-radius: 20rpx;
-  padding: 18rpx;
-  box-shadow: 0 8rpx 18rpx rgba(40, 61, 44, 0.07);
-  border: 1rpx solid #edf0f5;
-  height: 400rpx;
-  overflow: hidden;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-.match-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16rpx;
-  margin-bottom: 12rpx;
-}
-
-.match-top-left {
-  display: flex;
-  flex-direction: column;
-  gap: 8rpx;
-}
-
-.match-name {
-  font-size: 30rpx;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.match-subtitle {
-  font-size: 22rpx;
-  color: #6b7280;
-}
-
-.match-badge {
-  flex-shrink: 0;
-  padding: 6rpx 14rpx;
-  border-radius: 999rpx;
-  background: #e8f5ee;
-  color: #23824f;
-  font-size: 20rpx;
-}
-
-.match-info {
-  display: flex;
-  flex-direction: column;
-  gap: 12rpx;
-  flex: 1;
-  overflow: hidden;
-}
-
-.info-row {
-  display: flex;
-  gap: 12rpx;
-  align-items: stretch;
-}
-
-.line-block {
-  display: flex;
-  flex-direction: column;
-  gap: 8rpx;
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  padding: 14rpx;
-  border-radius: 16rpx;
-  background: #f8fafc;
-  border: 1rpx solid #edf2f7;
-}
-
-.line-label {
-  font-size: 24rpx;
-  font-weight: 600;
-  color: #111827;
-}
-
-.field-text {
-  font-size: 22rpx;
-  line-height: 1.45;
-  color: #374151;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.capsule-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8rpx;
-  width: 100%;
-}
-
-.capsule-column {
-  flex-direction: column;
-  width: 100%;
-}
-
-.capsule {
-  display: inline-flex;
-  align-items: center;
-  gap: 6rpx;
-  width: fit-content;
-  max-width: 100%;
-  padding: 8rpx 12rpx;
-  border-radius: 999rpx;
-  font-size: 20rpx;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.capsule-single {
-  
-  background: #e8f1ff;
-  color: #2d6cdf;
-  box-sizing: border-box;
-  justify-content: center;
-}
-
-.capsule-multi {
-  background: #eef9f1;
-  color: #208a54;
-}
-
-.capsule-sort {
-  
-  background: #fff4e8;
-  color: #d97706;
-  box-sizing: border-box;
-}
-
-.sort-index {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 24rpx;
-  height: 24rpx;
-  padding: 0 4rpx;
-  border-radius: 999rpx;
-  background: rgba(217, 119, 6, 0.16);
-  font-size: 18rpx;
-  font-weight: 700;
-  color: #d97706;
-}
-
-.sort-text {
-  flex: 1;
-  min-width: 0;
-  font-size: 20rpx;
-  color: #c76b05;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.match-actions {
-  display: flex;
-  gap: 16rpx;
-  margin-top: 14rpx;
-}
-
-.action-btn {
-  flex: 1;
-  text-align: center;
-  padding: 12rpx 0;
-  border-radius: 14rpx;
-  font-size: 24rpx;
-}
-
-.action-btn.primary {
-  background: #2f80ed;
-  color: #ffffff;
-}
-
-.action-btn.secondary {
-  background: #eef4ff;
-  color: #2f80ed;
-}
-
-.popup-mask {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 32rpx;
-  background: rgba(15, 23, 42, 0.45);
-  z-index: 999;
-}
-
-.popup-panel {
-  width: 100%;
-  max-height: 75vh;
-  overflow-y: auto;
-  background: #ffffff;
-  border-radius: 24rpx;
-  padding: 22rpx 20rpx;
-}
-
-.popup-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20rpx;
-  margin-bottom: 14rpx;
-}
-
-.popup-header-left {
-  display: flex;
-  flex-direction: column;
-  gap: 8rpx;
-}
-
-.popup-title {
-  font-size: 30rpx;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-.popup-close {
-  flex-shrink: 0;
-  padding: 6rpx 12rpx;
-  border-radius: 999rpx;
-  background: #eef4ff;
-  color: #2f80ed;
-  font-size: 22rpx;
-}
-
-.popup-content {
-  display: flex;
-  flex-direction: column;
-  gap: 14rpx;
-}
-
-.detail-block {
-  background: #ffffff;
-  width: 100%;
-}
-</style>
-

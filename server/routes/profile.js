@@ -1,4 +1,4 @@
-const {
+﻿const {
   readUnifiedDb,
   writeUnifiedDb,
   getUserRecords,
@@ -6,46 +6,27 @@ const {
 } = require('../utils/unified-db')
 
 const getBoundRole = async (openid = '') => {
-  if (!openid) {
-    return ''
-  }
-
   const db = await readUnifiedDb()
   const bindings = getRoleBindings(db)
   const users = getUserRecords(db)
-  const existedBinding = bindings.find((item) => item.openid === openid)
+  const binding = bindings.find((item) => item.openid === openid)
 
-  if (existedBinding?.role) {
-    return existedBinding.role
+  if (binding?.role) {
+    return binding.role
   }
 
-  const existedUser = users.find((item) => item.openid === openid && item.role)
-  return existedUser?.role || ''
+  const user = users.find((item) => item.openid === openid && item.role)
+  return user?.role || ''
 }
 
 const bindRole = async (body = {}) => {
   const { openid = '', role = '' } = body
-
-  if (!openid) {
-    return {
-      success: false,
-      message: '缺少 openid'
-    }
-  }
-
-  if (!role) {
-    return {
-      success: false,
-      message: '缺少 role'
-    }
-  }
-
   const db = await readUnifiedDb()
   const bindings = getRoleBindings(db)
   const users = getUserRecords(db)
-  const existedBinding = bindings.find((item) => item.openid === openid)
-  const existedUser = users.find((item) => item.openid === openid && item.role)
-  const lockedRole = existedBinding?.role || existedUser?.role || ''
+  const binding = bindings.find((item) => item.openid === openid)
+  const user = users.find((item) => item.openid === openid && item.role)
+  const lockedRole = binding?.role || user?.role || ''
 
   if (lockedRole && lockedRole !== role) {
     return {
@@ -55,11 +36,12 @@ const bindRole = async (body = {}) => {
     }
   }
 
-  if (existedBinding) {
-    existedBinding.role = role
-    existedBinding.updatedAt = new Date().toISOString()
+  const now = new Date().toISOString()
+
+  if (binding) {
+    binding.role = role
+    binding.updatedAt = now
   } else {
-    const now = new Date().toISOString()
     bindings.unshift({
       openid,
       role,
@@ -77,24 +59,8 @@ const bindRole = async (body = {}) => {
   }
 }
 
-// 保存某个 openid 在某个身份下的资料。
 const saveProfile = async (body = {}) => {
   const { openid = '', role = '', profile = {} } = body
-
-  if (!openid) {
-    return {
-      success: false,
-      message: '缺少 openid'
-    }
-  }
-
-  if (!role) {
-    return {
-      success: false,
-      message: '缺少 role'
-    }
-  }
-
   const lockedRole = await getBoundRole(openid)
 
   if (lockedRole && lockedRole !== role) {
@@ -108,13 +74,13 @@ const saveProfile = async (body = {}) => {
   const db = await readUnifiedDb()
   const users = getUserRecords(db)
   const bindings = getRoleBindings(db)
-  const existed = users.find((item) => item.openid === openid && item.role === role)
-  const existedBinding = bindings.find((item) => item.openid === openid)
+  const existedUser = users.find((item) => item.openid === openid && item.role === role)
+  const binding = bindings.find((item) => item.openid === openid)
   const now = new Date().toISOString()
 
-  if (existedBinding) {
-    existedBinding.role = role
-    existedBinding.updatedAt = now
+  if (binding) {
+    binding.role = role
+    binding.updatedAt = now
   } else {
     bindings.unshift({
       openid,
@@ -124,9 +90,9 @@ const saveProfile = async (body = {}) => {
     })
   }
 
-  if (existed) {
-    existed.profile = profile
-    existed.updatedAt = now
+  if (existedUser) {
+    existedUser.profile = profile
+    existedUser.updatedAt = now
   } else {
     users.unshift({
       openid,
@@ -141,29 +107,14 @@ const saveProfile = async (body = {}) => {
 
   return {
     success: true,
-    message: existed ? '保存成功，已覆盖原资料' : '资料已保存',
-    mode: existed ? 'updated' : 'created',
+    message: existedUser ? '保存成功，已覆盖原资料' : '资料已保存',
+    mode: existedUser ? 'updated' : 'created',
     profile,
     boundRole: role
   }
 }
 
-// 根据 openid 和身份读取资料。
 const getProfileDetail = async (openid = '', role = '') => {
-  if (!openid) {
-    return {
-      success: false,
-      message: '缺少 openid'
-    }
-  }
-
-  if (!role) {
-    return {
-      success: false,
-      message: '缺少 role'
-    }
-  }
-
   const db = await readUnifiedDb()
   const users = getUserRecords(db)
   const target = users.find((item) => item.openid === openid && item.role === role)
