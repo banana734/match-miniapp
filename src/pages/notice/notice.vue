@@ -15,8 +15,6 @@ import { ref } from 'vue'
 import { onBackPress, onUnload } from '@dcloudio/uni-app'
 // 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
-// 引入安全的 tab 页切换工具（失败时自动降级为 reLaunch）
-import { safeSwitchTab } from '@/utils/navigation'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
@@ -27,7 +25,7 @@ const skipCancelOnUnload = ref(false)
 // 切回首页，并声明这是主动跳转（不算放弃）
 const goHome = () => {
   skipCancelOnUnload.value = true
-  safeSwitchTab('/pages/home/home')
+  uni.switchTab({ url: '/pages/home/home' })
 }
 
 // 标记用户放弃资料填写并返回首页（用于 match 页消费一次后跳首页）

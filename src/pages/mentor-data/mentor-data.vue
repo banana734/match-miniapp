@@ -206,24 +206,35 @@
 </template>
 
 <script setup>
+// 导入 vue 核心 API（computed 计算属性、reactive 响应式对象、ref 引用）
 import { computed, reactive, ref } from 'vue'
+// uni-app 页面生命周期钩子（物理返回键、页面每次显示、页面卸载）
 import { onBackPress, onShow, onUnload } from '@dcloudio/uni-app'
+// 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
+// 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
 
+// 获取全局仓库实例
 const userStore = useUserStore()
+// 资料接口基地址（此处直接复用通用基地址）
 const PROFILE_API_BASE_URL = API_BASE_URL
+// 标记表单是否已提交，用于区分“提交后返回”和“中途放弃”
 const submitted = ref(false)
 
+// 判断当前是否处于“修改资料”模式（路由参数 mode=edit，由“我的”页跳转带入）
 const isEditMode = () => {
   const currentPage = getCurrentPages().slice(-1)[0]
   return currentPage?.options?.mode === 'edit'
 }
 
+// 导师可辅导科目、教学风格类型、授课方式的可选项
 const subjectOptions = ['语文', '数学', '英语', '化学', '生物', '政治', '历史', '体育', '绘画', '音乐', '地理', '其他']
 const mentorStyleTypeOptions = ['情感支持型', '鼓励启发型', '灵活应变型', '结构化引导型', '耐心倾听型']
 const mentorTeachingModeOptions = ['线上', '线下']
 
+// 导师资料表单：从全局仓库里的 profile 取值（允许后端回填 / 上次填写内容）
+// 数组字段必须复制一份（[...])，避免表单直接引用仓库里的数组导致双向污染
 const form = reactive({
   name: userStore.profile.name || '',
   gender: userStore.profile.gender || '',
@@ -267,18 +278,22 @@ const syncFormFromProfile = (profile = {}) => {
   form.mentorClassFrequency = profile.mentorClassFrequency || ''
 }
 
+// 性别单选切换事件
 const handleGenderChange = (e) => {
   form.gender = e.detail.value
 }
 
+// 参与项目单选切换事件
 const handleMentorProjectChange = (e) => {
   form.mentorProject = e.detail.value
 }
 
+// 是否核心成员单选切换事件
 const handleCoreMemberChange = (e) => {
   form.coreMember = e.detail.value
 }
 
+// 年级单选切换事件：选“其他”以外时清空自定义年级输入
 const handleGradeChange = (e) => {
   form.grade = e.detail.value
   if (form.grade !== '其他') {
@@ -286,6 +301,7 @@ const handleGradeChange = (e) => {
   }
 }
 
+// 辅导科目标签切换：已选则移除（选“其他”时顺带清空自定义输入），未选则追加
 const toggleMentorSubject = (subject) => {
   const index = form.mentorSubjects.indexOf(subject)
   if (index > -1) {
@@ -298,11 +314,13 @@ const toggleMentorSubject = (subject) => {
   form.mentorSubjects.push(subject)
 }
 
+// 计算某科目在已选列表中的序号前缀（如 “1. ”“2. ”），用于模板展示排序
 const getMentorSubjectOrder = (subject) => {
   const index = form.mentorSubjects.indexOf(subject)
   return index > -1 ? `${index + 1}. ` : ''
 }
 
+// 已选 / 未选辅导科目（供模板渲染高亮与剩余选项）
 const selectedMentorSubjects = computed(() => {
   return form.mentorSubjects.filter((subject) => subjectOptions.includes(subject))
 })
@@ -311,6 +329,7 @@ const unselectedMentorSubjects = computed(() => {
   return subjectOptions.filter((subject) => !form.mentorSubjects.includes(subject))
 })
 
+// 教学风格标签切换：已选则移除，未选则追加
 const toggleMentorStyleType = (style) => {
   const index = form.mentorStyleTypes.indexOf(style)
   if (index > -1) {
@@ -320,6 +339,7 @@ const toggleMentorStyleType = (style) => {
   form.mentorStyleTypes.push(style)
 }
 
+// 已选 / 未选教学风格
 const selectedMentorStyleTypes = computed(() => {
   return form.mentorStyleTypes.filter((style) => mentorStyleTypeOptions.includes(style))
 })
@@ -328,6 +348,7 @@ const unselectedMentorStyleTypes = computed(() => {
   return mentorStyleTypeOptions.filter((style) => !form.mentorStyleTypes.includes(style))
 })
 
+// 授课方式标签切换：已选则移除，未选则追加
 const toggleMentorTeachingMode = (mode) => {
   const index = form.mentorTeachingModes.indexOf(mode)
   if (index > -1) {
@@ -337,6 +358,7 @@ const toggleMentorTeachingMode = (mode) => {
   form.mentorTeachingModes.push(mode)
 }
 
+// 已选 / 未选授课方式
 const selectedMentorTeachingModes = computed(() => {
   return form.mentorTeachingModes.filter((mode) => mentorTeachingModeOptions.includes(mode))
 })
@@ -345,17 +367,20 @@ const unselectedMentorTeachingModes = computed(() => {
   return mentorTeachingModeOptions.filter((mode) => !form.mentorTeachingModes.includes(mode))
 })
 
+// 页面返回 / 卸载时，若未提交且资料未完成，则标记放弃填写
 const markCancelledWhenUnfinished = () => {
   if (!submitted.value && !userStore.profileCompleted) {
     userStore.cancelProfile()
   }
 }
 
+// 监听手机物理返回按键（返回 false 表示不拦截默认返回，仅做放弃记录）
 onBackPress(() => {
   markCancelledWhenUnfinished()
   return false
 })
 
+// 页面销毁生命周期钩子
 onUnload(() => {
   markCancelledWhenUnfinished()
 })
@@ -381,6 +406,7 @@ onShow(() => {
   })
 })
 
+// 表单提交：先做必填校验，再提交到后端 /profile/save
 const submitProfile = () => {
   if (!form.name || !form.gender || !form.mentorProject || !form.coreMember || !form.grade || !form.school || !form.major || !form.college || !form.wechat || !form.mentorSubjects.length || !form.mentorTeachingGradeRange || !form.mentorStyleTypes.length || !form.mentorTeachingModes.length || !form.mentorSummerLocation || !form.mentorSchoolLocation || !form.mentorClassFrequency) {
     uni.showToast({ title: '请先补全资料', icon: 'none' })

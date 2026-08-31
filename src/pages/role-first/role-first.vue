@@ -26,8 +26,6 @@
 import { useUserStore } from '@/store/user'
 // 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
-// 引入安全的 tab 页切换工具
-import { safeSwitchTab } from '@/utils/navigation'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
@@ -71,7 +69,7 @@ const chooseRole = (role) => {
 
       // 绑定成功：写入仓库并进入首页
       userStore.setBoundRole(res.data.boundRole || role)
-      safeSwitchTab('/pages/home/home')
+      uni.switchTab({ url: '/pages/home/home' })
     },
     fail: () => {
       uni.showToast({

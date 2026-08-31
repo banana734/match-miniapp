@@ -23,7 +23,6 @@ import { onShow } from '@dcloudio/uni-app'
 // 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
 import { API_BASE_URL } from '@/utils/api'
-import { safeSwitchTab } from '@/utils/navigation'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
@@ -68,7 +67,7 @@ const goToHome = () => {
   }
 
   redirecting.value = true
-  safeSwitchTab('/pages/home/home')
+  uni.switchTab({ url: '/pages/home/home' })
 
   setTimeout(() => {
     redirecting.value = false

@@ -192,8 +192,6 @@ import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
 // 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
-// 引入安全的 tab 页切换工具
-import { safeSwitchTab } from '@/utils/navigation'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
@@ -235,7 +233,7 @@ const pairLines = (items = []) => {
 
 // 返回首页（资料填写被放弃等场景）
 const goHome = () => {
-  safeSwitchTab('/pages/home/home')
+  uni.switchTab({ url: '/pages/home/home' })
 }
 
 // 打开卡片详情弹层
