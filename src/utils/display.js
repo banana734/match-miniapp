@@ -26,8 +26,3 @@ export const pairLines = (items = []) => {
   }
   return rows
 }
-
-// 返回首页（资料填写被放弃等场景）的 tab 切换
-export const goHome = () => {
-  uni.switchTab({ url: '/pages/home/home' })
-}

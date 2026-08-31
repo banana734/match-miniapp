@@ -192,8 +192,8 @@ import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
 // 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
-// 引入共用展示工具（previewList / pairLines / goHome）
-import { previewList, pairLines, goHome } from '@/utils/display'
+// 引入共用展示工具（previewList / pairLines 为纯展示函数；goHome 已移回本页本地定义）
+import { previewList, pairLines } from '@/utils/display'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
@@ -201,6 +201,11 @@ const userStore = useUserStore()
 const showDetailPopup = ref(false)
 // 当前正在查看详情的卡片对象
 const activeItem = ref(null)
+
+// 返回首页（资料填写被放弃等场景）：本页本地定义，直白不绕弯
+const goHome = () => {
+  uni.switchTab({ url: '/pages/home/home' })
+}
 
 // 待试课列表与数量（直接读取全局仓库，由本页 loadTrialList 拉取后写入）
 const trialLessonList = computed(() => userStore.pendingTrialCards)
