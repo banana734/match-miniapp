@@ -1,6 +1,20 @@
+/**
+ * 登录路由：POST /api/auth/wechat
+ * body: { code: uni.login 拿到的微信临时凭证, devClientId: 开发调试用的客户端标识 }
+ *
+ * 两条登录路径：
+ *   1. 真实微信登录：配置了环境变量 WECHAT_APP_ID / WECHAT_APP_SECRET 时，
+ *      拿 code 调微信官方 jscode2session 接口换真实 openid。
+ *   2. 开发回退：没配置密钥时，用前端传的 devClientId 拼一个
+ *      dev-openid-xxx 的假 openid，保证本地开发流程不中断。
+ *
+ * 返回：{ success, token, openid, boundRole: 该账号已绑定的身份, loginMode }
+ * 注意：token 目前只是拼接字符串，后端并不校验（已知遗留问题）。
+ */
 const https = require('https')
 const { getBoundRole } = require('./profile')
 
+// 微信小程序的 AppID / Secret，从环境变量读取；不配置则自动走开发回退登录。
 const WECHAT_APP_ID = process.env.WECHAT_APP_ID || ''
 const WECHAT_APP_SECRET = process.env.WECHAT_APP_SECRET || ''
 
@@ -35,7 +49,9 @@ const requestWechatSession = (code) => {
   })
 }
 
-// 如果还没配置微信密钥，就暂时回退到开发登录，避免现有流程完全中断。
+// 开发回退登录：没配微信密钥时的兜底。
+// 用 devClientId（或 code）拼一个稳定的假 openid，同一个客户端多次登录
+// 拿到的是同一个 openid，等于「记住」了这个开发身份。
 const buildDevLoginResult = async ({ code = '', devClientId = '' }) => {
   const openid = devClientId
     ? `dev-openid-${devClientId}`
@@ -51,6 +67,9 @@ const buildDevLoginResult = async ({ code = '', devClientId = '' }) => {
   }
 }
 
+// 登录入口：POST /api/auth/wechat
+// 校验 code → 没配密钥走开发回退 → 有密钥调微信接口换真实 openid →
+// 附带返回该账号当前绑定的身份（前端据此决定跳身份选择页还是直接进首页）。
 const postWechatLogin = async (body = {}) => {
   const code = body.code || ''
   const devClientId = body.devClientId || ''

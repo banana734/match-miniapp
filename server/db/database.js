@@ -1,16 +1,46 @@
+/**
+ * MySQL 数据层（全后端唯一碰 SQL 的文件）。
+ *
+ * 连接配置：优先读同目录的 mysql.local.json（已被 .gitignore 排除，
+ * 不进版本库）；文件不存在再退回环境变量。首次使用时会自动生成
+ * mysql.config.example.json 模板提醒后来人。
+ *
+ * 初始化流程（ensureDatabase，服务启动后第一次查询时懒执行，只跑一次）：
+ *   建连接池 → 建表（5 张，IF NOT EXISTS）→ 补列/索引 → 建视图（4 个）
+ *
+ * 数据表一览：
+ *   users                 用户资料（openid+role 联合主键，profile_json 整份资料存 JSON 列）
+ *   role_bindings         身份绑定（openid 主键，一人一身份）
+ *   trial_records         试课记录（card_data_json 存卡片快照）
+ *   family_trial_feedback 家庭试课反馈（每次反馈 INSERT 一条）
+ *   mentor_trial_feedback 导师试课反馈（结构与家庭表完全相同）
+ *
+ * 视图一览（把 JSON 列摊平成普通列，管理后台查询用）：
+ *   family_profiles_view / mentor_profiles_view
+ *   family_trial_feedback_view / mentor_trial_feedback_view
+ *
+ * 对外导出 4 个函数：
+ *   ensureDatabase  确保库表就绪（一般不用直接调）
+ *   readDatabase    全量读出三张核心表 → { users, trialRecords, roleBindings }
+ *   replaceDatabase 整体重写三张核心表（⚠️ 全表重灌，见 unified-db.js 文件头）
+ *   queryRows       执行任意 SQL（admin.js 的视图查询、trial.js 的反馈 INSERT 用）
+ */
 const fs = require('node:fs')
 const path = require('node:path')
 const mysql = require('mysql2/promise')
 
 const DB_DIR = __dirname
-const MYSQL_CONFIG_PATH = path.join(DB_DIR, 'mysql.local.json')
-const MYSQL_CONFIG_EXAMPLE_PATH = path.join(DB_DIR, 'mysql.config.example.json')
+const MYSQL_CONFIG_PATH = path.join(DB_DIR, 'mysql.local.json')// 真实连接配置（含密码，不进 git）
+const MYSQL_CONFIG_EXAMPLE_PATH = path.join(DB_DIR, 'mysql.config.example.json')// 给新人的模板
 
-let pool
-let initPromise
+let pool// MySQL 连接池（懒创建，全局唯一）
+let initPromise// 初始化 Promise（保证建表建视图只跑一次）
 
+// 当前时间的 ISO 字符串（如 2026-08-31T10:00:00.000Z）。
 const getNow = () => new Date().toISOString()
 
+// 把任意时间值转成 MySQL DATETIME 格式（2026-08-31 10:00:00）；
+// 传空或非法值时用当前时间兜底。
 const toMysqlDateTime = (value) => {
   const source = value || getNow()
   const date = new Date(source)
@@ -22,6 +52,7 @@ const toMysqlDateTime = (value) => {
   return date.toISOString().slice(0, 19).replace('T', ' ')
 }
 
+// 尝试把 JSON 字符串解析回对象/数组；空值返回 fallback，解析失败也返回 fallback。
 const parseJson = (value, fallback) => {
   if (value === null || value === undefined || value === '') {
     return fallback
@@ -38,6 +69,10 @@ const parseJson = (value, fallback) => {
   }
 }
 
+// 读取 MySQL 连接配置：
+//   1. 优先读 mysql.local.json（本地开发）
+//   2. 没有该文件 → 用 MATCH_MYSQL_* 环境变量拼配置（线上部署方式）
+//   3. 密码为空则直接抛错，提示怎么配置，避免连不上还静默失败
 const getMysqlConfig = () => {
   if (fs.existsSync(MYSQL_CONFIG_PATH)) {
     return JSON.parse(fs.readFileSync(MYSQL_CONFIG_PATH, 'utf-8'))
@@ -60,6 +95,8 @@ const getMysqlConfig = () => {
   return fallbackConfig
 }
 
+// 若模板文件 mysql.config.example.json 不存在则生成一份，
+// 提示后来人把真实配置放进 mysql.local.json。
 const ensureConfigExample = () => {
   if (fs.existsSync(MYSQL_CONFIG_EXAMPLE_PATH)) {
     return
@@ -82,6 +119,8 @@ const ensureConfigExample = () => {
   )
 }
 
+// 获取（或懒创建）全局唯一的 MySQL 连接池：
+// 最大 10 个连接，排队不设上限，字符集 utf8mb4（支持 emoji 和生僻字）。
 const ensurePool = () => {
   if (pool) {
     return pool
@@ -105,6 +144,7 @@ const ensurePool = () => {
   return pool
 }
 
+// 按顺序逐条执行 SQL 建表 / 建视图语句（DDL，非事务）。
 const runStatements = async (statements = []) => {
   const mysqlPool = ensurePool()
 
@@ -113,6 +153,12 @@ const runStatements = async (statements = []) => {
   }
 }
 
+// 创建 / 刷新 4 个查询视图（每次启动都 CREATE OR REPLACE，改了会自动生效）：
+//   family_profiles_view / mentor_profiles_view
+//     —— 从 users 表按 role 拆分，用 JSON_EXTRACT 把 profile_json 里的字段
+//        摊平成列；选「其他」的字段用 CASE 展示用户自填内容（area/grade 等）。
+//   family_trial_feedback_view / mentor_trial_feedback_view
+//     —— 反馈表的直通视图，带 ORDER BY updated_at DESC（最新在前）。
 const ensureViews = async () => {
   await runStatements([
     `
@@ -244,6 +290,11 @@ const ensureViews = async () => {
   ])
 }
 
+// 创建 5 张核心表（全部 IF NOT EXISTS，已存在则跳过），见文件头的表清单。
+// 之后给 trial_records 补 openid 列和联合索引 ——
+// 老库升级用：早期版本 trial_records 没有 openid 列，这里保证加上。
+// （ADD COLUMN IF NOT EXISTS 是 MySQL 8 语法；失败则回退成普通 ALTER，
+//   再失败就静默忽略，说明列/索引已存在。）
 const ensureTables = async () => {
   await runStatements([
     `
@@ -353,6 +404,10 @@ const ensureTables = async () => {
   })
 }
 
+// 整体重写三张核心表（users / role_bindings / trial_records）：
+// 在一个事务里 DELETE 全表 → 把传入的 db 对象全量 INSERT 回去。
+// ⚠️ 这就是 unified-db.js 文件头说的「全表重灌」实现：
+//    事务保证不写坏库，但并发请求会互相覆盖、静默丢数据（P0 遗留问题）。
 const replaceDatabase = async (db = {}) => {
   const mysqlPool = ensurePool()
   const connection = await mysqlPool.getConnection()
@@ -362,13 +417,13 @@ const replaceDatabase = async (db = {}) => {
   const trialRecords = Array.isArray(db.trialRecords) ? db.trialRecords : []
 
   try {
-    await connection.beginTransaction()
+    await connection.beginTransaction()// 开事务：三张表要么全写成功，要么全部回滚
 
-    await connection.query('DELETE FROM users')
+    await connection.query('DELETE FROM users')// 清空旧数据
     await connection.query('DELETE FROM role_bindings')
     await connection.query('DELETE FROM trial_records')
 
-    for (const [index, item] of users.entries()) {
+    for (const [index, item] of users.entries()) {// 用户逐条插回（openid 缺失时用下标兜底）
       const createdAt = item.createdAt || getNow()
 
       await connection.query(
@@ -386,7 +441,7 @@ const replaceDatabase = async (db = {}) => {
       )
     }
 
-    for (const [index, item] of roleBindings.entries()) {
+    for (const [index, item] of roleBindings.entries()) {// 身份绑定逐条插回
       const createdAt = item.createdAt || getNow()
 
       await connection.query(
@@ -403,7 +458,7 @@ const replaceDatabase = async (db = {}) => {
       )
     }
 
-    for (const [index, item] of trialRecords.entries()) {
+    for (const [index, item] of trialRecords.entries()) {// 试课记录逐条插回
       const createdAt = item.createdAt || getNow()
 
       await connection.query(
@@ -427,15 +482,17 @@ const replaceDatabase = async (db = {}) => {
       )
     }
 
-    await connection.commit()
+    await connection.commit()// 全部插入成功，提交事务
   } catch (error) {
-    await connection.rollback()
+    await connection.rollback()// 任何一步失败，回滚，数据库保持原样
     throw error
   } finally {
-    connection.release()
+    connection.release()// 无论成败，把连接还回连接池
   }
 }
 
+// 确保数据库就绪（连接池 + 建表 + 建视图）。
+// 用 initPromise 缓存：服务生命周期内只初始化一次，并发调用共享同一个 Promise。
 const ensureDatabase = async () => {
   if (!initPromise) {
     initPromise = (async () => {
@@ -449,6 +506,12 @@ const ensureDatabase = async () => {
   return initPromise
 }
 
+// 全量读取三张核心表，转成业务层统一的驼峰结构：
+// { users: [{openid, role, profile, createdAt, updatedAt}],
+//   trialRecords: [{id, openid, role, cardId, status, continueChoice, cardData, ...}],
+//   roleBindings: [{openid, role, createdAt, updatedAt}] }
+// 注意：profile_json / card_data_json 会解析回对象；Date 转成 ISO 字符串。
+// 三张表都按「更新时间倒序」返回。
 const readDatabase = async () => {
   await ensureDatabase()
   const mysqlPool = ensurePool()
@@ -506,6 +569,8 @@ const readDatabase = async () => {
   }
 }
 
+// 通用 SQL 查询：先确保库就绪，再从连接池取连接执行，返回结果行数组。
+// admin.js 的视图查询和 trial.js 的反馈 INSERT 都走这里。
 const queryRows = async (sql, params = []) => {
   await ensureDatabase()
   const mysqlPool = ensurePool()
