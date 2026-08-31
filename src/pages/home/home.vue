@@ -17,4 +17,5 @@
 </template>
 
 <script setup>
+// 首页：纯静态展示页（项目简介 / 匹配指南），暂无脚本逻辑
 </script>

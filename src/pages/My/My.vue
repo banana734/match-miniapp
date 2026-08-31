@@ -22,27 +22,35 @@
 </template>
 
 <script setup>
+// 导入 vue 计算属性 API
 import { computed } from 'vue'
+// 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
 
+// 获取全局仓库实例
 const userStore = useUserStore()
+// 身份文案映射：角色值 → 页面展示名称
 const roleLabelMap = {
   mentor: '友导师',
   family: '家庭'
 }
 
+// 当前身份文案：优先展示后端绑定的身份，其次本地缓存，都没有则显示“未选择”
 const roleText = computed(() => {
   return roleLabelMap[userStore.boundRole || userStore.role] || '未选择'
 })
 
+// 微信账号展示：直接显示 openid（未登录时给出占位文案）
 const accountText = computed(() => {
   return userStore.openid || '当前未登录'
 })
 
+// 资料填写状态文案
 const profileStatusText = computed(() => {
   return userStore.profileCompleted ? '已填写完成' : '未填写完成'
 })
 
+// 跳转到对应身份的资料页，携带 mode=edit 表示进入“修改资料”模式
 const goToProfileForm = () => {
   const currentRole = userStore.boundRole || userStore.role
   const url = currentRole === 'mentor'

@@ -415,11 +415,14 @@ const userStore = useUserStore()
 // 标记表单是否执行提交操作
 const submitted = ref(false)
 
+// 判断当前是否处于“修改资料”模式（路由参数 mode=edit，由“我的”页跳转带入）
 const isEditMode = () => {
   const currentPage = getCurrentPages().slice(-1)[0]
   return currentPage?.options?.mode === 'edit'
 }
 
+// 家庭资料表单默认值：从全局仓库里的 profile 取值（允许后端回填/上次填写内容）
+// 数组字段必须复制一份（[...])，避免表单直接引用仓库里的数组导致双向污染
 const familyProfileDefaults = {
   name: userStore.profile.name || '',
   area: userStore.profile.area || '',
@@ -449,14 +452,22 @@ const familyProfileDefaults = {
   intro: userStore.profile.intro || ''
 }
 
+// 需要按数组处理的字段清单（提交与回填时都会做数组复制）
 const familyArrayFields = ['subjects', 'difficulties', 'teacherTraits', 'teachingStyles', 'classModes']
 
+// 表单通用能力组合式函数：
+// form                     响应式表单对象
+// syncFormFromProfile      用后端返回的资料整体回填表单（这里重命名为 applyProfileToForm）
+// createPayload            提交前生成 payload（对数组字段做浅拷贝，避免引用污染）
 const {
   form,
   syncFormFromProfile: applyProfileToForm,
   createPayload
 } = useProfileForm(familyProfileDefaults, familyArrayFields)
 
+// —— 五组“有序多选标签”控件（点击顺序即优先级顺序）——
+// 每组绑定一个数组字段和一份选项列表；第三个参数是“清空其他输入”回调（可选）
+// 去掉“其他”选项时，清空对应的自定义输入框
 const subjectGroup = useOrderedTagGroup(form.subjects, familySubjectOptions, () => {
   form.subjectOther = ''
 })
@@ -469,6 +480,7 @@ const teacherTraitGroup = useOrderedTagGroup(form.teacherTraits, familyTeacherTr
 const teachingStyleGroup = useOrderedTagGroup(form.teachingStyles, familyTeachingStyleOptions)
 const classModeGroup = useOrderedTagGroup(form.classModes, familyClassModeOptions)
 
+// —— 把每组标签控件的 selected / unselected / toggle / order 解构出来，供模板直接使用 ——
 const selectedSubjects = subjectGroup.selected
 const unselectedSubjects = subjectGroup.unselected
 const toggleSubject = subjectGroup.toggle

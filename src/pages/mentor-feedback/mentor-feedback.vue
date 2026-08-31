@@ -83,9 +83,13 @@
 </template>
 
 <script setup>
+// uni-app 页面生命周期钩子（页面每次显示时触发）
 import { onShow } from '@dcloudio/uni-app'
+// 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
+// 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
+// 引入导师反馈页专属的选项常量（满意点/客观不满意/主观不满意）与通用文案常量
 import {
   mentorTrialObjectiveUnsatisfiedOptions,
   mentorTrialSatisfactionOptions,
@@ -96,9 +100,20 @@ import {
   trialFeedbackSuccessToast,
   trialFeedbackTitleSuffix
 } from '@/constants/trial-feedback-options'
+// 引入试课反馈页通用逻辑组合式函数（表单、路由参数解析、校验等）
 import { useTrialFeedbackPage } from '@/composables/useTrialFeedbackPage'
 
+// 获取全局仓库实例
 const userStore = useUserStore()
+// 解构出通用页面能力：
+// objectName  反馈对象名称（来自路由参数 name）
+// cardId      当前反馈对应的卡片 id
+// pageTitle   页面标题（对象名 + 标题后缀拼成）
+// form        反馈表单数据
+// syncPageFromRoute 每次显示时从路由参数回填 name / id
+// handleDateChange        日期选择器变更统一入口
+// handleChoiceGroupChange 单选/多选组变更统一入口（自动处理“其他”自定义输入）
+// validate    提交前的必填校验
 const {
   objectName,
   cardId,
@@ -110,31 +125,39 @@ const {
   validate
 } = useTrialFeedbackPage(trialFeedbackDefaultObjectName, trialFeedbackTitleSuffix)
 
+// 导师视角的各题选项（家庭反馈页对应另一套选项）
 const satisfactionOptions = mentorTrialSatisfactionOptions
 const objectiveUnsatisfiedOptions = mentorTrialObjectiveUnsatisfiedOptions
 const subjectiveUnsatisfiedOptions = mentorTrialSubjectiveUnsatisfiedOptions
 const continueChoiceOptions = trialFeedbackContinueOptions
 
+// 试课日期选择事件（委托给通用 handleDateChange）
 const handleTrialDateChange = (e) => {
   handleDateChange('trialDate', e)
 }
 
+// 满意点多选事件：多选写入 satisfactionPoints，取消“其他”时清空自定义输入
 const handleSatisfactionPointsChange = (e) => {
   handleChoiceGroupChange('satisfactionPoints', 'satisfactionPointOther', e)
 }
 
+// 客观不满意点多选事件（学生自身能力、状态等）
 const handleObjectiveUnsatisfiedChange = (e) => {
   handleChoiceGroupChange('objectiveUnsatisfied', 'objectiveUnsatisfiedOther', e)
 }
 
+// 主观不满意点多选事件（与我的教学或互动方式有关）
 const handleSubjectiveUnsatisfiedChange = (e) => {
   handleChoiceGroupChange('subjectiveUnsatisfied', 'subjectiveUnsatisfiedOther', e)
 }
 
+// 继续合作意向单选事件
+// 注意：该值会被后端映射为试课状态（愿意→formal / 需调整→pending / 不愿意→rejected）
 const handleContinueChoiceChange = (e) => {
   handleChoiceGroupChange('continueChoice', 'continueChoiceOther', e)
 }
 
+// 保存反馈：先校验必填，再把整份表单提交到后端 /trial/feedback
 const submitFeedback = () => {
   if (!validate()) {
     uni.showToast({
@@ -151,6 +174,7 @@ const submitFeedback = () => {
       openid: userStore.openid,
       role: userStore.role === 'mentor' ? 'mentor' : 'family',
       cardId: cardId.value,
+      // 顶层 continueChoice 供后端判定试课走向；feedback 为完整问卷内容
       continueChoice: form.continueChoice,
       feedback: {
         trialDate: form.trialDate,
@@ -179,6 +203,7 @@ const submitFeedback = () => {
         icon: 'success'
       })
 
+      // 提示展示完再返回上一页（试课列表页）
       setTimeout(() => {
         uni.navigateBack()
       }, 500)
@@ -192,6 +217,7 @@ const submitFeedback = () => {
   })
 }
 
+// 每次显示页面时，从路由参数同步反馈对象（id / name）
 onShow(() => {
   syncPageFromRoute()
 })

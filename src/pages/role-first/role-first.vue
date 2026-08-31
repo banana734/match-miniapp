@@ -22,18 +22,26 @@
 </template>
 
 <script setup>
+// 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
+// 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
+// 引入安全的 tab 页切换工具
 import { safeSwitchTab } from '@/utils/navigation'
 
+// 获取全局仓库实例
 const userStore = useUserStore()
+// 防抖标记：避免短时间内重复点击两张身份卡导致重复请求
 let choosing = false
 
+// 选择参与身份（mentor 友导师 / family 家庭）并提交后端绑定
 const chooseRole = (role) => {
+  // 防抖：上一次请求尚未结束
   if (choosing) {
     return
   }
 
+  // 后端已有绑定身份时，不允许切换成另一种身份（身份一经绑定不可改）
   if (userStore.boundRole && userStore.boundRole !== role) {
     uni.showToast({
       title: '当前微信账号已绑定其他身份',
@@ -44,6 +52,7 @@ const chooseRole = (role) => {
 
   choosing = true
 
+  // 调用后端绑定接口，把 openid 和所选身份落库
   uni.request({
     url: `${API_BASE_URL}/profile/bind-role`,
     method: 'POST',
@@ -60,6 +69,7 @@ const chooseRole = (role) => {
         return
       }
 
+      // 绑定成功：写入仓库并进入首页
       userStore.setBoundRole(res.data.boundRole || role)
       safeSwitchTab('/pages/home/home')
     },
@@ -70,6 +80,7 @@ const chooseRole = (role) => {
       })
     },
     complete: () => {
+      // 请求结束后延时释放防抖锁，避免 success 跳转期间被再次触发
       setTimeout(() => {
         choosing = false
       }, 500)

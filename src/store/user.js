@@ -1,4 +1,21 @@
-﻿import { defineStore } from 'pinia'
+/**
+ * 全局用户状态仓库（Pinia）。
+ *
+ * 职责：集中管理登录态、身份角色、资料表单、试课卡片这四块状态，
+ * 并负责把它们持久化到本地缓存（uni.setStorageSync），下次打开小程序时自动恢复。
+ *
+ * 快速导览：
+ *   - 登录态：token / openid / isLoggedIn / setLoginInfo
+ *   - 身份：role（当前使用的身份）、boundRole（后端绑定的锁定身份，一个微信只能绑一种）
+ *   - 资料：profile（家长端 / 导师端共用的字段池）、updateProfile、completeProfile
+ *   - 试课：pendingTrialCards（待试课）、formalClassCards（正式上课）、
+ *           红点标记 hasUnreadTrialNotice + syncTrialLessonBadge
+ *   - 持久化：persistUserState（写缓存）/ restoreUserState（store 创建时读缓存）
+ *
+ * 注意：试课卡片列表（pendingTrialCards 等）不持久化，
+ * 每次进入联系页后通过 setTrialLists 用后端返回的最新数据整体覆盖。
+ */
+import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useUserStore = defineStore('user', () => {
@@ -13,49 +30,50 @@ export const useUserStore = defineStore('user', () => {
   const formalClassCards = ref([]) // 进入正式上课阶段后的卡片，先预留给联系页正式上课区域
   const hasUnreadTrialNotice = ref(false) // 联系菜单红点是否显示，表示是否有未查看的新试课消息
 
-  // 统一共用资料对象，同时兼容家长端、友导师端两套表单数据
+  // 统一共用资料对象，同时兼容家长端、友导师端两套表单数据。
+  // 字段按「导师端 / 家庭端」两大类混排，注释里标注了各自属于哪一端。
   const profile = ref({
-    name: '',//名字
-    phone: '',//手机号
-    parentName: '',//家长称呼
-    wechat: '',//微信号
-    major: '',//专业
-    mentorProject: '',
-    coreMember: '',
-    school: '',
-    college: '',
-    area: '',
-    areaOther: '',
-    city: '',
-    age: '',
-    gender: '',
-    grade: '',
-    gradeOther: '',
-    mentorSubjects: [],
-    mentorSubjectOther: '',
-    mentorTeachingGradeRange: '',
-    mentorStyleTypes: [],
-    mentorTeachingModes: [],
-    mentorSummerLocation: '',
-    mentorSchoolLocation: '',
-    mentorClassFrequency: '',
-    subjects: [],
-    subjectOther: '',
-    difficulties: [],
-    difficultyOther: '',
-    teacherTraits: [],
-    teachingStyles: [],
-    mainFocus: '',
-    mainFocusOther: '',
-    learningState: '',
-    communicationExpectation: '',
-    communicationExpectationOther: '',
-    understanding: '',
-    feedbackWillingness: '',
-    extraNote: '',
-    classModes: [],
-    classFrequency: '',
-    intro: ''
+    name: '',//名字（两端通用）
+    phone: '',//手机号（两端通用）
+    parentName: '',//家长称呼（两端通用）
+    wechat: '',//微信号（两端通用）
+    major: '',//专业（导师端）
+    mentorProject: '',//导师所属项目，如大创/志愿项目（导师端）
+    coreMember: '',//是否核心成员（导师端）
+    school: '',//学校（导师端）
+    college: '',//学院（导师端）
+    area: '',//所在区域，下拉选项值（两端通用）
+    areaOther: '',//区域选「其他」时手填的具体内容（两端通用）
+    city: '',//所在城市（导师端）
+    age: '',//年龄（导师端）
+    gender: '',//性别（两端通用）
+    grade: '',//孩子年级，下拉选项值（家庭端）
+    gradeOther: '',//年级选「其他」时手填的具体内容（家庭端）
+    mentorSubjects: [],//可辅导科目（有序多选，点击顺序=熟练度排序）（导师端）
+    mentorSubjectOther: '',//科目选「其他」时手填（导师端）
+    mentorTeachingGradeRange: '',//可辅导的年级范围（导师端）
+    mentorStyleTypes: [],//辅导风格类型（多选）（导师端）
+    mentorTeachingModes: [],//辅导形式：线上/线下（多选）（导师端）
+    mentorSummerLocation: '',//暑假期间所在地（导师端）
+    mentorSchoolLocation: '',//开学期间所在地（导师端）
+    mentorClassFrequency: '',//可接受的上课频率（导师端）
+    subjects: [],//需要辅导的科目（有序多选，点击顺序=需求优先级）（家庭端）
+    subjectOther: '',//科目选「其他」时手填（家庭端）
+    difficulties: [],//孩子学习困难点（多选）（家庭端）
+    difficultyOther: '',//困难点选「其他」时手填（家庭端）
+    teacherTraits: [],//期望的老师特质（多选）（家庭端）
+    teachingStyles: [],//期望的教学风格（多选）（家庭端）
+    mainFocus: '',//最希望改善的方面（家庭端）
+    mainFocusOther: '',//主诉选「其他」时手填（家庭端）
+    learningState: '',//当前学习状态描述（家庭端）
+    communicationExpectation: '',//期望的沟通频率（家庭端）
+    communicationExpectationOther: '',//沟通频率选「其他」时手填（家庭端）
+    understanding: '',//家长对辅导的理解程度（家庭端）
+    feedbackWillingness: '',//配合反馈的意愿（家庭端）
+    extraNote: '',//额外备注（家庭端）
+    classModes: [],//希望的上课形式：线上/线下（多选）（家庭端）
+    classFrequency: '',//希望的上课频率（家庭端）
+    intro: ''//自我介绍 / 补充说明（家庭端）
   })
 
   const persistUserState = () => {// 将当前用户状态持久化到本地缓存。
@@ -104,6 +122,7 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
+  // store 创建时立即执行：尝试从本地缓存恢复上次的登录态和资料
   restoreUserState()
 
   // 设置用户身份角色
@@ -112,6 +131,8 @@ export const useUserStore = defineStore('user', () => {
     persistUserState()
   }
 
+  // 同步后端绑定身份。后端返回绑定身份时顺便把它设为当前角色，
+  // 处理「已绑定过身份的老用户重新进入小程序」的场景。
   const setBoundRole = (value) => {
     boundRole.value = value || ''
     if (!role.value && boundRole.value) {
