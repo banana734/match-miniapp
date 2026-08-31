@@ -4,23 +4,24 @@
  * 「统一」指：routes/ 里的业务代码不直接写 SQL，而是面对一个内存中的
  * db 对象 = { users, trialRecords, roleBindings }（三个数组）。
  * 读的时候 readUnifiedDb 把 MySQL 的行转成这个结构；
- * 改的时候业务函数直接改内存对象，再 writeUnifiedDb 整体写回。
+ * 改的时候业务函数直接改内存对象，再 writeUnifiedDb 写回。
  *
- * ⚠️ 已知遗留问题（P0）：writeUnifiedDb 的实现是 replaceDatabase ——
- * 全表 DELETE 后全量 INSERT 重灌。并发请求下会互相覆盖丢数据，
- * 上线前需要改成按主键的增量 UPSERT。
+ * 写回实现（writeUnifiedDb → database.upsertDatabase）：按每张表的主键做
+ * INSERT ... ON DUPLICATE KEY UPDATE（users: openid+role / role_bindings: openid /
+ * trial_records: id）。存在就更新、不存在就插入，不再清空整张表，
+ * 因此并发请求之间不会互相覆盖、不会静默丢数据（原 P0 已修复）。
  */
 const {
   readDatabase,
-  replaceDatabase
+  upsertDatabase
 } = require('../db/database')
 
 // 从 MySQL 读取统一的数据对象（users / trialRecords / roleBindings），
 // 保持旧路由的数据结构不变。
 const readUnifiedDb = async () => readDatabase()
 
-// 把路由修改后的数据对象整体写回 MySQL（见文件头的已知问题）。
-const writeUnifiedDb = async (db) => replaceDatabase(db)
+// 把路由修改后的数据对象写回 MySQL（按主键 upsert，见文件头说明）。
+const writeUnifiedDb = async (db) => upsertDatabase(db)
 
 // 取用户数组；字段异常时兜底成空数组（防 routes 层拿到 undefined 崩溃）。
 const getUserRecords = (db) => {

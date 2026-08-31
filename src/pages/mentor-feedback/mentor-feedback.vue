@@ -172,7 +172,7 @@ const submitFeedback = () => {
     method: 'POST',
     data: {
       openid: userStore.openid,
-      role: userStore.role === 'mentor' ? 'mentor' : 'family',
+      role: userStore.currentRole,
       cardId: cardId.value,
       // 顶层 continueChoice 供后端判定试课走向；feedback 为完整问卷内容
       continueChoice: form.continueChoice,

@@ -16,7 +16,7 @@
  * 每次进入联系页后通过 setTrialLists 用后端返回的最新数据整体覆盖。
  */
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 export const useUserStore = defineStore('user', () => {
   const role = ref('')  // 用户身份角色（家长/友导师）
@@ -75,6 +75,10 @@ export const useUserStore = defineStore('user', () => {
     classFrequency: '',//希望的上课频率（家庭端）
     intro: ''//自我介绍 / 补充说明（家庭端）
   })
+
+  // 当前身份对应的「后端角色值」：导师返回 'mentor'，其他（含未选/家庭）返回 'family'。
+  // 抽出来是为了替换页面里散落的 `role === 'mentor' ? 'mentor' : 'family'` 三元表达式，集中在一处维护。
+  const currentRole = computed(() => role.value === 'mentor' ? 'mentor' : 'family')
 
   const persistUserState = () => {// 将当前用户状态持久化到本地缓存。
                                   // 这样即使关闭小程序，重新进入时也能恢复登录态、身份和资料信息。
@@ -282,6 +286,7 @@ export const useUserStore = defineStore('user', () => {
   // 对外导出所有状态与修改方法
   return {
     role,
+    currentRole,
     boundRole,
     token,
     openid,

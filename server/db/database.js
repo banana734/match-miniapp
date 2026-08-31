@@ -22,7 +22,7 @@
  * 对外导出 4 个函数：
  *   ensureDatabase  确保库表就绪（一般不用直接调）
  *   readDatabase    全量读出三张核心表 → { users, trialRecords, roleBindings }
- *   replaceDatabase 整体重写三张核心表（⚠️ 全表重灌，见 unified-db.js 文件头）
+ *   upsertDatabase  按主键增量 upsert 三张核心表（替代原全表重灌，修 P0）
  *   queryRows       执行任意 SQL（admin.js 的视图查询、trial.js 的反馈 INSERT 用）
  */
 const fs = require('node:fs')
@@ -404,11 +404,14 @@ const ensureTables = async () => {
   })
 }
 
-// 整体重写三张核心表（users / role_bindings / trial_records）：
-// 在一个事务里 DELETE 全表 → 把传入的 db 对象全量 INSERT 回去。
-// ⚠️ 这就是 unified-db.js 文件头说的「全表重灌」实现：
-//    事务保证不写坏库，但并发请求会互相覆盖、静默丢数据（P0 遗留问题）。
-const replaceDatabase = async (db = {}) => {
+// 把业务层改好的数据对象（users / roleBindings / trialRecords）增量写回 MySQL。
+// 用「按主键 UPSERT」替代原来的全表 DELETE + INSERT 重灌：
+//   - 每条记录按自己的主键（users: openid+role / role_bindings: openid / trial_records: id）
+//     做 INSERT ... ON DUPLICATE KEY UPDATE —— 存在就更新、不存在就插入；
+//   - 不再清空整张表，因此并发请求之间不会互相覆盖、不会静默丢数据（修掉原 P0）。
+// 说明：本项目的路由只会「新增 / 改状态」，从不从内存数组里删除行，
+//       所以不 purge 缺席行也不会丢功能；若将来有真正的删除需求，再补 DELETE 逻辑。
+const upsertDatabase = async (db = {}) => {
   const mysqlPool = ensurePool()
   const connection = await mysqlPool.getConnection()
 
@@ -419,17 +422,16 @@ const replaceDatabase = async (db = {}) => {
   try {
     await connection.beginTransaction()// 开事务：三张表要么全写成功，要么全部回滚
 
-    await connection.query('DELETE FROM users')// 清空旧数据
-    await connection.query('DELETE FROM role_bindings')
-    await connection.query('DELETE FROM trial_records')
-
-    for (const [index, item] of users.entries()) {// 用户逐条插回（openid 缺失时用下标兜底）
+    for (const [index, item] of users.entries()) {// 用户：按 openid+role 主键 upsert（openid 缺失时用下标兜底）
       const createdAt = item.createdAt || getNow()
 
       await connection.query(
         `
           INSERT INTO users (openid, role, profile_json, created_at, updated_at)
           VALUES (?, ?, ?, ?, ?)
+          ON DUPLICATE KEY UPDATE
+            profile_json = VALUES(profile_json),
+            updated_at = VALUES(updated_at)
         `,
         [
           String(item.openid || `user-${index}`),
@@ -441,13 +443,16 @@ const replaceDatabase = async (db = {}) => {
       )
     }
 
-    for (const [index, item] of roleBindings.entries()) {// 身份绑定逐条插回
+    for (const [index, item] of roleBindings.entries()) {// 身份绑定：按 openid 主键 upsert
       const createdAt = item.createdAt || getNow()
 
       await connection.query(
         `
           INSERT INTO role_bindings (openid, role, created_at, updated_at)
           VALUES (?, ?, ?, ?)
+          ON DUPLICATE KEY UPDATE
+            role = VALUES(role),
+            updated_at = VALUES(updated_at)
         `,
         [
           String(item.openid || `binding-${index}`),
@@ -458,7 +463,7 @@ const replaceDatabase = async (db = {}) => {
       )
     }
 
-    for (const [index, item] of trialRecords.entries()) {// 试课记录逐条插回
+    for (const [index, item] of trialRecords.entries()) {// 试课记录：按 id 主键 upsert（id 缺失时用时间戳兜底）
       const createdAt = item.createdAt || getNow()
 
       await connection.query(
@@ -467,6 +472,14 @@ const replaceDatabase = async (db = {}) => {
             id, openid, role, card_id, status, continue_choice, card_data_json, created_at, updated_at
           )
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON DUPLICATE KEY UPDATE
+            openid = VALUES(openid),
+            role = VALUES(role),
+            card_id = VALUES(card_id),
+            status = VALUES(status),
+            continue_choice = VALUES(continue_choice),
+            card_data_json = VALUES(card_data_json),
+            updated_at = VALUES(updated_at)
         `,
         [
           String(item.id || `trial-${Date.now()}-${index}`),
@@ -482,7 +495,7 @@ const replaceDatabase = async (db = {}) => {
       )
     }
 
-    await connection.commit()// 全部插入成功，提交事务
+    await connection.commit()// 全部 upsert 成功，提交事务
   } catch (error) {
     await connection.rollback()// 任何一步失败，回滚，数据库保持原样
     throw error
@@ -582,6 +595,6 @@ module.exports = {
   MYSQL_CONFIG_PATH,
   ensureDatabase,
   readDatabase,
-  replaceDatabase,
+  upsertDatabase,
   queryRows
 }

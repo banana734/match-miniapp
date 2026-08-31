@@ -113,6 +113,8 @@ import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
 // 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
+// 引入共用展示工具（previewList / pairLines / goHome）
+import { previewList, pairLines, goHome } from '@/utils/display'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
@@ -126,30 +128,6 @@ const familyPool = ref([])
 const mentorPool = ref([])
 // 加载失败标记：失败提示只弹一次，避免 onShow 反复触发时刷屏
 const loadFailed = ref(false)
-
-// 工具函数：清洗数组（容错处理，过滤掉空值，非数组返回空数组）
-const list = (items = []) => {
-  return Array.isArray(items) ? items.filter(Boolean) : []
-}
-
-// 工具函数：截断预览列表。超过 limit 项时只保留前 limit 项并追加 '...' 省略号
-const previewList = (items = [], limit = 3) => {
-  const values = list(items)
-  if (values.length <= limit) {
-    return values
-  }
-  return [...values.slice(0, limit), '...']
-}
-
-// 工具函数：把资料行两两分组，让信息条在卡片里按两列排版
-const pairLines = (items = []) => {
-  const values = list(items)
-  const rows = []
-  for (let index = 0; index < values.length; index += 2) {
-    rows.push(values.slice(index, index + 2))
-  }
-  return rows
-}
 
 // 当前身份应看的匹配池：导师看家庭池，家庭看导师池
 // 同时把“待试课 + 正式上课”的卡片 id 收集成 Set，从池子里隐藏，避免重复申请
@@ -185,7 +163,7 @@ const closeDetail = () => {
 
 // 拉取当前用户的试课状态（待试课 pending / 正式上课 formal），写入全局仓库
 const loadTrialState = () => {
-  const currentRole = userStore.role === 'mentor' ? 'mentor' : 'family'
+  const currentRole = userStore.currentRole
 
   uni.request({
     url: `${API_BASE_URL}/trial/list?openid=${encodeURIComponent(userStore.openid)}&role=${currentRole}`,
@@ -203,7 +181,7 @@ const handleTrialLesson = (item) => {
     method: 'POST',
     data: {
       openid: userStore.openid,
-      role: userStore.role === 'mentor' ? 'mentor' : 'family',
+      role: userStore.currentRole,
       cardId: item.id
     },
     success: (res) => {
@@ -243,14 +221,9 @@ const handleTrialLesson = (item) => {
   })
 }
 
-// 返回首页（资料填写被放弃等场景）
-const goHome = () => {
-  uni.switchTab({ url: '/pages/home/home' })
-}
-
 // 拉取匹配池列表：导师拉家庭池，家庭拉导师池
 const loadMatchPool = () => {
-  const currentRole = userStore.role === 'mentor' ? 'mentor' : 'family'
+  const currentRole = userStore.currentRole
 
   uni.request({
     url: `${API_BASE_URL}/match/list?role=${currentRole}`,
