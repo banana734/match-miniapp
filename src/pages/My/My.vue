@@ -15,6 +15,7 @@
       <text class="section-title section-title-sm">资料状态</text>
       <text class="content text-block">{{ profileStatusText }}</text>
       <view class="primary-btn action-top" @tap="goToProfileForm">查看或修改已填写资料</view>
+      <view class="reset-link" @tap="resetDevIdentity">重置开发身份（开发调试）</view>
     </view>
 
    
@@ -61,4 +62,38 @@ const goToProfileForm = () => {
     url
   })
 }
+
+// 开发调试：一键重置登录态与本地缓存，回到全新账号，重新走完整流程。
+const resetDevIdentity = () => {
+  uni.showModal({
+    title: '重置开发身份',
+    content: '这会清除当前登录态并生成一个全新账号，确定吗？',
+    confirmText: '确定',
+    cancelText: '取消',
+    success: (res) => {
+      if (!res.confirm) {
+        return
+      }
+
+      userStore.resetLoginState()
+      uni.showToast({
+        title: '已重置，请重新登录',
+        icon: 'success',
+        complete: () => {
+          uni.reLaunch({ url: '/pages/login/login' })
+        }
+      })
+    }
+  })
+}
 </script>
+
+<style scoped>
+.reset-link {
+  /* 开发调试用的小字入口，方便一键重置开发身份 */
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999999;
+}
+</style>

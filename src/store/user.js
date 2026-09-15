@@ -158,6 +158,24 @@ export const useUserStore = defineStore('user', () => {
     persistUserState()
   }
 
+  // 开发调试用：一键清空登录态与本地缓存，回到全新账号。
+  // 这样开发者无需手动清小程序缓存，就能重新走「登录 → 选身份 → 匹配 → 反馈」完整流程。
+  const resetLoginState = () => {
+    role.value = ''
+    boundRole.value = ''
+    token.value = ''
+    openid.value = ''
+    isLoggedIn.value = false
+    profileCompleted.value = false
+
+    if (typeof uni !== 'undefined') {
+      // 清掉 persistUserState 写入的登录态缓存
+      uni.removeStorageSync('match-user-state')
+      // 清掉 login.vue 持久化的开发客户端 ID，下次登录会生成全新 openid（全新账号）
+      uni.removeStorageSync('match-dev-client-id')
+    }
+  }
+
   // 更新表单：合并传入的表单数据，保留原有字段不覆盖
   const updateProfile = (payload) => {
     profile.value = {
@@ -300,6 +318,7 @@ export const useUserStore = defineStore('user', () => {
     setRole,
     setBoundRole,
     setLoginInfo,
+    resetLoginState,
     updateProfile,
     syncTrialLessonBadge,
     addPendingTrialCard,

@@ -64,6 +64,18 @@
       "style": {
         "navigationBarTitleText": "家长反馈"
       }
+    },
+    {
+      "path": "pages/daily-feedback/mentor-daily-feedback",
+      "style": {
+        "navigationBarTitleText": "导师日常反馈"
+      }
+    },
+    {
+      "path": "pages/daily-feedback/family-daily-feedback",
+      "style": {
+        "navigationBarTitleText": "家长日常反馈"
+      }
     }
   ],
   "tabBar": {

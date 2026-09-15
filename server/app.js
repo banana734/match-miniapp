@@ -11,6 +11,7 @@
  *   routes/profile.js    身份绑定 + 资料（users / role_bindings 表）
  *   routes/match.js      匹配池（把对方资料组装成卡片）
  *   routes/trial.js      试课全流程（申请 / 反馈 / 移除）
+ *   routes/daily.js      日常反馈（正式上课期间的周期反馈，可解除配对）
  *   routes/admin.js      管理后台数据查询（走 4 个视图）
  *   db/database.js       MySQL 连接池、建表建视图、读写实现
  *   utils/unified-db.js  业务层读写入口（统一数据结构）
@@ -35,6 +36,7 @@ const {
   submitTrialFeedback,
   removeTrialRecord
 } = require('./routes/trial')
+const { submitDailyFeedback } = require('./routes/daily')
 
 const PORT = Number(process.env.PORT || 3000)// 监听端口，可用环境变量 PORT 覆盖
 const HOST = process.env.HOST || '0.0.0.0'// 监听地址，0.0.0.0 表示所有网卡都能访问
@@ -117,7 +119,8 @@ const postRoutes = {
   '/api/profile/save': saveProfile,
   '/api/profile/bind-role': bindRole,
   '/api/trial/feedback': submitTrialFeedback,
-  '/api/trial/remove': removeTrialRecord
+  '/api/trial/remove': removeTrialRecord,
+  '/api/daily/feedback': submitDailyFeedback
 }
 
 // 读取 POST 请求体中的 JSON 内容：

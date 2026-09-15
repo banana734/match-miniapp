@@ -131,7 +131,7 @@
 
         <view class="match-actions">
           <view class="action-btn primary" @tap="openDetail(item)">查看详细</view>
-          <view class="action-btn secondary">日常反馈</view>
+          <view class="action-btn secondary" @tap="goToDailyFeedback(item)">日常反馈</view>
         </view>
       </view>
     </view>
@@ -277,6 +277,17 @@ const goToTrialFeedback = (item) => {
   const pagePath = userStore.role === 'mentor'
     ? '/pages/mentor-feedback/mentor-feedback'
     : '/pages/family-feedback/family-feedback'
+
+  uni.navigateTo({
+    url: `${pagePath}?id=${encodeURIComponent(item.id)}&name=${encodeURIComponent(item.title)}`
+  })
+}
+
+// 跳转到日常反馈页，携带卡片 id 和名称（导师/家庭日常反馈页共用此入口）
+const goToDailyFeedback = (item) => {
+  const pagePath = userStore.role === 'mentor'
+    ? '/pages/daily-feedback/mentor-daily-feedback'
+    : '/pages/daily-feedback/family-daily-feedback'
 
   uni.navigateTo({
     url: `${pagePath}?id=${encodeURIComponent(item.id)}&name=${encodeURIComponent(item.title)}`

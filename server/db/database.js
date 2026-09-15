@@ -382,6 +382,60 @@ const ensureTables = async () => {
         KEY idx_mentor_feedback_card_id (card_id),
         KEY idx_mentor_feedback_updated (updated_at)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    `,
+    `
+      CREATE TABLE IF NOT EXISTS family_daily_feedback (
+        id VARCHAR(255) NOT NULL PRIMARY KEY,
+        openid VARCHAR(255) NOT NULL,
+        trial_record_id VARCHAR(255) NOT NULL DEFAULT '',
+        card_id VARCHAR(255) NOT NULL,
+        target_title VARCHAR(255) NOT NULL DEFAULT '',
+        target_subtitle VARCHAR(255) NOT NULL DEFAULT '',
+        class_date VARCHAR(50) NOT NULL DEFAULT '',
+        class_duration VARCHAR(100) NOT NULL DEFAULT '',
+        satisfaction_points_json JSON NOT NULL,
+        satisfaction_point_other VARCHAR(255) NOT NULL DEFAULT '',
+        objective_unsatisfied_json JSON NOT NULL,
+        objective_unsatisfied_other VARCHAR(255) NOT NULL DEFAULT '',
+        subjective_unsatisfied_json JSON NOT NULL,
+        subjective_unsatisfied_other VARCHAR(255) NOT NULL DEFAULT '',
+        continue_choice VARCHAR(100) NOT NULL DEFAULT '',
+        continue_choice_other VARCHAR(255) NOT NULL DEFAULT '',
+        status_after_feedback VARCHAR(50) NOT NULL DEFAULT '',
+        feedback_json JSON NOT NULL,
+        created_at DATETIME NOT NULL,
+        updated_at DATETIME NOT NULL,
+        KEY idx_family_daily_openid (openid),
+        KEY idx_family_daily_card_id (card_id),
+        KEY idx_family_daily_updated (updated_at)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    `,
+    `
+      CREATE TABLE IF NOT EXISTS mentor_daily_feedback (
+        id VARCHAR(255) NOT NULL PRIMARY KEY,
+        openid VARCHAR(255) NOT NULL,
+        trial_record_id VARCHAR(255) NOT NULL DEFAULT '',
+        card_id VARCHAR(255) NOT NULL,
+        target_title VARCHAR(255) NOT NULL DEFAULT '',
+        target_subtitle VARCHAR(255) NOT NULL DEFAULT '',
+        class_date VARCHAR(50) NOT NULL DEFAULT '',
+        class_duration VARCHAR(100) NOT NULL DEFAULT '',
+        satisfaction_points_json JSON NOT NULL,
+        satisfaction_point_other VARCHAR(255) NOT NULL DEFAULT '',
+        objective_unsatisfied_json JSON NOT NULL,
+        objective_unsatisfied_other VARCHAR(255) NOT NULL DEFAULT '',
+        subjective_unsatisfied_json JSON NOT NULL,
+        subjective_unsatisfied_other VARCHAR(255) NOT NULL DEFAULT '',
+        continue_choice VARCHAR(100) NOT NULL DEFAULT '',
+        continue_choice_other VARCHAR(255) NOT NULL DEFAULT '',
+        status_after_feedback VARCHAR(50) NOT NULL DEFAULT '',
+        feedback_json JSON NOT NULL,
+        created_at DATETIME NOT NULL,
+        updated_at DATETIME NOT NULL,
+        KEY idx_mentor_daily_openid (openid),
+        KEY idx_mentor_daily_card_id (card_id),
+        KEY idx_mentor_daily_updated (updated_at)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `
   ])
 
