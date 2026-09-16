@@ -2,21 +2,18 @@
   <view class="container">
    
 
-    <view v-if="userStore.profileCompleted" class="card card-gap-20 card-mb-18 summary-card">
+    <view v-if="userStore.profileCompleted" class="card card-gap-20 card-mb-18 section-panel">
       <view class="summary-top">
         <text class="section-title section-title-sm">待试课</text>
         <text class="count-badge">{{ trialLessonCount }}</text>
       </view>
-      <text class="summary-text">当前待试课卡片数量：{{ trialLessonCount }}</text>
-    </view>
 
-    <view v-if="userStore.profileCompleted && trialLessonCount === 0" class="card card-gap-20 card-mb-18 empty-card">
-      <text class="empty-title text-block">还没有待试课</text>
-     
-    </view>
+      <view v-if="trialLessonCount === 0" class="section-empty">
+        <text class="empty-title text-block">还没有待试课</text>
+      </view>
 
-    <view v-if="userStore.profileCompleted && trialLessonCount > 0" class="trial-list">
-      <view v-for="item in trialLessonList" :key="item.id" class="match-card">
+      <view v-else class="trial-list">
+        <view v-for="item in trialLessonList" :key="item.id" class="match-card">
         <view class="match-top">
           <view class="match-top-left">
             <text class="match-name">{{ item.title }}</text>
@@ -69,21 +66,20 @@
         </view>
       </view>
     </view>
+    </view>
 
-    <view v-if="userStore.profileCompleted" class="card card-gap-20 card-mb-18 summary-card formal-summary-card">
+    <view v-if="userStore.profileCompleted" class="card card-gap-20 card-mb-18 section-panel">
       <view class="summary-top">
         <text class="section-title section-title-sm">正式上课</text>
         <text class="count-badge">{{ formalClassCount }}</text>
       </view>
-      <text class="summary-text">当前正式上课卡片数量：{{ formalClassCount }}</text>
-    </view>
 
-    <view v-if="userStore.profileCompleted && formalClassCount === 0" class="card card-gap-20 card-mb-18 empty-card">
-      <text class="empty-title text-block">还没有正式上课</text>
-    </view>
+      <view v-if="formalClassCount === 0" class="section-empty">
+        <text class="empty-title text-block">还没有正式上课</text>
+      </view>
 
-    <view v-if="userStore.profileCompleted && formalClassCount > 0" class="trial-list">
-      <view v-for="item in formalClassList" :key="`formal-${item.id}`" class="match-card">
+      <view v-else class="trial-list">
+        <view v-for="item in formalClassList" :key="`formal-${item.id}`" class="match-card">
         <view class="match-top">
           <view class="match-top-left">
             <text class="match-name">{{ item.title }}</text>
@@ -134,6 +130,7 @@
           <view class="action-btn secondary" @tap="goToDailyFeedback(item)">日常反馈</view>
         </view>
       </view>
+    </view>
     </view>
 
     <view v-if="showDetailPopup && activeItem" class="popup-mask" @tap="closeDetail">
@@ -318,6 +315,25 @@ const loadTrialList = () => {
 // 2. 用户刚放弃填写 → 消费掉“放弃”标记并送回首页；
 // 3. 其他情况（资料未填）→ 跳去提示页要求先填资料。
 onShow(() => {
+  // 未登录时拦截：提示并跳转到登录页，已登录才继续走下面的逻辑
+  if (!userStore.isLoggedIn) {
+    uni.showToast({ title: '请先登录', icon: 'none' })
+    // 延后一帧再跳转，避开和页面加载/切换生命周期的竞态，避免 reLaunch:fail timeout
+    setTimeout(() => {
+      uni.reLaunch({ url: '/pages/login/login' })
+    }, 60)
+    return
+  }
+
+  // 已登录但还没选身份：跳身份选择页，必须选完身份才能使用联系功能
+  if (!userStore.boundRole) {
+    uni.showToast({ title: '请先选择身份', icon: 'none' })
+    setTimeout(() => {
+      uni.reLaunch({ url: '/pages/role-first/role-first' })
+    }, 60)
+    return
+  }
+
   if (userStore.profileCompleted) {
     loadTrialList()
     userStore.markTrialLessonViewed()
@@ -329,8 +345,26 @@ onShow(() => {
     return
   }
 
-  uni.navigateTo({
-    url: '/pages/notice/notice'
-  })
+  // 资料未填：跳到提示页要求先填资料。
+  // 用 setTimeout 延后一帧，避开 onShow 与 tab 切换的竞态（否则偶发 navigateTo:fail timeout）
+  setTimeout(() => {
+    uni.navigateTo({
+      url: '/pages/notice/notice'
+    })
+  }, 60)
 })
 </script>
+
+<style scoped>
+/* 分区底卡：待试课 / 正式上课 的容器，覆盖 .card 的白底，让里面的白卡片有层次 */
+.card.section-panel {
+  background: #e9eef7;
+  border: 2rpx solid #cdd8e8;
+}
+
+/* 底卡内空状态：居中显示 */
+.section-empty {
+  padding: 20rpx 0 8rpx;
+  text-align: center;
+}
+</style>

@@ -20,12 +20,17 @@
 
       <text class="question-label">3. [多选] 满意点（本次课程中，友导师做得好的地方）</text>
       <text class="question-note">请根据实际情况勾选或补充</text>
-      <checkbox-group class="option-group" @change="handleSatisfactionPointsChange">
-        <label v-for="item in satisfactionOptions" :key="item" class="option-item">
-          <checkbox :value="item" :checked="form.satisfactionPoints.includes(item)" />
+      <view class="subject-list">
+        <view
+          v-for="item in satisfactionOptions"
+          :key="item"
+          class="subject-tag"
+          :class="{ active: form.satisfactionPoints.includes(item) }"
+          @tap="toggleChoice('satisfactionPoints', 'satisfactionPointOther', item)"
+        >
           <text>{{ item }}</text>
-        </label>
-      </checkbox-group>
+        </view>
+      </view>
       <input
         v-if="form.satisfactionPoints.includes('其他')"
         v-model="form.satisfactionPointOther"
@@ -35,12 +40,17 @@
 
       <text class="question-label">4. [多选] 遇到的困难</text>
       <text class="question-note">（一）客观原因（与友导师能力、风格、条件等关系较大）</text>
-      <checkbox-group class="option-group" @change="handleObjectiveUnsatisfiedChange">
-        <label v-for="item in objectiveUnsatisfiedOptions" :key="item" class="option-item">
-          <checkbox :value="item" :checked="form.objectiveUnsatisfied.includes(item)" />
+      <view class="subject-list">
+        <view
+          v-for="item in objectiveUnsatisfiedOptions"
+          :key="item"
+          class="subject-tag"
+          :class="{ active: form.objectiveUnsatisfied.includes(item) }"
+          @tap="toggleChoice('objectiveUnsatisfied', 'objectiveUnsatisfiedOther', item)"
+        >
           <text>{{ item }}</text>
-        </label>
-      </checkbox-group>
+        </view>
+      </view>
       <input
         v-if="form.objectiveUnsatisfied.includes('其他')"
         v-model="form.objectiveUnsatisfiedOther"
@@ -50,12 +60,17 @@
 
       <text class="question-label">5. [多选] 遇到的困难</text>
       <text class="question-note">（二）主观原因（与我家孩子或我的配合有关）</text>
-      <checkbox-group class="option-group" @change="handleSubjectiveUnsatisfiedChange">
-        <label v-for="item in subjectiveUnsatisfiedOptions" :key="item" class="option-item">
-          <checkbox :value="item" :checked="form.subjectiveUnsatisfied.includes(item)" />
+      <view class="subject-list">
+        <view
+          v-for="item in subjectiveUnsatisfiedOptions"
+          :key="item"
+          class="subject-tag"
+          :class="{ active: form.subjectiveUnsatisfied.includes(item) }"
+          @tap="toggleChoice('subjectiveUnsatisfied', 'subjectiveUnsatisfiedOther', item)"
+        >
           <text>{{ item }}</text>
-        </label>
-      </checkbox-group>
+        </view>
+      </view>
       <input
         v-if="form.subjectiveUnsatisfied.includes('其他')"
         v-model="form.subjectiveUnsatisfiedOther"
@@ -136,19 +151,19 @@ const handleClassDateChange = (e) => {
   handleDateChange('classDate', e)
 }
 
-// 满意点多选事件：多选写入 satisfactionPoints，取消“其他”时清空自定义输入
-const handleSatisfactionPointsChange = (e) => {
-  handleChoiceGroupChange('satisfactionPoints', 'satisfactionPointOther', e)
-}
-
-// 客观困难多选事件（与友导师能力、风格、条件等有关）
-const handleObjectiveUnsatisfiedChange = (e) => {
-  handleChoiceGroupChange('objectiveUnsatisfied', 'objectiveUnsatisfiedOther', e)
-}
-
-// 主观困难多选事件（与我家孩子或我的配合有关）
-const handleSubjectiveUnsatisfiedChange = (e) => {
-  handleChoiceGroupChange('subjectiveUnsatisfied', 'subjectiveUnsatisfiedOther', e)
+// 多选标签点击切换：把选项加入或移出对应数组；
+// 取消勾选“其他”时，顺带清空它的自定义输入框（与资料页逻辑保持一致）
+const toggleChoice = (field, otherField, value) => {
+  const list = form[field]
+  const index = list.indexOf(value)
+  if (index > -1) {
+    list.splice(index, 1)
+    if (value === '其他') {
+      form[otherField] = ''
+    }
+    return
+  }
+  list.push(value)
 }
 
 // 继续合作意向单选事件

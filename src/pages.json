@@ -1,6 +1,12 @@
 ﻿{
   "pages": [
     {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
       "path": "pages/login/login",
       "style": {
         "navigationBarTitleText": "微信登录"
@@ -10,11 +16,6 @@
       "path": "pages/role-first/role-first",
       "style": {
         "navigationBarTitleText": "身份选择"
-      }
-    },    {
-      "path": "pages/home/home",
-      "style": {
-        "navigationBarTitleText": "首页"
       }
     },
     {
@@ -75,6 +76,12 @@
       "path": "pages/daily-feedback/family-daily-feedback",
       "style": {
         "navigationBarTitleText": "家长日常反馈"
+      }
+    },
+    {
+      "path": "pages/dev-data/dev-data",
+      "style": {
+        "navigationBarTitleText": "双方用户数据"
       }
     }
   ],

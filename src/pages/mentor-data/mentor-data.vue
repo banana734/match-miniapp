@@ -208,8 +208,8 @@
 <script setup>
 // 导入 vue 核心 API（computed 计算属性、reactive 响应式对象、ref 引用）
 import { computed, reactive, ref } from 'vue'
-// uni-app 页面生命周期钩子（物理返回键、页面每次显示、页面卸载）
-import { onBackPress, onShow, onUnload } from '@dcloudio/uni-app'
+// uni-app 页面生命周期钩子（物理返回键、页面加载、页面每次显示、页面卸载）
+import { onBackPress, onLoad, onShow, onUnload } from '@dcloudio/uni-app'
 // 引入全局用户状态仓库
 import { useUserStore } from '@/store/user'
 // 引入后端接口基地址常量
@@ -383,6 +383,14 @@ onBackPress(() => {
 // 页面销毁生命周期钩子
 onUnload(() => {
   markCancelledWhenUnfinished()
+})
+
+// 每次新开这个页面时，先用仓库里的资料刷一遍表单。
+// 页面模块整个小程序生命周期只加载一次，模块级的 form 会保留上次进入时的旧值；
+// 重置/切换账号后 store 已换成新账号的资料，这里必须重新同步，否则会看到上一个人填的内容。
+// （onLoad 只在新建页面实例时触发，物理返回回到本页不会执行，草稿不会丢；且先于下面 onShow 的后端回填。）
+onLoad(() => {
+  syncFormFromProfile(userStore.profile)
 })
 
 // 每次打开页面时，如果后端里已经有导师资料，就自动回填。

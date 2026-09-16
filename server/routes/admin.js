@@ -125,9 +125,42 @@ const getAdminMentorFeedbacks = async () => {
   }
 }
 
+// 查询全部配对关系：/api/admin/pairings（开发调试用）
+// trial_records 里每条记录是「单向」的：openid=发起方、card_id=对方（带 family-/mentor- 前缀）、
+// role=发起方角色、status=配对状态（pending=试课 / formal=正式上课 等）。
+// 这里只把原始字段原样返回，双向展开、前缀剥离都交给前端做（dev-data.vue）。
+// 注意：早期脏数据 openid 可能为空，前端会跳过；前端配对展示依赖此接口。
+const getAdminPairings = async () => {
+  const rows = await queryRows(`
+    SELECT
+      openid,
+      role,
+      card_id,
+      status,
+      continue_choice
+    FROM trial_records
+    ORDER BY updated_at DESC
+  `)
+
+  return {
+    success: true,
+    total: rows.length,
+    list: rows.map((row) => ({
+      myOpenid: row.openid,
+      myRole: row.role,
+      counterpartOpenid: row.card_id,
+      counterpartRole: row.role === 'mentor' ? 'family' : 'mentor',
+      status: row.status,
+      cardId: row.card_id,
+      continueChoice: row.continue_choice || ''
+    }))
+  }
+}
+
 module.exports = {
   getAdminFamilies,
   getAdminMentors,
   getAdminFamilyFeedbacks,
-  getAdminMentorFeedbacks
+  getAdminMentorFeedbacks,
+  getAdminPairings
 }

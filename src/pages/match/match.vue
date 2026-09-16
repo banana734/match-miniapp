@@ -262,6 +262,25 @@ const loadMatchPool = () => {
 // 2. 用户刚放弃填写 → 消费掉“放弃”标记并送回首页；
 // 3. 其他情况（资料未填）→ 跳去提示页要求先填资料。
 onShow(() => {
+  // 未登录时拦截：提示并跳转到登录页，已登录才继续走下面的逻辑
+  if (!userStore.isLoggedIn) {
+    uni.showToast({ title: '请先登录', icon: 'none' })
+    // 延后一帧再跳转，避开和页面加载/切换生命周期的竞态，避免 reLaunch:fail timeout
+    setTimeout(() => {
+      uni.reLaunch({ url: '/pages/login/login' })
+    }, 60)
+    return
+  }
+
+  // 已登录但还没选身份：跳身份选择页，必须选完身份才能使用匹配功能
+  if (!userStore.boundRole) {
+    uni.showToast({ title: '请先选择身份', icon: 'none' })
+    setTimeout(() => {
+      uni.reLaunch({ url: '/pages/role-first/role-first' })
+    }, 60)
+    return
+  }
+
   if (userStore.profileCompleted) {
     loadTrialState()
     loadMatchPool()
@@ -273,8 +292,12 @@ onShow(() => {
     return
   }
 
-  uni.navigateTo({
-    url: '/pages/notice/notice'
-  })
+  // 资料未填：跳到提示页要求先填资料。
+  // 用 setTimeout 延后一帧，避开 onShow 与 tab 切换的竞态（否则偶发 navigateTo:fail timeout）
+  setTimeout(() => {
+    uni.navigateTo({
+      url: '/pages/notice/notice'
+    })
+  }, 60)
 })
 </script>

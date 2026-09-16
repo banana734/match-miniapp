@@ -32,7 +32,8 @@ export const useUserStore = defineStore('user', () => {
 
   // 统一共用资料对象，同时兼容家长端、友导师端两套表单数据。
   // 字段按「导师端 / 家庭端」两大类混排，注释里标注了各自属于哪一端。
-  const profile = ref({
+  // 抽成函数：store 初始化和「重置开发身份」都要用，保证拿到的是全新的空资料。
+  const createEmptyProfile = () => ({
     name: '',//名字（两端通用）
     phone: '',//手机号（两端通用）
     parentName: '',//家长称呼（两端通用）
@@ -75,6 +76,8 @@ export const useUserStore = defineStore('user', () => {
     classFrequency: '',//希望的上课频率（家庭端）
     intro: ''//自我介绍 / 补充说明（家庭端）
   })
+
+  const profile = ref(createEmptyProfile())
 
   // 当前身份对应的「后端角色值」：导师返回 'mentor'，其他（含未选/家庭）返回 'family'。
   // 抽出来是为了替换页面里散落的 `role === 'mentor' ? 'mentor' : 'family'` 三元表达式，集中在一处维护。
@@ -167,6 +170,9 @@ export const useUserStore = defineStore('user', () => {
     openid.value = ''
     isLoggedIn.value = false
     profileCompleted.value = false
+    profileCancelled.value = false
+    // 资料也一并清空：否则重置后进资料表单，还会看到上一个人填的内容
+    profile.value = createEmptyProfile()
 
     if (typeof uni !== 'undefined') {
       // 清掉 persistUserState 写入的登录态缓存
@@ -174,6 +180,12 @@ export const useUserStore = defineStore('user', () => {
       // 清掉 login.vue 持久化的开发客户端 ID，下次登录会生成全新 openid（全新账号）
       uni.removeStorageSync('match-dev-client-id')
     }
+  }
+
+  // 清空本地资料并标记未完成（切换账号时用，避免看到上一个人填的内容）
+  const clearProfile = () => {
+    profile.value = createEmptyProfile()
+    profileCompleted.value = false
   }
 
   // 更新表单：合并传入的表单数据，保留原有字段不覆盖
@@ -319,6 +331,7 @@ export const useUserStore = defineStore('user', () => {
     setBoundRole,
     setLoginInfo,
     resetLoginState,
+    clearProfile,
     updateProfile,
     syncTrialLessonBadge,
     addPendingTrialCard,

@@ -17,5 +17,22 @@
 </template>
 
 <script setup>
-// 首页：纯静态展示页（项目简介 / 匹配指南），暂无脚本逻辑
+// 引入 uni-app 生命周期钩子（onShow 用于每次进入首页时检查身份）
+import { onShow } from '@dcloudio/uni-app'
+// 引入全局用户状态仓库
+import { useUserStore } from '@/store/user'
+
+// 获取全局仓库实例
+const userStore = useUserStore()
+
+// 每次进入首页时：已登录但还没选身份的用户，强制回身份选择页，
+// 不允许在未选身份的情况下停留在首页或去填资料。
+onShow(() => {
+  if (userStore.isLoggedIn && !userStore.boundRole) {
+    // 延后一帧再跳转，避开和页面加载/切换生命周期的竞态，避免 reLaunch:fail timeout
+    setTimeout(() => {
+      uni.reLaunch({ url: '/pages/role-first/role-first' })
+    }, 60)
+  }
+})
 </script>

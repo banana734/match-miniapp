@@ -25,7 +25,8 @@ const {
   getAdminFamilies,
   getAdminMentors,
   getAdminFamilyFeedbacks,
-  getAdminMentorFeedbacks
+  getAdminMentorFeedbacks,
+  getAdminPairings
 } = require('./routes/admin')
 const { postWechatLogin } = require('./routes/auth-real')
 const { getMatchList } = require('./routes/match')
@@ -108,7 +109,8 @@ const getRoutes = {
   '/api/admin/families': () => getAdminFamilies(),
   '/api/admin/mentors': () => getAdminMentors(),
   '/api/admin/family-feedbacks': () => getAdminFamilyFeedbacks(),
-  '/api/admin/mentor-feedbacks': () => getAdminMentorFeedbacks()
+  '/api/admin/mentor-feedbacks': () => getAdminMentorFeedbacks(),
+  '/api/admin/pairings': () => getAdminPairings()
 }
 
 // POST 接口表：路径 → 业务处理函数，入参是解析后的请求体 JSON。
