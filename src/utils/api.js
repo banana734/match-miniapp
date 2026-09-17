@@ -4,23 +4,14 @@
  * 用途：所有页面发请求时都从这里取 API_BASE_URL 拼接完整地址，
  * 切换部署环境（本地开发 / 线上服务器）时只需要改这一行。
  *
- * ⚠️ 真机调试必须填「电脑的局域网 IP」，不能填 127.0.0.1：
- *   真机上的 127.0.0.1 指向的是手机自己，手机上没有后端，
- *   所以请求会失败，页面报「后端未连接」。电脑和手机连同一个 Wi-Fi，
- *   用 ipconfig 查 WLAN 的 IPv4 地址填到这里。
- *   ⚠️ 这个 IP 是路由器动态分配的，**换 Wi-Fi / 重连路由后就会变**，
- *   一变就要回来重新填。已经反复发生多次，最近的两次：
- *     2026-09-17 白天  →  192.168.2.152（当前值）
- *     2026-09-17 凌晨  →  10.134.43.137
- *   查法：`ipconfig` 里看「无线局域网适配器 WLAN」的 IPv4 地址；
- *   注意别选成 VMware(VMnet) 或 WSL 的虚拟网卡地址。
+ * 线上模式：填 Sealos 外网地址（https）。
+ *   真机 / 体验版走这个域名；公众平台「服务器域名 → request合法域名」需加
+ *   https://jymlbzjmwtbw.sealosbja.site（或对方手机打开体验版时开「调试」模式跳过校验）。
  *
- * 注意：改完后需要重新编译（npm run dev:mp-weixin），
- * 因为微信开发者工具实际运行的是 dist/dev/mp-weixin 下的编译产物。
+ * 本地联调需改回局域网 IP：电脑 `ipconfig` 查 WLAN 的 IPv4（如 192.168.2.152），
+ * 并勾选开发者工具「不校验合法域名…」。改完跑 npm run dev:mp-weixin 重建 dist/dev。
  *
- * 本地联调前提：
- *   1. 先启动后端：cd server && node app.js（监听 0.0.0.0:3000，局域网可达）
- *   2. 微信开发者工具 → 详情 → 本地设置 → 勾选「不校验合法域名…」
- *   3. 模拟器也用这个局域网 IP 即可（电脑访问自己的局域网 IP 同样通）
+ * 注意：build 产物（dist/build/mp-weixin）才会被上传成体验版，所以改完必须
+ * 重新 npm run build:mp-weixin 并重新上传。
  */
-export const API_BASE_URL = 'http://192.168.2.152:3000/api'
+export const API_BASE_URL = 'https://jymlbzjmwtbw.sealosbja.site/api'
