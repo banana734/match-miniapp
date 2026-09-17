@@ -37,6 +37,12 @@
       }
     },
     {
+      "path": "pages/feedback/feedback",
+      "style": {
+        "navigationBarTitleText": "反馈"
+      }
+    },
+    {
       "path": "pages/family-data/family-data",
       "style": {
         "navigationBarTitleText": "家庭资料"
@@ -86,26 +92,40 @@
     }
   ],
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#2F80ED",
+    "color": "#999999",
+    "selectedColor": "#1296DB",
     "backgroundColor": "#FFFFFF",
     "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "static/tab-home-gray.png",
+        "selectedIconPath": "static/tab-home.png"
       },
       {
         "pagePath": "pages/match/match",
-        "text": "匹配"
+        "text": "匹配",
+        "iconPath": "static/tab-match-gray.png",
+        "selectedIconPath": "static/tab-match.png"
       },
       {
         "pagePath": "pages/message/message",
-        "text": "联系"
+        "text": "联系",
+        "iconPath": "static/tab-message-gray.png",
+        "selectedIconPath": "static/tab-message.png"
+      },
+      {
+        "pagePath": "pages/feedback/feedback",
+        "text": "反馈",
+        "iconPath": "static/tab-feedback-gray.png",
+        "selectedIconPath": "static/tab-feedback.png"
       },
       {
         "pagePath": "pages/My/My",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "static/tab-my-gray.png",
+        "selectedIconPath": "static/tab-my.png"
       }
     ]
   }

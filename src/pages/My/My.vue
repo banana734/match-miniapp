@@ -1,19 +1,73 @@
 ﻿<template>
   <view class="container">
-    <view class="card card-gap-20 card-mb-20">
-      <text class="title">我的</text>
-      <text class="subtitle">当前登录信息和资料入口都放在这里。</text>
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
     </view>
+    <!-- 我的：一张底卡，里面用匹配卡片同款样式展示自己的资料摘要 + 匹配状态 -->
+    <view class="card card-gap-20 card-mb-20 section-panel">
+      <view class="summary-top">
+        <text class="section-title section-title-sm">我的</text>
+        <text class="count-badge">{{ profileStatusText }}</text>
+      </view>
 
-    <view class="card card-gap-20 card-mb-20">
-      <text class="section-title section-title-sm">当前身份</text>
-      <text class="content text-block">{{ roleText }}</text>
+      <view class="match-card">
+        <view class="match-top">
+          <view class="match-top-left">
+            <view class="match-heading">
+              <text class="match-name">{{ myCardTitle }}</text>
+              <text class="match-subtitle">{{ myCardSubtitle }}</text>
+            </view>
+          </view>
+          <text class="match-badge match-badge-positive">{{ roleText }}</text>
+        </view>
 
-      <text class="section-title section-title-sm">微信账号</text>
-      <text class="content text-block break-all">{{ accountText }}</text>
+        <view v-if="myCard" class="match-info">
+          <view v-for="(row, rowIndex) in pairLines(myCard.preview)" :key="`my-row-${rowIndex}`" class="info-row">
+            <view v-for="line in row" :key="line.label" class="line-block">
+              <text class="line-label">{{ line.label }}</text>
 
-      <text class="section-title section-title-sm">资料状态</text>
-      <text class="content text-block">{{ profileStatusText }}</text>
+              <view v-if="line.kind === 'single'" class="capsule-row">
+                <text class="capsule capsule-single">{{ line.value }}</text>
+              </view>
+
+              <view v-else-if="line.kind === 'multi'" class="capsule-row">
+                <text
+                  v-for="(choice, index) in previewList(line.items)"
+                  :key="`${line.label}-${index}`"
+                  class="capsule capsule-multi"
+                >
+                  {{ choice }}
+                </text>
+              </view>
+
+              <view v-else-if="line.kind === 'sort'" class="capsule-row capsule-column">
+                <view
+                  v-for="(choice, index) in previewList(line.items, 2)"
+                  :key="`${line.label}-${index}`"
+                  class="capsule capsule-sort"
+                >
+                  <text v-if="choice !== '...'" class="sort-index">{{ index + 1 }}</text>
+                  <text class="sort-text">{{ choice }}</text>
+                </view>
+              </view>
+
+              <text v-else class="field-text">{{ line.value }}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="match-status">
+        <view class="status-item">
+          <text class="status-num">{{ userStore.pendingTrialCards.length }}</text>
+          <text class="status-label">待试课</text>
+        </view>
+        <view class="status-item">
+          <text class="status-num">{{ userStore.formalClassCards.length }}</text>
+          <text class="status-label">正式上课</text>
+        </view>
+      </view>
+
       <view class="primary-btn action-top" @tap="goToProfileForm">查看或修改已填写资料</view>
     </view>
 
@@ -89,6 +143,8 @@ import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
 // 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
+// 引入共用展示工具（pairLines / previewList 负责把卡片字段排成两列）
+import { pairLines, previewList } from '@/utils/display'
 
 // 是否开发态：生产包（NODE_ENV=production）下为 false，入口与逻辑都会被摇树剔除
 const isDev = process.env.NODE_ENV !== 'production'
@@ -106,15 +162,35 @@ const roleText = computed(() => {
   return roleLabelMap[userStore.boundRole || userStore.role] || '未选择'
 })
 
-// 微信账号展示：直接显示 openid（未登录时给出占位文案）
-const accountText = computed(() => {
-  return userStore.openid || '当前未登录'
-})
-
 // 资料填写状态文案
 const profileStatusText = computed(() => {
   return userStore.profileCompleted ? '已填写完成' : '未填写完成'
 })
+
+// ===== 自己的匹配卡片 =====
+// 后端把「我」的资料按和对侧一样的规则组装成卡片（标题 / 副标题 / 徽章 / 4 项摘要），
+// 这里直接拿来渲染，保证「我的」页看到的字段和对方在匹配页看到的完全一致。
+const myCard = ref(null)
+const myCardTitle = computed(() => (myCard.value ? myCard.value.title : '资料未填写'))
+const myCardSubtitle = computed(() => {
+  return myCard.value ? myCard.value.subtitle : '填写资料后，这里会显示你的资料摘要'
+})
+
+// 拉取自己的卡片；失败时保持 null，页面走占位文案
+const loadMyCard = () => {
+  const currentRole = userStore.boundRole || userStore.role
+
+  uni.request({
+    url: `${API_BASE_URL}/match/my-card?openid=${encodeURIComponent(userStore.openid)}&role=${currentRole}`,
+    method: 'GET',
+    success: (res) => {
+      myCard.value = res.data?.found ? res.data.card : null
+    },
+    fail: () => {
+      myCard.value = null
+    }
+  })
+}
 
 // 跳转到对应身份的资料页，携带 mode=edit 表示进入“修改资料”模式
 const goToProfileForm = () => {
@@ -292,11 +368,57 @@ onShow(() => {
     setTimeout(() => {
       uni.reLaunch({ url: '/pages/role-first/role-first' })
     }, 60)
+    return
   }
+
+  // 拉自己的资料卡片，并刷新试课列表（「匹配状态」那一行的两个数字要用）
+  loadMyCard()
+  userStore.refreshTrialLists()
 })
 </script>
 
 <style scoped>
+/* 我的底卡：和匹配 / 联系页同款的浅蓝底卡，让里面的白卡片有层次 */
+.card.section-panel {
+  background: rgba(233, 238, 247, 0.8);
+  border: 2rpx solid #cdd8e8;
+}
+
+/* 匹配页的卡片是固定 400rpx 高（为了让列表整齐），自己的卡片按内容自适应即可 */
+.match-card {
+  height: auto;
+}
+
+/* 匹配状态：待试课 / 正式上课 各一个数字块 */
+.match-status {
+  display: flex;
+  gap: 16rpx;
+}
+
+.status-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6rpx;
+  padding: 18rpx 0;
+  border-radius: 16rpx;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1rpx solid #edf0f5;
+}
+
+.status-num {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #2f80ed;
+  line-height: 1;
+}
+
+.status-label {
+  font-size: 22rpx;
+  color: #6b7280;
+}
+
 .reset-link {
   /* 开发调试用的小字入口，方便一键切换/重置开发身份 */
   margin-top: 24rpx;

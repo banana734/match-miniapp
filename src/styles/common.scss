@@ -4,16 +4,42 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* 全屏背景层：固定铺在页面内容底下，不跟随滚动。
+   为什么不用 page{ background-image }：
+     1. 小程序 WXSS 的 background-image 不支持本地图片路径（只能用 base64 或网络图）；
+     2. page 的 background-size:cover 是按「整页高度」算的，页面一长图片就被放大成一团糊。
+   所以改成「固定定位 + <image> 元素」，视口大小对齐、不滚动、支持本地图片。
+   用法：在每个页面模板最外层加一行
+     <view class="page-bg"><image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" /></view>
+   z-index 用 -1（排在内容之下）；万一某些环境不认负值，表现也只是"图不显示"，不会盖住内容。 */
+.page-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.page-bg-img {
+  width: 100%;
+  height: 100%;
+}
+
 .container {
   min-height: 100vh;
   padding: 32rpx;
   box-sizing: border-box;
 }
 
+/* 板块半透明：让全屏背景图能透出来一点。
+   统一用 rgba(...) 改 background，**不要用 opacity** ——
+   opacity 会把板块里的文字、按钮一起变淡，rgba 只影响底板、内容保持清晰。
+   当前取值 0.8（约 80% 不透明）。想更透就调小这个数（全局搜 0.8 一起改）。 */
 .card {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 24rpx;
   padding: 28rpx;
   box-shadow: 0 10rpx 30rpx rgba(32, 37, 52, 0.06);
@@ -25,7 +51,7 @@
   align-items: center;
   gap: 16rpx;
   margin-bottom: 24rpx;
-  background: #f7f9fc;
+  background: rgba(247, 249, 252, 0.8);
   border: 2rpx solid #e7ebf3;
 }
 
@@ -60,12 +86,12 @@
 }
 
 .mentor-card {
-  background: linear-gradient(180deg, #f7fbff 0%, #edf5ff 100%);
+  background: linear-gradient(180deg, rgba(247, 251, 255, 0.8) 0%, rgba(237, 245, 255, 0.8) 100%);
   border-color: #bfd7ff;
 }
 
 .family-card {
-  background: linear-gradient(180deg, #f7fff9 0%, #edf9f0 100%);
+  background: linear-gradient(180deg, rgba(247, 255, 249, 0.8) 0%, rgba(237, 249, 240, 0.8) 100%);
   border-color: #bde6ca;
 }
 
@@ -284,7 +310,7 @@
 }
 
 .match-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 20rpx;
   padding: 18rpx;
   box-shadow: 0 8rpx 18rpx rgba(40, 61, 44, 0.07);
@@ -304,10 +330,38 @@
   margin-bottom: 12rpx;
 }
 
+/* 卡片左上角：左边是序号，右边是「名字 + 副标题」竖排 */
 .match-top-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  min-width: 0;
+}
+
+/* 名字 + 副标题，竖排 */
+.match-heading {
   display: flex;
   flex-direction: column;
   gap: 8rpx;
+  min-width: 0;
+}
+
+/* 卡片序号：人多了以后按数字快速定位。
+   序号取自列表下标，所以搜索/筛选后会从 1 重新排，跟当前看到的顺序一致。 */
+.card-index {
+  flex-shrink: 0;
+  min-width: 44rpx;
+  height: 44rpx;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  background: #eef4ff;
+  color: #2f80ed;
+  font-size: 22rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .match-name {
@@ -344,7 +398,7 @@
   overflow: hidden;
   padding: 14rpx;
   border-radius: 16rpx;
-  background: #f8fafc;
+  background: rgba(248, 250, 252, 0.8);
   border: 1rpx solid #edf2f7;
 }
 

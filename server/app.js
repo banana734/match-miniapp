@@ -12,6 +12,7 @@
  *   routes/match.js      匹配池（把对方资料组装成卡片）
  *   routes/trial.js      试课全流程（申请 / 反馈 / 移除）
  *   routes/daily.js      日常反馈（正式上课期间的周期反馈，可解除配对）
+ *   routes/feedback.js   反馈历史查询（「反馈」tab 展示自己提交过的反馈）
  *   routes/admin.js      管理后台数据查询（走 4 个视图）
  *   db/database.js       MySQL 连接池、建表建视图、读写实现
  *   utils/unified-db.js  业务层读写入口（统一数据结构）
@@ -26,10 +27,13 @@ const {
   getAdminMentors,
   getAdminFamilyFeedbacks,
   getAdminMentorFeedbacks,
+  getAdminFeedbacks,
+  deleteAdminFeedback,
+  deleteAdminProfile,
   getAdminPairings
 } = require('./routes/admin')
 const { postWechatLogin } = require('./routes/auth-real')
-const { getMatchList } = require('./routes/match')
+const { getMatchList, getMyMatchCard } = require('./routes/match')
 const { bindRole, saveProfile, getProfileDetail } = require('./routes/profile')
 const {
   applyTrial,
@@ -38,6 +42,7 @@ const {
   removeTrialRecord
 } = require('./routes/trial')
 const { submitDailyFeedback } = require('./routes/daily')
+const { getMyFeedback } = require('./routes/feedback')
 
 const PORT = Number(process.env.PORT || 3000)// 监听端口，可用环境变量 PORT 覆盖
 const HOST = process.env.HOST || '0.0.0.0'// 监听地址，0.0.0.0 表示所有网卡都能访问
@@ -98,6 +103,10 @@ const sendFile = (res, filePath) => {
 // 前端通过 GET 请求的「读」类接口都在这里。
 const getRoutes = {
   '/api/match/list': (query) => getMatchList(query.get('role')),
+  '/api/match/my-card': (query) => getMyMatchCard(
+    query.get('openid') || '',
+    query.get('role') || 'family'
+  ),
   '/api/trial/list': (query) => getTrialList(
     query.get('openid') || '',
     query.get('role') || 'family'
@@ -106,11 +115,16 @@ const getRoutes = {
     query.get('openid') || '',
     query.get('role') || ''
   ),
+  '/api/feedback/list': (query) => getMyFeedback(
+    query.get('openid') || '',
+    query.get('role') || 'family'
+  ),
   '/api/admin/families': () => getAdminFamilies(),
   '/api/admin/mentors': () => getAdminMentors(),
   '/api/admin/family-feedbacks': () => getAdminFamilyFeedbacks(),
   '/api/admin/mentor-feedbacks': () => getAdminMentorFeedbacks(),
-  '/api/admin/pairings': () => getAdminPairings()
+  '/api/admin/pairings': () => getAdminPairings(),
+  '/api/admin/feedbacks': () => getAdminFeedbacks()
 }
 
 // POST 接口表：路径 → 业务处理函数，入参是解析后的请求体 JSON。
@@ -122,7 +136,9 @@ const postRoutes = {
   '/api/profile/bind-role': bindRole,
   '/api/trial/feedback': submitTrialFeedback,
   '/api/trial/remove': removeTrialRecord,
-  '/api/daily/feedback': submitDailyFeedback
+  '/api/daily/feedback': submitDailyFeedback,
+  '/api/admin/delete-feedback': deleteAdminFeedback,
+  '/api/admin/delete-profile': deleteAdminProfile
 }
 
 // 读取 POST 请求体中的 JSON 内容：

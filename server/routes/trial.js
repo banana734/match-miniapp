@@ -46,6 +46,76 @@ const getLatestRoleCardRecord = (records = [], openid = '', role = 'family', car
     .sort((left, right) => getRecordTime(right) - getRecordTime(left))[0]
 }
 
+// 从卡片 id 解析出对方的 openid 与角色：'family-abc' → { openid: 'abc', role: 'family' }
+// 卡片 id 固定格式为 `<role>-<openid>`，'-' 之后的部分就是 openid。
+const parseCardId = (cardId = '') => {
+  const [prefix, ...rest] = String(cardId).split('-')
+  return {
+    role: prefix === 'mentor' ? 'mentor' : 'family',
+    openid: rest.join('-')
+  }
+}
+
+// 由「申请人记录」算出它镜像记录的查询定位（openid / role / cardId）。
+// 申请人记录：openid=申请人, role=申请人, cardId=对方卡片(如 family-xxx)
+// 镜像记录：  openid=对方,   role=对方,   cardId=申请人卡片(如 mentor-xxx)
+const getPartnerLocator = (openid = '', role = 'family', cardId = '') => {
+  const target = parseCardId(cardId)
+  return {
+    openid: target.openid,
+    role: target.role,
+    cardId: `${role}-${openid}`
+  }
+}
+
+// 确保存在一条「对方的镜像记录」：让被申请的家长/导师在自己的联系页也能看到这张卡片。
+// partnerCard 是存给对方看的卡片（申请人自己的卡片），这样对方看到的是申请人的信息。
+const ensurePartnerRecord = (records = [], { openid = '', role = 'family', cardId = '', partnerCard = {}, status = 'pending', continueChoice = '' } = {}) => {
+  const partner = getPartnerLocator(openid, role, cardId)
+  const existing = records.find(
+    (item) => item.openid === partner.openid && item.role === partner.role && String(item.cardId) === String(partner.cardId)
+  )
+
+  if (existing) { // 镜像记录已存在：刷新状态与卡片快照，保持两端一致
+    existing.status = status
+    existing.continueChoice = continueChoice
+    existing.cardData = partnerCard
+    existing.updatedAt = new Date().toISOString()
+    return existing
+  }
+
+  // 镜像记录不存在：新建一条，与申请人记录一一对应
+  const record = {
+    id: `trial-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    openid: partner.openid,
+    role: partner.role,
+    cardId: partner.cardId,
+    status,
+    continueChoice,
+    cardData: partnerCard,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+  records.unshift(record)
+  return record
+}
+
+// 把状态变更同步到镜像记录（对方那条），让两端卡片状态始终一致。
+const syncPartnerRecord = (records = [], openid = '', role = 'family', cardId = '', patch = {}) => {
+  const partner = getPartnerLocator(openid, role, cardId)
+  records.forEach((item) => {
+    if (item.openid === partner.openid && item.role === partner.role && String(item.cardId) === String(partner.cardId)) {
+      if (patch.status !== undefined) {
+        item.status = patch.status
+      }
+      if (patch.continueChoice !== undefined) {
+        item.continueChoice = patch.continueChoice
+      }
+      item.updatedAt = new Date().toISOString()
+    }
+  })
+}
+
 // 规范化反馈内容：补齐默认值，只保留这 10 个已知字段，
 // 防止前端传入的意外字段直接进库。
 const buildStoredFeedback = (feedback = {}) => {
@@ -185,9 +255,17 @@ const applyTrial = async (body = {}) => {
   const { openid = '', role = 'family', cardId } = body
   const db = await readUnifiedDb()
   const records = getTrialRecords(db)
-  // 复用本次已经读到的 users，不再为了拿匹配池重复读一遍全库。
-  const sourcePool = buildPoolFromUsers(getUserRecords(db), role)
+  const users = getUserRecords(db)
+
+  // 申请人看到的是「对方」的卡片池，从中找到被申请的那张卡（存进申请人自己的记录）
+  const sourcePool = buildPoolFromUsers(users, role)
   const targetCard = sourcePool.find((item) => String(item.id) === String(cardId)) || {}
+
+  // 对方看到的是「申请人」的卡片池，从中找到申请人的卡（存进对方的镜像记录，让对方也能看到）
+  const target = parseCardId(cardId)
+  const applicantPool = buildPoolFromUsers(users, target.role)
+  const applicantCard = applicantPool.find((item) => String(item.id) === `${role}-${openid}`) || {}
+
   const activeRecords = getRoleCardRecords(records, openid, role, cardId)
     .filter((item) => isActiveStatus(item.status))
 
@@ -198,6 +276,8 @@ const applyTrial = async (body = {}) => {
 
     latestActiveRecord.cardData = targetCard// 用最新的资料覆盖卡片快照
     latestActiveRecord.updatedAt = new Date().toISOString()
+    // 同步给被申请方：对方联系页也要能看到这张卡片（存的是申请人自己的卡片）
+    ensurePartnerRecord(records, { openid, role, cardId, partnerCard: applicantCard, status: latestActiveRecord.status, continueChoice: latestActiveRecord.continueChoice })
     await writeUnifiedDb(db)
 
     return {
@@ -216,6 +296,7 @@ const applyTrial = async (body = {}) => {
     latestRecord.continueChoice = ''// 清空上次反馈的选择
     latestRecord.cardData = targetCard
     latestRecord.updatedAt = new Date().toISOString()
+    ensurePartnerRecord(records, { openid, role, cardId, partnerCard: applicantCard, status: 'pending', continueChoice: '' })
     await writeUnifiedDb(db)
 
     return {
@@ -241,6 +322,7 @@ const applyTrial = async (body = {}) => {
   }
 
   records.unshift(newRecord)// 插到记录数组最前面（最新的在前）
+  ensurePartnerRecord(records, { openid, role, cardId, partnerCard: applicantCard, status: 'pending', continueChoice: '' })
   await writeUnifiedDb(db)
 
   return {
@@ -300,6 +382,9 @@ const submitTrialFeedback = async (body = {}) => {
     item.updatedAt = new Date().toISOString()
   })
 
+  // 同步给被申请方：两端卡片状态保持一致（待试课 / 正式 / 拒绝）
+  syncPartnerRecord(records, openid, role, cardId, { status: nextStatus, continueChoice })
+
   await writeUnifiedDb(db)// 先落库试课记录的变更
 
   await saveTrialFeedbackRow({// 再把反馈原文写入反馈表
@@ -338,6 +423,9 @@ const removeTrialRecord = async (body = {}) => {
     item.continueChoice = ''
     item.updatedAt = new Date().toISOString()
   })
+
+  // 同步给被申请方：自己移出，对方联系页也要消失
+  syncPartnerRecord(records, openid, role, cardId, { status: 'removed' })
 
   await writeUnifiedDb(db)
 

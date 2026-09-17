@@ -203,7 +203,38 @@ const getMatchList = async (role) => {
   }
 }
 
+// 自己那张卡片：GET /api/match/my-card?openid=xxx&role=mentor
+// 复用上面两个卡片构造函数，所以「我的」页展示的字段和对侧看到的完全一致，
+// 不会出现两边对不上。只返回 preview 那 4 项摘要（加上标题/副标题/徽章），
+// 不返回 details —— 用户没必要在自己的页面上再看一遍全部资料。
+const getMyMatchCard = async (openid = '', role = 'family') => {
+  const db = await readUnifiedDb()
+  const target = getUserRecords(db).find((item) => item.openid === openid && item.role === role)
+
+  if (!target || !target.profile) {
+    return {
+      success: true,
+      found: false,
+      card: null
+    }
+  }
+
+  const card = role === 'mentor' ? buildMentorCard(target) : buildFamilyCard(target)
+
+  return {
+    success: true,
+    found: true,
+    card: {
+      title: card.title,
+      subtitle: card.subtitle,
+      badge: card.badge,
+      preview: card.preview
+    }
+  }
+}
+
 module.exports = {
   getMatchList,
+  getMyMatchCard,
   buildPoolFromUsers
 }

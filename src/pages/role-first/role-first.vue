@@ -1,5 +1,8 @@
 ﻿<template>
   <view class="container">
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
+    </view>
     <view class="card hero-card">
       <text class="title">项目参与身份</text>
       <text class="subtitle">先选择身份哦~</text>

@@ -1,5 +1,8 @@
 ﻿<template>
   <view class="container">
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
+    </view>
     <view class="card card-gap-20">
       <text class="title">请先填写匹配资料</text>
       <text class="subtitle">完成资料后，才能继续查看相关页面内容。</text>

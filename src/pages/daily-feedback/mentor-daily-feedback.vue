@@ -1,5 +1,8 @@
 <template>
   <view class="container">
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
+    </view>
     <view class="card">
       <text class="title">{{ pageTitle }}</text>
       <text class="subtitle">记录本次正式上课的情况，方便我们持续优化匹配质量。</text>

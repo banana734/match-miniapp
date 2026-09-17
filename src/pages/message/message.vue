@@ -1,6 +1,8 @@
 ﻿<template>
   <view class="container">
-   
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
+    </view>
 
     <view v-if="userStore.profileCompleted" class="card card-gap-20 card-mb-18 section-panel">
       <view class="summary-top">
@@ -13,11 +15,14 @@
       </view>
 
       <view v-else class="trial-list">
-        <view v-for="item in trialLessonList" :key="item.id" class="match-card">
+        <view v-for="(item, cardIndex) in trialLessonList" :key="item.id" class="match-card">
         <view class="match-top">
           <view class="match-top-left">
-            <text class="match-name">{{ item.title }}</text>
-            <text class="match-subtitle">{{ item.subtitle }}</text>
+            <view class="card-index">{{ cardIndex + 1 }}</view>
+            <view class="match-heading">
+              <text class="match-name">{{ item.title }}</text>
+              <text class="match-subtitle">{{ item.subtitle }}</text>
+            </view>
           </view>
           <view class="match-top-right">
             <text class="match-badge match-badge-danger">待试课</text>
@@ -79,11 +84,14 @@
       </view>
 
       <view v-else class="trial-list">
-        <view v-for="item in formalClassList" :key="`formal-${item.id}`" class="match-card">
+        <view v-for="(item, cardIndex) in formalClassList" :key="`formal-${item.id}`" class="match-card">
         <view class="match-top">
           <view class="match-top-left">
-            <text class="match-name">{{ item.title }}</text>
-            <text class="match-subtitle">{{ item.subtitle }}</text>
+            <view class="card-index">{{ cardIndex + 1 }}</view>
+            <view class="match-heading">
+              <text class="match-name">{{ item.title }}</text>
+              <text class="match-subtitle">{{ item.subtitle }}</text>
+            </view>
           </view>
           <view class="match-top-right">
             <text class="match-badge formal-badge">正式上课</text>
@@ -336,7 +344,7 @@ onShow(() => {
 
   if (userStore.profileCompleted) {
     loadTrialList()
-    userStore.markTrialLessonViewed()
+    userStore.markMessageViewed()
     return
   }
 
@@ -356,9 +364,10 @@ onShow(() => {
 </script>
 
 <style scoped>
-/* 分区底卡：待试课 / 正式上课 的容器，覆盖 .card 的白底，让里面的白卡片有层次 */
+/* 分区底卡：待试课 / 正式上课 的容器，覆盖 .card 的白底，让里面的白卡片有层次。
+   用 rgba 做半透明（约 80% 不透明），让全屏背景图能透出来一点 */
 .card.section-panel {
-  background: #e9eef7;
+  background: rgba(233, 238, 247, 0.8);
   border: 2rpx solid #cdd8e8;
 }
 

@@ -1,5 +1,8 @@
 <template>
   <view class="container">
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
+    </view>
     <view class="header">
       <text class="title">双方用户数据（开发调试）</text>
       <view class="refresh-btn" @tap="loadData">刷新</view>
@@ -378,13 +381,13 @@ onShow(() => {
   color: #9aa0a6;
   padding: 24rpx;
   text-align: center;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 16rpx;
 }
 
-/* 卡片 */
+/* 卡片（半透明，让背景图透出来） */
 .card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 16rpx;
   padding: 20rpx;
   margin-bottom: 16rpx;

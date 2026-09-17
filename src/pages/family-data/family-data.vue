@@ -1,5 +1,8 @@
 ﻿<template>
   <view class="container">
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
+    </view>
     <view class="card">
       <!-- 页面主标题 -->
       <text class="title">填写信息</text>

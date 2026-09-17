@@ -1,5 +1,8 @@
 ﻿<template>
   <view class="container">
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
+    </view>
     <view class="card card-gap-24 align-center">
       <!-- 页面主标题 -->
       <text class="title">微信授权登录</text>

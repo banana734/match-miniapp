@@ -29,12 +29,8 @@
           <strong id="mentorCount" class="summary-value">0</strong>
         </article>
         <article class="summary-card">
-          <span class="summary-label">家长试课反馈</span>
-          <strong id="familyFeedbackCount" class="summary-value">0</strong>
-        </article>
-        <article class="summary-card">
-          <span class="summary-label">导师试课反馈</span>
-          <strong id="mentorFeedbackCount" class="summary-value">0</strong>
+          <span class="summary-label">反馈总数</span>
+          <strong id="feedbackCount" class="summary-value">0</strong>
         </article>
       </section>
 
@@ -42,8 +38,8 @@
         <div class="tab-row">
           <button class="tab-btn active" data-tab="family" type="button">家长资料</button>
           <button class="tab-btn" data-tab="mentor" type="button">导师资料</button>
-          <button class="tab-btn" data-tab="familyFeedback" type="button">家长试课反馈</button>
-          <button class="tab-btn" data-tab="mentorFeedback" type="button">导师试课反馈</button>
+          <button class="tab-btn" data-tab="feedbacks" type="button">反馈管理</button>
+          <button class="tab-btn" data-tab="pairings" type="button">试课 / 配对关系</button>
         </div>
 
         <div id="familyPanel" class="table-panel active">
@@ -62,20 +58,20 @@
           <div id="mentorTableWrap" class="table-wrap"></div>
         </div>
 
-        <div id="familyFeedbackPanel" class="table-panel">
+        <div id="feedbackPanel" class="table-panel">
           <div class="panel-head">
-            <h2>家长试课反馈列表</h2>
-            <span id="familyFeedbackStatus" class="panel-status">加载中...</span>
+            <h2>反馈管理（按人分类）</h2>
+            <span id="feedbackStatus" class="panel-status">加载中...</span>
           </div>
-          <div id="familyFeedbackTableWrap" class="table-wrap"></div>
+          <div id="feedbackTableWrap" class="table-wrap"></div>
         </div>
 
-        <div id="mentorFeedbackPanel" class="table-panel">
+        <div id="pairingPanel" class="table-panel">
           <div class="panel-head">
-            <h2>导师试课反馈列表</h2>
-            <span id="mentorFeedbackStatus" class="panel-status">加载中...</span>
+            <h2>试课 / 配对关系</h2>
+            <span id="pairingStatus" class="panel-status">加载中...</span>
           </div>
-          <div id="mentorFeedbackTableWrap" class="table-wrap"></div>
+          <div id="pairingTableWrap" class="table-wrap"></div>
         </div>
       </section>
     </div>

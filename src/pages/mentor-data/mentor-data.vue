@@ -1,5 +1,8 @@
 <template>
   <view class="container">
+    <view class="page-bg">
+      <image class="page-bg-img" src="/static/home-bg.jpg" mode="aspectFill" />
+    </view>
     <view class="card">
       <text class="title">填写信息</text>
       <text class="subtitle">第一次进入匹配前，先把友导师基础资料补全。</text>

@@ -9,7 +9,7 @@
  *   - 身份：role（当前使用的身份）、boundRole（后端绑定的锁定身份，一个微信只能绑一种）
  *   - 资料：profile（家长端 / 导师端共用的字段池）、updateProfile、completeProfile
  *   - 试课：pendingTrialCards（待试课）、formalClassCards（正式上课）、
- *           红点标记 hasUnreadTrialNotice + syncTrialLessonBadge
+ *           「联系」tab 数字徽标 unreadMessageCount + syncMessageBadge + markMessageViewed
  *   - 持久化：persistUserState（写缓存）/ restoreUserState（store 创建时读缓存）
  *
  * 注意：试课卡片列表（pendingTrialCards 等）不持久化，
@@ -17,6 +17,7 @@
  */
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { API_BASE_URL } from '../utils/api'
 
 export const useUserStore = defineStore('user', () => {
   const role = ref('')  // 用户身份角色（家长/友导师）
@@ -28,7 +29,11 @@ export const useUserStore = defineStore('user', () => {
   const profileCancelled = ref(false) // 标记用户中途退出、放弃填写表单
   const pendingTrialCards = ref([]) // 点击“进行试课”后，进入联系页待试课列表的卡片
   const formalClassCards = ref([]) // 进入正式上课阶段后的卡片，先预留给联系页正式上课区域
-  const hasUnreadTrialNotice = ref(false) // 联系菜单红点是否显示，表示是否有未查看的新试课消息
+  const unreadMessageCount = computed(() => countUnseen()) // 联系页有几张「没看过」的卡片，显示在底部「联系」tab 的数字徽标上
+  // 已读记录：按账号(openid)分别保存看过的卡片。值是 { 卡片id:所在区: true }。
+  // 卡片键形如 `卡片id:pending`（待试课）或 `卡片id:formal`（正式上课），
+  // 这样「待试课转正式上课」这种状态变化也会当作一条没看过的新消息再提示一次。
+  const seenCardsByOpenid = ref({})
 
   // 统一共用资料对象，同时兼容家长端、友导师端两套表单数据。
   // 字段按「导师端 / 家庭端」两大类混排，注释里标注了各自属于哪一端。
@@ -132,6 +137,15 @@ export const useUserStore = defineStore('user', () => {
   // store 创建时立即执行：尝试从本地缓存恢复上次的登录态和资料
   restoreUserState()
 
+  // 恢复每个账号的「联系页已读记录」，杀掉小程序重开后也不丢。
+  // 按 openid 分别保存，切账号时互不干扰。
+  if (typeof uni !== 'undefined') {
+    const savedSeen = uni.getStorageSync('match-message-seen')
+    if (savedSeen && typeof savedSeen === 'object') {
+      seenCardsByOpenid.value = savedSeen
+    }
+  }
+
   // 设置用户身份角色
   const setRole = (value) => {
     role.value = value
@@ -158,6 +172,9 @@ export const useUserStore = defineStore('user', () => {
     boundRole.value = payload.boundRole || ''
     role.value = payload.boundRole || ''
 
+    // 注意：这里不清空「已读记录」——已读是按 openid 分别存的，
+    // 新账号自然读取自己那份，不会把上一个人的已读状态带过来，也不会误报红点。
+
     persistUserState()
   }
 
@@ -179,7 +196,11 @@ export const useUserStore = defineStore('user', () => {
       uni.removeStorageSync('match-user-state')
       // 清掉 login.vue 持久化的开发客户端 ID，下次登录会生成全新 openid（全新账号）
       uni.removeStorageSync('match-dev-client-id')
+      // 重置开发身份：已读记录整份清空（全新账号，没有可继承的已读状态）
+      uni.removeStorageSync('match-message-seen')
     }
+
+    seenCardsByOpenid.value = {}
   }
 
   // 清空本地资料并标记未完成（切换账号时用，避免看到上一个人填的内容）
@@ -197,18 +218,59 @@ export const useUserStore = defineStore('user', () => {
     persistUserState()
   }
 
-  // 同步联系菜单上的红点状态
-  const syncTrialLessonBadge = () => {
+  // 一张卡片在当前列表里的「键」，pending=待试课，formal=正式上课
+  const cardKey = (item, area) => `${item.id}:${area}`
+
+  // 当前账号看过的卡片集合（按 openid 取，没有就返回空对象，不擅自创建）
+  const currentSeenMap = () => seenCardsByOpenid.value[openid.value] || {}
+
+  // 算出当前账号有几张「没看过」的卡片：
+  // 列表里有、但不在已读集合里的，都算 1 张。看过的、被移除的都不再计数。
+  const countUnseen = () => {
+    if (!openid.value) {
+      return 0
+    }
+
+    const seen = currentSeenMap()
+    let count = 0
+
+    pendingTrialCards.value.forEach((item) => {
+      if (!seen[cardKey(item, 'pending')]) {
+        count += 1
+      }
+    })
+    formalClassCards.value.forEach((item) => {
+      if (!seen[cardKey(item, 'formal')]) {
+        count += 1
+      }
+    })
+
+    return count
+  }
+
+  // 把当前账号的「已读记录」写入本地缓存，重开小程序也不丢
+  const persistSeen = () => {
     if (typeof uni === 'undefined') {
       return
     }
 
-    // 红点 API 只能在底部菜单页面调用
+    uni.setStorageSync('match-message-seen', seenCardsByOpenid.value)
+  }
+
+  // 同步底部「联系」tab 的数字徽标。
+  // 徽标 API 只能在底部菜单页面调用；如果用户正看着联系页，当下内容直接算已读。
+  const syncMessageBadge = () => {
+    if (typeof uni === 'undefined') {
+      return
+    }
+
     const currentPage = getCurrentPages().slice(-1)[0]
+    // 所有底部 tab 页（新增 tab 时要同步加进来），「联系」在下标 2
     const tabBarPages = [
       'pages/home/home',
       'pages/match/match',
       'pages/message/message',
+      'pages/feedback/feedback',
       'pages/My/My'
     ]
 
@@ -216,16 +278,19 @@ export const useUserStore = defineStore('user', () => {
       return
     }
 
-    if (hasUnreadTrialNotice.value) {
-      uni.showTabBarRedDot({
-        index: 2
-      })
+    if (currentPage.route === 'pages/message/message') {
+      // 用户正看着联系页：把当前列表每张卡片都标记为已读
+      markMessageViewed()
       return
     }
 
-    uni.hideTabBarRedDot({
-      index: 2
-    })
+    const changes = unreadMessageCount.value
+
+    if (changes > 0) {
+      uni.setTabBarBadge({ index: 2, text: String(changes) })
+    } else {
+      uni.removeTabBarBadge({ index: 2 })
+    }
   }
 
   // 点击“进行试课”后，把当前卡片加入待试课列表
@@ -233,8 +298,7 @@ export const useUserStore = defineStore('user', () => {
     const existed = pendingTrialCards.value.some((card) => String(card.id) === String(item.id))
 
     if (existed) {
-      hasUnreadTrialNotice.value = true
-      syncTrialLessonBadge()
+      syncMessageBadge()
       return 'exists'
     }
 
@@ -245,27 +309,64 @@ export const useUserStore = defineStore('user', () => {
       ...pendingTrialCards.value
     ]
 
-    hasUnreadTrialNotice.value = true
-    syncTrialLessonBadge()
+    syncMessageBadge()
     return 'added'
   }
 
-  // 用后端返回的最新列表整体覆盖本地试课状态。
+  // 用后端返回的最新列表整体覆盖本地试课状态，并顺手刷新「联系」tab 徽标
   const setTrialLists = (pendingList = [], formalList = []) => {
     pendingTrialCards.value = Array.isArray(pendingList) ? pendingList : []
     formalClassCards.value = Array.isArray(formalList) ? formalList : []
+    syncMessageBadge()
   }
 
-  // 进入联系页后，标记试课消息已查看，并隐藏菜单红点
-  const markTrialLessonViewed = () => {
-    hasUnreadTrialNotice.value = false
-    syncTrialLessonBadge()
+  // 从后端拉当前用户最新的待试课 / 正式上课列表（静默，不弹提示）。
+  // 首页、匹配页等地方调用它，用户不在联系页也能发现联系页的新变化。
+  const refreshTrialLists = () => {
+    if (!openid.value || !isLoggedIn.value) {
+      return
+    }
+
+    uni.request({
+      url: `${API_BASE_URL}/trial/list?openid=${encodeURIComponent(openid.value)}&role=${currentRole.value}`,
+      method: 'GET',
+      success: (res) => {
+        setTrialLists(res.data?.pending || [], res.data?.formal || [])
+      }
+    })
+  }
+
+  // 进入联系页后调用：把当前列表里每张卡片都标记为「已读」，并清掉底部「联系」上的数字徽标。
+  // 已读记录按 openid 分开存，切账号不会把别人的已读带过来。
+  const markMessageViewed = () => {
+    if (!openid.value) {
+      return
+    }
+
+    const seen = { ...currentSeenMap() }
+
+    pendingTrialCards.value.forEach((item) => {
+      seen[cardKey(item, 'pending')] = true
+    })
+    formalClassCards.value.forEach((item) => {
+      seen[cardKey(item, 'formal')] = true
+    })
+
+    seenCardsByOpenid.value = {
+      ...seenCardsByOpenid.value,
+      [openid.value]: seen
+    }
+    persistSeen()
+
+    if (typeof uni !== 'undefined') {
+      uni.removeTabBarBadge({ index: 2 })
+    }
   }
 
   // 从待试课列表移除卡片，移除后该卡片会重新回到匹配页
   const removePendingTrialCard = (cardId) => {
     pendingTrialCards.value = pendingTrialCards.value.filter((item) => String(item.id) !== String(cardId))
-    syncTrialLessonBadge()
+    syncMessageBadge()
   }
 
   // 试课反馈选择“愿意”后，把卡片从待试课移动到正式上课
@@ -288,7 +389,7 @@ export const useUserStore = defineStore('user', () => {
     }
 
     pendingTrialCards.value = pendingTrialCards.value.filter((item) => String(item.id) !== String(cardId))
-    syncTrialLessonBadge()
+    syncMessageBadge()
   }
 
   // 标记表单填写完成，允许进入匹配、联系页面
@@ -326,17 +427,18 @@ export const useUserStore = defineStore('user', () => {
     profileCancelled,
     pendingTrialCards,
     formalClassCards,
-    hasUnreadTrialNotice,
+    unreadMessageCount,
     setRole,
     setBoundRole,
     setLoginInfo,
     resetLoginState,
     clearProfile,
     updateProfile,
-    syncTrialLessonBadge,
+    syncMessageBadge,
     addPendingTrialCard,
     setTrialLists,
-    markTrialLessonViewed,
+    refreshTrialLists,
+    markMessageViewed,
     removePendingTrialCard,
     movePendingTrialCardToFormal,
     completeProfile,

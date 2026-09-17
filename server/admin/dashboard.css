@@ -246,6 +246,217 @@ tbody tr:nth-child(even) {
   color: var(--muted);
 }
 
+/* 配对关系页签：五列布局（姓名 / 正式上课 / 正式上课对象 / 待试课 / 待试课对象） */
+.pairing-table {
+  min-width: 880px;
+}
+
+.cell-pairing {
+  min-width: 200px;
+  font-weight: 600;
+}
+
+/* 配对页签：导师 / 家长分组 */
+.pair-group {
+  margin-bottom: 24px;
+}
+
+.pair-group-title {
+  margin: 0 0 10px;
+  font-size: 17px;
+  color: #374151;
+}
+
+.cell-status {
+  min-width: 120px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-pending {
+  background: #fff4e5;
+  color: #b45309;
+}
+
+.badge-formal {
+  background: #e7f7ee;
+  color: #047857;
+}
+
+.badge-removed {
+  background: #f1f3f7;
+  color: #6b7280;
+}
+
+.badge-unknown {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+/* 反馈管理页签：按人聚合的卡片布局 */
+.fb-person {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.fb-person:last-child {
+  border-bottom: 0;
+}
+
+.fb-person-title {
+  margin: 0 0 12px;
+  font-size: 18px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fb-person-meta {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.fb-group-label {
+  margin: 14px 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.fb-item {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fbfcff;
+}
+
+.fb-item-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.fb-date {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.badge-trial {
+  background: #e7f0ff;
+  color: #1d4ed8;
+}
+
+.badge-daily {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+/* 反馈管理页签：身份大组（导师 / 家长） */
+.fb-role-group {
+  margin-bottom: 26px;
+}
+
+.fb-role-group:last-child {
+  margin-bottom: 0;
+}
+
+.fb-role-title {
+  margin: 0 0 10px;
+  padding: 4px 0 4px 10px;
+  border-left: 4px solid var(--primary);
+  font-size: 17px;
+  color: #374151;
+}
+
+.delete-feedback-btn,
+.delete-profile-btn {
+  border: 1px solid #f0c2c2;
+  background: #fff5f5;
+  color: #c0392b;
+  border-radius: 10px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.delete-feedback-btn {
+  margin-left: auto;
+}
+
+.delete-feedback-btn:hover:not(:disabled),
+.delete-profile-btn:hover:not(:disabled) {
+  background: #fde8e8;
+}
+
+.delete-feedback-btn:disabled,
+.delete-profile-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* 资料页签：最后一列「操作」。表格很宽要横向滚动，这里吸附在右边，滚动时删除按钮始终看得见 */
+th.cell-action,
+td.cell-action {
+  position: sticky;
+  right: 0;
+  min-width: 92px;
+  white-space: nowrap;
+  box-shadow: -6px 0 10px -6px rgba(15, 23, 42, 0.18);
+}
+
+th.cell-action {
+  background: #f8fafc;
+  z-index: 2;
+}
+
+td.cell-action {
+  background: #fff;
+  z-index: 1;
+}
+
+tbody tr:nth-child(even) td.cell-action {
+  background: #fbfcff;
+}
+
+.fb-item-body {
+  display: grid;
+  gap: 6px;
+}
+
+.fb-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.fb-key {
+  flex: 0 0 110px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.fb-val {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 @media (max-width: 1100px) {
   .summary-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
