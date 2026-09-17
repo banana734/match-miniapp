@@ -74,9 +74,31 @@
     <!-- 开发调试区块：仅开发态（非生产包）可见，正式上线不会包含 -->
     <view v-if="isDev" class="card card-gap-20 card-mb-20 dev-card">
       <text class="section-title section-title-sm">开发调试</text>
-      <view class="reset-link" @tap="openSwitchModal">切换测试账号（开发调试）</view>
-      <view class="reset-link" @tap="goToDevData">查看双方用户数据（开发调试）</view>
-      <view class="reset-link" @tap="resetDevIdentity">重置开发身份（开发调试）</view>
+      <view class="reset-link" @tap="requireDevPassword(openSwitchModal)">切换测试账号（开发调试）</view>
+      <view class="reset-link" @tap="requireDevPassword(goToDevData)">查看双方用户数据（开发调试）</view>
+      <view class="reset-link" @tap="requireDevPassword(resetDevIdentity)">重置开发身份（开发调试）</view>
+    </view>
+
+    <!-- 开发调试密码弹层：自己搭而不用 uni.showModal，
+         因为 showModal 的输入框用的是 placeholder —— 一输入就消失，
+         而这里需要那行灰字提示「请输入密码」一直挂着。 -->
+    <view v-if="showDevPasswordModal" class="modal-mask modal-mask-center" @tap="cancelDevPassword">
+      <view class="password-modal" @tap.stop>
+        <text class="password-title">开发调试</text>
+        <text class="password-hint">请输入密码</text>
+        <input
+          v-model="devPasswordInput"
+          class="password-input"
+          placeholder=""
+          confirm-type="done"
+          @confirm="confirmDevPassword"
+        />
+
+        <view class="password-actions">
+          <view class="password-btn cancel" @tap="cancelDevPassword">取消</view>
+          <view class="password-btn confirm" @tap="confirmDevPassword">确定</view>
+        </view>
+      </view>
     </view>
 
     <!-- 切换测试账号的弹层：列出两端已有的测试账号，点哪个就以哪个身份进入 -->
@@ -148,6 +170,47 @@ import { pairLines, previewList } from '@/utils/display'
 
 // 是否开发态：生产包（NODE_ENV=production）下为 false，入口与逻辑都会被摇树剔除
 const isDev = process.env.NODE_ENV !== 'production'
+
+// 开发调试功能的密码。下面三个入口（切换测试账号 / 查看用户数据 / 重置身份）
+// 都要先输对这个密码才会执行，输错或取消就什么也不做。
+// 注意：这只是给开发调试加一道「防手滑」的门槛，不是真正的安全措施 ——
+// 密码写在源码里，编译进小程序包之后是能被翻出来的。
+const DEV_PASSWORD = '55555'
+
+// 密码弹层是否显示、输入框里的内容
+const showDevPasswordModal = ref(false)
+const devPasswordInput = ref('')
+// 密码输对之后要执行的动作，先存起来，点「确定」时再用（不需要响应式，所以用普通变量）
+let pendingDevAction = null
+
+// 打开密码弹层，把「通过后要做什么」先记下来
+const requireDevPassword = (onPass) => {
+  devPasswordInput.value = ''
+  pendingDevAction = onPass
+  showDevPasswordModal.value = true
+}
+
+// 取消：关掉弹层，并且丢弃刚才记下的动作
+const cancelDevPassword = () => {
+  showDevPasswordModal.value = false
+  pendingDevAction = null
+}
+
+// 确定：密码不对就只提示、不执行任何操作；对了才把刚才记下的动作跑起来
+const confirmDevPassword = () => {
+  if ((devPasswordInput.value || '').trim() !== DEV_PASSWORD) {
+    uni.showToast({ title: '密码错误', icon: 'none' })
+    return
+  }
+
+  const onPass = pendingDevAction
+  showDevPasswordModal.value = false
+  pendingDevAction = null
+
+  if (onPass) {
+    onPass()
+  }
+}
 
 // 获取全局仓库实例
 const userStore = useUserStore()
@@ -443,6 +506,72 @@ onShow(() => {
   display: flex;
   align-items: flex-end;
   z-index: 100;
+}
+
+/* 密码弹层：居中显示，和「从底部升起」的账号切换层区分开 */
+.modal-mask-center {
+  align-items: center;
+  padding: 0 64rpx;
+}
+
+.password-modal {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 36rpx 32rpx 28rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.password-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+/* 常驻说明文字：普通 placeholder 一输入就没了，所以单独放一行一直挂着 */
+.password-hint {
+  font-size: 24rpx;
+  color: #9aa0a6;
+  margin: 12rpx 0 18rpx;
+}
+
+.password-input {
+  height: 84rpx;
+  padding: 0 22rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #e5e8ee;
+  border-radius: 14rpx;
+  background: #f7f9fc;
+  font-size: 28rpx;
+  color: #1f2329;
+}
+
+.password-actions {
+  display: flex;
+  gap: 18rpx;
+  margin-top: 30rpx;
+}
+
+.password-btn {
+  flex: 1;
+  height: 84rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+}
+
+.password-btn.cancel {
+  background: #f2f4f8;
+  color: #4b5563;
+}
+
+.password-btn.confirm {
+  background: #2d6cdf;
+  color: #ffffff;
 }
 
 .modal {

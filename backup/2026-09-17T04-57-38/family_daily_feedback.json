@@ -1,0 +1,141 @@
+[
+  {
+    "id": "daily-family-1789449643843-ck1zvv",
+    "openid": "dev-openid-client-1789449585184-gcey804g",
+    "trial_record_id": "trial-1789449626986",
+    "card_id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+    "target_title": "卢生",
+    "target_subtitle": "8 · 8",
+    "class_date": "2026-09-15",
+    "class_duration": "5",
+    "satisfaction_points_json": [
+      "有耐心，情绪稳定"
+    ],
+    "satisfaction_point_other": "",
+    "objective_unsatisfied_json": [
+      "孩子当天状态一般"
+    ],
+    "objective_unsatisfied_other": "",
+    "subjective_unsatisfied_json": [
+      "孩子课前准备不足"
+    ],
+    "subjective_unsatisfied_other": "",
+    "continue_choice": "不愿意",
+    "continue_choice_other": "",
+    "status_after_feedback": "terminated",
+    "feedback_json": {
+      "classDate": "2026-09-15",
+      "classDuration": "5",
+      "continueChoice": "不愿意",
+      "satisfactionPoints": [
+        "有耐心，情绪稳定"
+      ],
+      "continueChoiceOther": "",
+      "objectiveUnsatisfied": [
+        "孩子当天状态一般"
+      ],
+      "subjectiveUnsatisfied": [
+        "孩子课前准备不足"
+      ],
+      "satisfactionPointOther": "",
+      "objectiveUnsatisfiedOther": "",
+      "subjectiveUnsatisfiedOther": ""
+    },
+    "created_at": "2026-09-14T21:20:43.000Z",
+    "updated_at": "2026-09-14T21:20:43.000Z"
+  },
+  {
+    "id": "daily-family-1789608915648-127ayn",
+    "openid": "dev-openid-client-1785042644023-ugs60ojj",
+    "trial_record_id": "trial-1789563704309-nn4ff2",
+    "card_id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+    "target_title": "2026.9.16",
+    "target_subtitle": "四川大学 · 软件工程",
+    "class_date": "2026-09-17",
+    "class_duration": "45",
+    "satisfaction_points_json": [
+      "孩子愿意配合、有互动",
+      "讲解清晰，孩子容易理解"
+    ],
+    "satisfaction_point_other": "",
+    "objective_unsatisfied_json": [
+      "网络或上课条件不理想",
+      "时间安排不太方便"
+    ],
+    "objective_unsatisfied_other": "",
+    "subjective_unsatisfied_json": [
+      "我这边配合不够及时"
+    ],
+    "subjective_unsatisfied_other": "",
+    "continue_choice": "愿意",
+    "continue_choice_other": "",
+    "status_after_feedback": "maintained",
+    "feedback_json": {
+      "classDate": "2026-09-17",
+      "classDuration": "45",
+      "continueChoice": "愿意",
+      "satisfactionPoints": [
+        "孩子愿意配合、有互动",
+        "讲解清晰，孩子容易理解"
+      ],
+      "continueChoiceOther": "",
+      "objectiveUnsatisfied": [
+        "网络或上课条件不理想",
+        "时间安排不太方便"
+      ],
+      "subjectiveUnsatisfied": [
+        "我这边配合不够及时"
+      ],
+      "satisfactionPointOther": "",
+      "objectiveUnsatisfiedOther": "",
+      "subjectiveUnsatisfiedOther": ""
+    },
+    "created_at": "2026-09-16T17:35:15.000Z",
+    "updated_at": "2026-09-16T17:35:15.000Z"
+  },
+  {
+    "id": "daily-family-1789608936770-dwp2w8",
+    "openid": "dev-openid-client-1785042644023-ugs60ojj",
+    "trial_record_id": "trial-1789563704309-nn4ff2",
+    "card_id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+    "target_title": "2026.9.16",
+    "target_subtitle": "四川大学 · 软件工程",
+    "class_date": "2026-09-17",
+    "class_duration": "90",
+    "satisfaction_points_json": [
+      "讲解清晰，孩子容易理解"
+    ],
+    "satisfaction_point_other": "",
+    "objective_unsatisfied_json": [
+      "网络或上课条件不理想"
+    ],
+    "objective_unsatisfied_other": "",
+    "subjective_unsatisfied_json": [
+      "我这边配合不够及时"
+    ],
+    "subjective_unsatisfied_other": "",
+    "continue_choice": "愿意",
+    "continue_choice_other": "",
+    "status_after_feedback": "maintained",
+    "feedback_json": {
+      "classDate": "2026-09-17",
+      "classDuration": "90",
+      "continueChoice": "愿意",
+      "satisfactionPoints": [
+        "讲解清晰，孩子容易理解"
+      ],
+      "continueChoiceOther": "",
+      "objectiveUnsatisfied": [
+        "网络或上课条件不理想"
+      ],
+      "subjectiveUnsatisfied": [
+        "我这边配合不够及时"
+      ],
+      "satisfactionPointOther": "",
+      "objectiveUnsatisfiedOther": "",
+      "subjectiveUnsatisfiedOther": ""
+    },
+    "created_at": "2026-09-16T17:35:36.000Z",
+    "updated_at": "2026-09-16T17:35:36.000Z"
+  }
+]

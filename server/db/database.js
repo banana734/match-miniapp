@@ -226,7 +226,7 @@ const ensureViews = async () => {
         JSON_UNQUOTE(JSON_EXTRACT(profile_json, '$.college')) AS college,
         JSON_UNQUOTE(JSON_EXTRACT(profile_json, '$.wechat')) AS wechat,
         JSON_EXTRACT(profile_json, '$.mentorSubjects') AS mentor_subjects_json,
-        JSON_UNQUOTE(JSON_EXTRACT(profile_json, '$.mentorTeachingGradeRange')) AS mentor_teaching_grade_range,
+        JSON_EXTRACT(profile_json, '$.mentorTeachingGradeRange') AS mentor_teaching_grade_range_json,
         JSON_EXTRACT(profile_json, '$.mentorStyleTypes') AS mentor_style_types_json,
         JSON_EXTRACT(profile_json, '$.mentorTeachingModes') AS mentor_teaching_modes_json,
         JSON_UNQUOTE(JSON_EXTRACT(profile_json, '$.mentorSummerLocation')) AS mentor_summer_location,

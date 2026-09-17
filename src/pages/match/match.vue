@@ -21,6 +21,8 @@
         <view v-if="searchKeyword" class="search-clear" @tap="clearSearch">✕</view>
       </view>
 
+      <view class="primary-btn" @tap="openRecommend">推荐匹配</view>
+
       <view v-if="filteredPool.length === 0" class="section-empty">
         <text class="empty-title text-block" v-if="searchKeyword.trim()">未找到与「{{ searchKeyword }}」相关的匹配</text>
         <text class="empty-title text-block" v-else>暂时没有可匹配的卡片</text>
@@ -82,8 +84,8 @@
       </view>
     </view>
 
-    <view v-if="showDetailPopup && activeItem" class="popup-mask" @tap="closeDetail">
-      <view class="popup-panel" @tap.stop>
+    <view v-if="showDetailPopup && activeItem" class="popup-mask detail-mask" @tap="closeDetail">
+      <view class="popup-panel detail-panel" @tap.stop>
         <view class="popup-header">
           <view class="popup-header-left">
             <text class="popup-title">{{ activeItem.title }}</text>
@@ -124,6 +126,96 @@
             <text v-else class="field-text">{{ line.value }}</text>
           </view>
         </view>
+      </view>
+    </view>
+
+    <!-- 推荐匹配弹层：按匹配分从高到低取前 5 张，卡片样式和上面的匹配卡片一致，
+         只是底端多一行匹配度百分比 -->
+    <view v-if="showRecommendPopup" class="popup-mask" @tap="closeRecommend">
+      <view class="popup-panel recommend-panel" @tap.stop>
+        <view class="popup-header">
+          <view class="popup-header-left">
+            <text class="popup-title">推荐匹配</text>
+            <text class="popup-subtitle">按匹配度从高到低，取前 5 名</text>
+          </view>
+          <text class="popup-close" @tap="closeRecommend">关闭</text>
+        </view>
+
+        <!-- 标题固定在上面，只有下面的列表滚动 -->
+        <scroll-view scroll-y class="recommend-scroll">
+        <view class="popup-content">
+          <view v-if="recommendList.length === 0" class="section-empty">
+            <text class="empty-title text-block">暂时没有可推荐的匹配</text>
+          </view>
+
+          <view v-else class="match-list">
+            <view
+              v-for="(item, cardIndex) in recommendList"
+              :key="`recommend-${item.id}`"
+              class="match-card recommend-card"
+            >
+              <view class="match-top">
+                <view class="match-top-left">
+                  <view class="card-index">{{ cardIndex + 1 }}</view>
+                  <view class="match-heading">
+                    <text class="match-name">{{ item.title }}</text>
+                    <text class="match-subtitle">{{ item.subtitle }}</text>
+                  </view>
+                </view>
+                <text class="match-badge match-badge-positive">{{ item.badge }}</text>
+              </view>
+
+              <view class="match-info">
+                <view
+                  v-for="(row, rowIndex) in pairLines(item.preview)"
+                  :key="`recommend-${item.id}-row-${rowIndex}`"
+                  class="info-row"
+                >
+                  <view v-for="line in row" :key="line.label" class="line-block">
+                    <text class="line-label">{{ line.label }}</text>
+
+                    <view v-if="line.kind === 'single'" class="capsule-row">
+                      <text class="capsule capsule-single">{{ line.value }}</text>
+                    </view>
+
+                    <view v-else-if="line.kind === 'multi'" class="capsule-row">
+                      <text
+                        v-for="(choice, index) in previewList(line.items)"
+                        :key="`${line.label}-recommend-${index}`"
+                        class="capsule capsule-multi"
+                      >
+                        {{ choice }}
+                      </text>
+                    </view>
+
+                    <view v-else-if="line.kind === 'sort'" class="capsule-row capsule-column">
+                      <view
+                        v-for="(choice, index) in previewList(line.items, 2)"
+                        :key="`${line.label}-recommend-${index}`"
+                        class="capsule capsule-sort"
+                      >
+                        <text v-if="choice !== '...'" class="sort-index">{{ index + 1 }}</text>
+                        <text class="sort-text">{{ choice }}</text>
+                      </view>
+                    </view>
+
+                    <text v-else class="field-text">{{ line.value }}</text>
+                  </view>
+                </view>
+              </view>
+
+              <view class="match-actions">
+                <view class="action-btn primary" @tap="openDetail(item)">查看详情</view>
+                <view class="action-btn secondary" @tap="handleTrialLesson(item)">进行试课</view>
+              </view>
+
+              <view class="match-score">
+                <text class="match-score-value">匹配度 {{ toPercent(item.matchScore) }}%</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        </scroll-view>
       </view>
     </view>
   </view>
@@ -182,6 +274,38 @@ const clearSearch = () => {
   searchKeyword.value = ''
 }
 
+// ===== 推荐匹配弹层 =====
+// 弹层是否显示
+const showRecommendPopup = ref(false)
+// 后端按匹配分排好序的前 5 张卡片（每张比普通卡片多一个 matchScore，取值 0~1）
+const recommendList = ref([])
+
+// 匹配分 → 整数百分比
+const toPercent = (score) => Math.round((score || 0) * 100)
+
+// 打开弹层并拉推荐。先清空列表，避免上一次的结果闪一下。
+const openRecommend = () => {
+  showRecommendPopup.value = true
+  recommendList.value = []
+
+  uni.request({
+    url: `${API_BASE_URL}/match/recommend?openid=${encodeURIComponent(userStore.openid)}&role=${userStore.currentRole}&limit=5`,
+    method: 'GET',
+    success: (res) => {
+      recommendList.value = Array.isArray(res.data?.list) ? res.data.list : []
+    },
+    fail: () => {
+      recommendList.value = []
+      uni.showToast({ title: '后端未连接', icon: 'none' })
+    }
+  })
+}
+
+// 关闭弹层
+const closeRecommend = () => {
+  showRecommendPopup.value = false
+}
+
 // 把一张卡片里「用户自己填的内容」拼成一个字符串，供关键字匹配。
 // 收：标题（姓名）、副标题（地区 / 学校专业）、每道题的答案值。
 // 刻意不收（以前收了，是 bug）：
@@ -223,7 +347,9 @@ const filteredPool = computed(() =>
   visiblePool.value.filter((item) => cardMatchesKeyword(item, searchKeyword.value))
 )
 
-// 打开卡片详情弹层
+// 打开卡片详情弹层。
+// 推荐弹层**不关**：详情层用更高的 z-index 盖在它上面，关掉详情就回到推荐层，
+// 而且推荐层的滚动位置也不会丢（见样式里的 .detail-mask）
 const openDetail = (item) => {
   activeItem.value = item
   showDetailPopup.value = true
@@ -405,5 +531,51 @@ onShow(() => {
 .section-empty {
   padding: 20rpx 0 8rpx;
   text-align: center;
+}
+
+/* 详情层要盖在推荐层上面。
+   两层都用 .popup-mask（z-index 999），DOM 里推荐层在后面 → 默认会盖住详情层，
+   所以给详情层抬到 1000。这样从推荐里点「查看详情」，关掉后能回到推荐层。 */
+.detail-mask {
+  z-index: 1000;
+}
+
+/* 推荐弹层：标题固定在顶部，只有下面的列表滚动。
+   这样不管列表多长，弹层高度都是确定的，不会出现「顶部卡片被切一半、标题看不见」。 */
+.recommend-panel {
+  /* 滚动交给里面的 scroll-view，弹层自己不滚 */
+  overflow: hidden;
+}
+
+/* ⚠️ 小程序 scroll-view 必须有「确定高度」才能滚动 ——
+   用 flex / max-height 撑不出高度，内容会被直接剪断、滚不动。
+   和 My.vue 弹层里的 .modal-list 是同一个坑，所以这里写死一个 vh 值。 */
+.recommend-scroll {
+  height: 58vh;
+}
+
+/* 列表底部留一点空隙，免得最后一张卡片贴着弹层底边 */
+.recommend-scroll .popup-content {
+  padding-bottom: 16rpx;
+}
+
+/* 推荐弹层里的卡片：主列表那张是固定 400rpx 高（为了让列表整齐），
+   弹层里底端还要多一行匹配度，所以改成按内容自适应，否则会被裁掉 */
+.recommend-card {
+  height: auto;
+}
+
+/* 卡片底端的匹配度 */
+.match-score {
+  margin-top: 14rpx;
+  padding-top: 14rpx;
+  border-top: 1rpx solid #edf0f5;
+  text-align: center;
+}
+
+.match-score-value {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #2f80ed;
 }
 </style>

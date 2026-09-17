@@ -17,11 +17,20 @@ const { buildPoolFromUsers } = require('./match')
  *   POST /api/trial/remove    把卡片移出待试课
  *
  * 试课状态机（存在 trial_records.status）：
- *   pending  待试课（初始状态）
- *   formal   转正式（反馈选了「愿意」）
- *   rejected 已拒绝（反馈选了「不愿意」等）
+ *   pending  待试课（初始状态；双方都还没反馈，或有一方选了「需要调整后再试一次」退回来）
+ *   formal   转正式（双方都反馈且都选了「愿意」）
+ *   rejected 已拒绝（任一方选了「不愿意」等，两边一起解除、卡片回匹配池）
  *   removed  手动移除（用户自己从待试课移出）
  * 其中 pending / formal 算「活跃」状态，会出现在列表里。
+ *
+ * ⚠️ 双确认（2026-09-17 用户明确要求）：无论一方选了什么，卡片都停在 待试课，
+ *    直到【双方都提交反馈】才做最终判定：
+ *      双方都「愿意」             → 转正式（formal）
+ *      任一方「需要调整后再试一次」 → 退回待试课（pending），双方选择清空、重新来一轮
+ *      任一方「不愿意 / 其他」     → 两边都拒绝（rejected），卡片回匹配池
+ *    一方先提交时：只记录 TA 的选择，卡片对双方都保持 待试课 不动，
+ *    仅在该用户自己的卡片上加「已反馈·等待对方」小标记，不移动、不解除。
+ *    这套双确认只作用于试课反馈，日常反馈（daily.js）不受影响。
  */
 // 判断试课记录是否处于活跃状态（pending 待试课 / formal 已转正式）。
 const isActiveStatus = (status) => ['pending', 'formal'].includes(status)
@@ -113,6 +122,17 @@ const syncPartnerRecord = (records = [], openid = '', role = 'family', cardId = 
       }
       item.updatedAt = new Date().toISOString()
     }
+  })
+}
+
+// 取「对方那条镜像记录」里活跃的（pending / formal），用于读取对方已选的 continueChoice。
+const getPartnerActiveRecords = (records = [], openid = '', role = 'family', cardId = '') => {
+  const partner = getPartnerLocator(openid, role, cardId)
+  return records.filter((item) => {
+    return item.openid === partner.openid &&
+      item.role === partner.role &&
+      String(item.cardId) === String(partner.cardId) &&
+      isActiveStatus(item.status)
   })
 }
 
@@ -212,6 +232,7 @@ const saveTrialFeedbackRow = async ({
 //   2. 按时间倒序排
 //   3. 同一张卡片去重，只保留最新一条 —— 每张卡片在列表里只出现一次
 //   4. 按 status 拆成 pending（待试课）/ formal（已转正式）两个数组
+//   5. pending 卡片带上 iSubmitted 标记：当前用户自己是否已提交过反馈（等待对方中）
 const buildTrialListPayload = (openid = '', role = 'family', records = []) => {
   const activeRecords = records
     .filter((item) => item.openid === openid && item.role === role && isActiveStatus(item.status))
@@ -232,7 +253,7 @@ const buildTrialListPayload = (openid = '', role = 'family', records = []) => {
     seenCardIds.add(cardKey)
 
     if (item.status === 'pending') {
-      pending.push(item.cardData)
+      pending.push({ ...item.cardData, iSubmitted: !!item.continueChoice })
       return
     }
 
@@ -276,8 +297,15 @@ const applyTrial = async (body = {}) => {
 
     latestActiveRecord.cardData = targetCard// 用最新的资料覆盖卡片快照
     latestActiveRecord.updatedAt = new Date().toISOString()
-    // 同步给被申请方：对方联系页也要能看到这张卡片（存的是申请人自己的卡片）
-    ensurePartnerRecord(records, { openid, role, cardId, partnerCard: applicantCard, status: latestActiveRecord.status, continueChoice: latestActiveRecord.continueChoice })
+    // 同步给被申请方：对方联系页也要能看到这张卡片（存的是申请人自己的卡片）。
+    ensurePartnerRecord(records, {
+      openid,
+      role,
+      cardId,
+      partnerCard: applicantCard,
+      status: latestActiveRecord.status,
+      continueChoice: latestActiveRecord.continueChoice
+    })
     await writeUnifiedDb(db)
 
     return {
@@ -348,9 +376,14 @@ const getTrialList = async (openid = '', role = 'family') => {
 
 // 提交试课反馈：POST /api/trial/feedback
 // body: { openid, role, cardId, continueChoice: 反馈里的继续意愿, feedback: 完整反馈对象 }
-// 做两件事：
-//   1. 更新该卡片所有活跃试课记录的状态（状态机转换见文件头）
-//   2. 把这次反馈原文 INSERT 进对应的反馈表，供管理后台查看
+// 双确认机制（2026-09-17 用户明确要求）：无论一方选了什么，卡片都停在 待试课，
+//   直到【双方都提交反馈】才做最终判定：
+//     双方都「愿意」              → 转正式（formal）
+//     任一方「需要调整后再试一次」 → 退回待试课（pending），双方选择清空、重新来一轮
+//     任一方「不愿意 / 其他」      → 两边都拒绝（rejected），卡片回匹配池
+//   一方先提交时：只记录 TA 的选择（continueChoice），卡片对双方都保持 pending 不动；
+//   只有当对方镜像记录也已带非空 continueChoice（即对方也交了）才计算最终结局。
+//   另外把这次反馈原文 INSERT 进对应的反馈表，供管理后台查看。
 const submitTrialFeedback = async (body = {}) => {
   const {
     role = 'family',
@@ -368,22 +401,62 @@ const submitTrialFeedback = async (body = {}) => {
     .slice()
     .sort((left, right) => getRecordTime(right) - getRecordTime(left))[0] || { id: '', cardData: {} }
 
-  let nextStatus = 'rejected'// 默认结局是拒绝
+  const now = new Date().toISOString()
 
-  if (continueChoice === '愿意') {// 愿意 → 转正式
-    nextStatus = 'formal'
-  } else if (continueChoice === '需要调整后再试一次') {// 需调整 → 打回待试课
-    nextStatus = 'pending'
-  }
-
-  activeRecords.forEach((item) => {// 同一卡片的活跃记录统一改状态
+  // 1) 先记录「我」这一侧的反馈选择，但【暂不改动状态】——卡片继续停在待试课。
+  activeRecords.forEach((item) => {
     item.continueChoice = continueChoice
-    item.status = nextStatus
-    item.updatedAt = new Date().toISOString()
+    item.updatedAt = now
   })
 
-  // 同步给被申请方：两端卡片状态保持一致（待试课 / 正式 / 拒绝）
-  syncPartnerRecord(records, openid, role, cardId, { status: nextStatus, continueChoice })
+  // 2) 看对方那条镜像记录是否也已经填过反馈（continueChoice 非空 = 对方交了）。
+  const partnerActiveRecords = getPartnerActiveRecords(records, openid, role, cardId)
+    .slice()
+    .sort((left, right) => getRecordTime(right) - getRecordTime(left))
+  const partnerRecord = partnerActiveRecords[0]
+  const partnerChoice = partnerRecord?.continueChoice || ''
+  const bothSubmitted = !!partnerChoice// 对方也交了 → 双方都已反馈
+
+  // 3) 只有双方都反馈了，才决定最终走向；否则卡片状态不变（仍 pending）。
+  let nextStatus = 'pending'
+  if (bothSubmitted) {
+    if (continueChoice === '愿意' && partnerChoice === '愿意') {
+      // 双方都愿意 → 一起转正式
+      nextStatus = 'formal'
+      activeRecords.forEach((item) => {
+        item.status = 'formal'
+        item.updatedAt = now
+      })
+      partnerActiveRecords.forEach((item) => {
+        item.status = 'formal'
+        item.updatedAt = now
+      })
+    } else if (continueChoice === '需要调整后再试一次' || partnerChoice === '需要调整后再试一次') {
+      // 任一方想调整 → 退回待试课，双方选择清空，重新来一轮
+      nextStatus = 'pending'
+      activeRecords.forEach((item) => {
+        item.continueChoice = ''
+        item.status = 'pending'
+        item.updatedAt = now
+      })
+      partnerActiveRecords.forEach((item) => {
+        item.continueChoice = ''
+        item.status = 'pending'
+        item.updatedAt = now
+      })
+    } else {
+      // 任一方不愿意 / 其他 → 两边都拒绝，卡片回匹配池
+      nextStatus = 'rejected'
+      activeRecords.forEach((item) => {
+        item.status = 'rejected'
+        item.updatedAt = now
+      })
+      partnerActiveRecords.forEach((item) => {
+        item.status = 'rejected'
+        item.updatedAt = now
+      })
+    }
+  }
 
   await writeUnifiedDb(db)// 先落库试课记录的变更
 
@@ -403,8 +476,9 @@ const submitTrialFeedback = async (body = {}) => {
 
   return {
     success: true,
-    message: '反馈已保存',
+    message: bothSubmitted ? '双方反馈已齐，已更新状态' : '反馈已保存，等待对方反馈',
     status: nextStatus,
+    bothSubmitted,
     ...buildTrialListPayload(openid, role, records)
   }
 }

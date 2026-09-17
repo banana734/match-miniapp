@@ -73,6 +73,73 @@
     </view>
     </view>
 
+    <!-- 待对方反馈：我已提交试课反馈「愿意」，等对方提交。
+         双方都愿意才会转进下面的「正式上课」，所以这个框只在有卡片时才出现 -->
+    <view v-if="userStore.profileCompleted && waitingCount > 0" class="card card-gap-20 card-mb-18 section-panel">
+      <view class="summary-top">
+        <text class="section-title section-title-sm">待对方反馈</text>
+        <text class="count-badge">{{ waitingCount }}</text>
+      </view>
+
+      <view class="trial-list">
+        <view v-for="(item, cardIndex) in waitingList" :key="`waiting-${item.id}`" class="match-card">
+        <view class="match-top">
+          <view class="match-top-left">
+            <view class="card-index">{{ cardIndex + 1 }}</view>
+            <view class="match-heading">
+              <text class="match-name">{{ item.title }}</text>
+              <text class="match-subtitle">{{ item.subtitle }}</text>
+            </view>
+          </view>
+          <view class="match-top-right">
+            <text class="match-badge waiting-badge">待对方反馈</text>
+            <view class="popup-close remove-btn" @tap="removeTrialCard(item.id)">移除</view>
+          </view>
+        </view>
+
+        <view class="match-info">
+          <view v-for="(row, rowIndex) in pairLines(item.preview)" :key="`waiting-${item.id}-row-${rowIndex}`" class="info-row">
+            <view v-for="line in row" :key="line.label" class="line-block">
+              <text class="line-label">{{ line.label }}</text>
+
+              <view v-if="line.kind === 'single'" class="capsule-row">
+                <text class="capsule capsule-single">{{ line.value }}</text>
+              </view>
+
+              <view v-else-if="line.kind === 'multi'" class="capsule-row">
+                <text
+                  v-for="(choice, index) in previewList(line.items)"
+                  :key="`${line.label}-waiting-${index}`"
+                  class="capsule capsule-multi"
+                >
+                  {{ choice }}
+                </text>
+              </view>
+
+              <view v-else-if="line.kind === 'sort'" class="capsule-row capsule-column">
+                <view
+                  v-for="(choice, index) in previewList(line.items, 2)"
+                  :key="`${line.label}-waiting-${index}`"
+                  class="capsule capsule-sort"
+                >
+                  <text v-if="choice !== '...'" class="sort-index">{{ index + 1 }}</text>
+                  <text class="sort-text">{{ choice }}</text>
+                </view>
+              </view>
+
+              <text v-else class="field-text">{{ line.value }}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 等对方反馈期间不能再提交试课反馈，只剩查看详情 -->
+        <view class="match-actions">
+          <view class="action-btn primary" @tap="openDetail(item)">查看详细</view>
+        </view>
+      </view>
+    </view>
+    </view>
+
     <view v-if="userStore.profileCompleted" class="card card-gap-20 card-mb-18 section-panel">
       <view class="summary-top">
         <text class="section-title section-title-sm">正式上课</text>
@@ -142,7 +209,7 @@
     </view>
 
     <view v-if="showDetailPopup && activeItem" class="popup-mask" @tap="closeDetail">
-      <view class="popup-panel" @tap.stop>
+      <view class="popup-panel detail-panel" @tap.stop>
         <view class="popup-header">
           <view class="popup-header-left">
             <text class="popup-title">{{ activeItem.title }}</text>
@@ -212,9 +279,14 @@ const goHome = () => {
   uni.switchTab({ url: '/pages/home/home' })
 }
 
-// 待试课列表与数量（直接读取全局仓库，由本页 loadTrialList 拉取后写入）
-const trialLessonList = computed(() => userStore.pendingTrialCards)
+// 待试课列表与数量（直接读取全局仓库，由本页 loadTrialList 拉取后写入）。
+// 后端返回的 pending 卡片带 iSubmitted 标记：true = 我已经填过试课反馈、在等对方，
+// 这类卡不放进「待试课」，而是放进下面的「待对方反馈」。
+const trialLessonList = computed(() => userStore.pendingTrialCards.filter((item) => !item.iSubmitted))
 const trialLessonCount = computed(() => trialLessonList.value.length)
+// 待对方反馈列表与数量：我已提交反馈、等对方提交；双方都交了卡片才会正式变动
+const waitingList = computed(() => userStore.pendingTrialCards.filter((item) => item.iSubmitted))
+const waitingCount = computed(() => waitingList.value.length)
 // 正式上课列表与数量
 const formalClassList = computed(() => userStore.formalClassCards)
 const formalClassCount = computed(() => formalClassList.value.length)
@@ -375,5 +447,11 @@ onShow(() => {
 .section-empty {
   padding: 20rpx 0 8rpx;
   text-align: center;
+}
+
+/* 「待对方反馈」徽章：琥珀色，跟待试课的红、正式上课的绿区分开 */
+.waiting-badge {
+  background: #fff4e8;
+  color: #d97706;
 }
 </style>

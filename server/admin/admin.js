@@ -34,7 +34,7 @@ const mentorColumns = [
   { key: 'college', label: '学院', kind: 'text' },
   { key: 'wechat', label: '微信号', kind: 'text' },
   { key: 'mentor_subjects_json', label: '擅长科目', kind: 'multi' },
-  { key: 'mentor_teaching_grade_range', label: '意向教学年级', kind: 'text' },
+  { key: 'mentor_teaching_grade_range_json', label: '意向教学年级段', kind: 'multi' },
   { key: 'mentor_style_types_json', label: '风格类型', kind: 'multi' },
   { key: 'mentor_teaching_modes_json', label: '上课方式', kind: 'multi' },
   { key: 'mentor_summer_location', label: '暑假所在地', kind: 'text' },

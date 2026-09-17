@@ -1,0 +1,8901 @@
+[
+  {
+    "id": "trial-1784959680466",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0e3gfhll2gZD8i4Tvtll2m4XrI0gfhlG",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-0e3gfhll2gZD8i4Tvtll2m4XrI0gfhlG",
+      "badge": "家庭",
+      "title": "小米",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "5"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "5"
+        },
+        {
+          "label": "微信号",
+          "value": "5"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市锦江区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "非常希望，这有助于提高学习效率。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "完全理解并认同，相信其专业性。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "55"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "5"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市锦江区"
+    },
+    "created_at": "2026-07-02T14:08:00.000Z",
+    "updated_at": "2026-05-30T22:19:39.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1784959708181",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+      "badge": "家庭",
+      "title": "小苹果",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小苹果"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "55"
+        },
+        {
+          "label": "微信号",
+          "value": "55"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市金牛区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "基础知识不牢固"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型",
+            "启发引导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "55"
+        },
+        {
+          "label": "额外备注",
+          "value": "555"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市金牛区"
+    },
+    "created_at": "2026-07-02T14:08:28.000Z",
+    "updated_at": "2026-05-30T22:19:39.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1784960345090",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8",
+      "badge": "骨干成员",
+      "title": "香蕉",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "香蕉"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大三"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "软件工程"
+        },
+        {
+          "label": "学院",
+          "value": "软件学院"
+        },
+        {
+          "label": "微信号",
+          "value": "5555"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "生物",
+            "政治"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "高中"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "鼓励启发型",
+            "灵活应变型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "梅州"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "成都"
+        },
+        {
+          "label": "上课频率",
+          "value": "每周一次"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "生物",
+            "政治"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "高中"
+        }
+      ],
+      "subtitle": "四川大学 · 软件工程"
+    },
+    "created_at": "2026-07-02T14:19:05.000Z",
+    "updated_at": "2026-05-30T22:19:17.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1784960729299",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+    "status": "rejected",
+    "continue_choice": "不愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+      "badge": "家庭",
+      "title": "小苹果",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小苹果"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "55"
+        },
+        {
+          "label": "微信号",
+          "value": "55"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市金牛区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "基础知识不牢固"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型",
+            "启发引导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "55"
+        },
+        {
+          "label": "额外备注",
+          "value": "555"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市金牛区"
+    },
+    "created_at": "2026-07-02T14:25:29.000Z",
+    "updated_at": "2026-05-30T22:26:06.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1784960730442",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0e3gfhll2gZD8i4Tvtll2m4XrI0gfhlG",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-0e3gfhll2gZD8i4Tvtll2m4XrI0gfhlG",
+      "badge": "家庭",
+      "title": "小米",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "5"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "5"
+        },
+        {
+          "label": "微信号",
+          "value": "5"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市锦江区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "非常希望，这有助于提高学习效率。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "完全理解并认同，相信其专业性。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "55"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "5"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市锦江区"
+    },
+    "created_at": "2026-07-02T14:25:30.000Z",
+    "updated_at": "2026-05-30T22:25:54.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1784960775377",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+      "badge": "家庭",
+      "title": "小苹果",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小苹果"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "55"
+        },
+        {
+          "label": "微信号",
+          "value": "55"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市金牛区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "基础知识不牢固"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型",
+            "启发引导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "55"
+        },
+        {
+          "label": "额外备注",
+          "value": "555"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市金牛区"
+    },
+    "created_at": "2026-07-02T14:26:15.000Z",
+    "updated_at": "2026-05-30T23:19:29.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1784964300798",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0e3s4RGa1cDy7M0jdPFa1c8yYM0s4RGY",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0e3s4RGa1cDy7M0jdPFa1c8yYM0s4RGY",
+      "badge": "普通成员",
+      "title": "对对对",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "对对对"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "5"
+        },
+        {
+          "label": "专业",
+          "value": "5"
+        },
+        {
+          "label": "学院",
+          "value": "5"
+        },
+        {
+          "label": "微信号",
+          "value": "5"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "5"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "鼓励启发型",
+            "灵活应变型",
+            "结构化引导型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "5"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "5"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "5"
+        }
+      ],
+      "subtitle": "5 · 5"
+    },
+    "created_at": "2026-07-02T15:25:00.000Z",
+    "updated_at": "2026-06-03T20:59:21.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1784964301100",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+      "badge": "骨干成员",
+      "title": "卢生",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "卢生"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "8"
+        },
+        {
+          "label": "专业",
+          "value": "8"
+        },
+        {
+          "label": "学院",
+          "value": "8"
+        },
+        {
+          "label": "微信号",
+          "value": "8"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "灵活应变型",
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "8"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "8"
+        },
+        {
+          "label": "上课频率",
+          "value": "8"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        }
+      ],
+      "subtitle": "8 · 8"
+    },
+    "created_at": "2026-07-02T15:25:01.000Z",
+    "updated_at": "2026-06-01T17:04:25.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1784965756024",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0c3fBp0006DVNW1Nfo000Lh49k4fBp0N",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-0c3fBp0006DVNW1Nfo000Lh49k4fBp0N",
+      "badge": "家庭",
+      "title": "回合",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "回合"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "5"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "5"
+        },
+        {
+          "label": "微信号",
+          "value": "5"
+        },
+        {
+          "label": "常住区域",
+          "value": "5"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "解题思路不清晰，方法欠缺",
+            "对科目缺乏兴趣，动力不足",
+            "其他：5"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "系统讲解型",
+            "问题向导型",
+            "启发引导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "5"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "5"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "5"
+    },
+    "created_at": "2026-07-02T15:49:16.000Z",
+    "updated_at": "2026-05-31T08:15:27.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1785042173437",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1784999000363-3j81jb6p",
+    "status": "pending",
+    "continue_choice": "需要调整后再试一次",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1784999000363-3j81jb6p",
+      "badge": "家庭",
+      "title": "卢智泓",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "卢智泓"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "15007742584"
+        },
+        {
+          "label": "微信号",
+          "value": "asdf"
+        },
+        {
+          "label": "常住区域",
+          "value": "广西"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "解题思路不清晰，方法欠缺",
+            "对科目缺乏兴趣，动力不足",
+            "学习效率低，容易拖延"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "鼓励陪伴型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "完全理解并认同，相信其专业性。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "商量"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "无"
+        },
+        {
+          "label": "额外备注",
+          "value": "无"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "广西"
+    },
+    "created_at": "2026-07-08T05:02:53.000Z",
+    "updated_at": "2026-06-08T13:24:00.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1785042701290",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1785042113258-iqyi6n5p",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1785042113258-iqyi6n5p",
+      "badge": "骨干成员",
+      "title": "真实测试",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "真实测试"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大三"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "人工智能"
+        },
+        {
+          "label": "学院",
+          "value": "人工智能"
+        },
+        {
+          "label": "微信号",
+          "value": "sdsabab"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "生物",
+            "政治",
+            "历史"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "5"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "鼓励启发型",
+            "灵活应变型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "梧州"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "成都"
+        },
+        {
+          "label": "上课频率",
+          "value": "商量"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "生物",
+            "政治",
+            "历史"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "5"
+        }
+      ],
+      "subtitle": "四川大学 · 人工智能"
+    },
+    "created_at": "2026-07-09T21:11:41.000Z",
+    "updated_at": "2026-06-10T05:31:30.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1785043462857",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785042644023-ugs60ojj",
+    "status": "rejected",
+    "continue_choice": "不愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785042644023-ugs60ojj",
+      "badge": "家庭",
+      "title": "小孩",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小孩"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "f"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "f"
+        },
+        {
+          "label": "微信号",
+          "value": "f"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市高新区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学",
+            "数学",
+            "英语",
+            "政治"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "学习效率低，容易拖延",
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "f"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "f"
+        },
+        {
+          "label": "额外备注",
+          "value": "f"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "f"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学",
+            "数学",
+            "英语",
+            "政治"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市高新区"
+    },
+    "created_at": "2026-07-11T13:24:22.000Z",
+    "updated_at": "2026-06-09T05:24:37.000Z",
+    "openid": ""
+  },
+  {
+    "id": "trial-1785044714688",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1785043393047-s0lh0fuj",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1785043393047-s0lh0fuj",
+      "badge": "普通成员",
+      "title": "卢智浩",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "卢智浩"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大三"
+        },
+        {
+          "label": "学校",
+          "value": "g"
+        },
+        {
+          "label": "专业",
+          "value": "g"
+        },
+        {
+          "label": "学院",
+          "value": "g"
+        },
+        {
+          "label": "微信号",
+          "value": "g"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "数学",
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "g"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型",
+            "情感支持型",
+            "灵活应变型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "g"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "g"
+        },
+        {
+          "label": "上课频率",
+          "value": "g"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "数学",
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "g"
+        }
+      ],
+      "subtitle": "g · g"
+    },
+    "created_at": "2026-07-13T21:45:14.000Z",
+    "updated_at": "2026-06-11T13:45:27.000Z",
+    "openid": "dev-openid-client-1785044661567-j5d1adqh"
+  },
+  {
+    "id": "trial-1789449626986",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+    "status": "terminated",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+      "badge": "骨干成员",
+      "title": "卢生",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "卢生"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "8"
+        },
+        {
+          "label": "专业",
+          "value": "8"
+        },
+        {
+          "label": "学院",
+          "value": "8"
+        },
+        {
+          "label": "微信号",
+          "value": "8"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "灵活应变型",
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "8"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "8"
+        },
+        {
+          "label": "上课频率",
+          "value": "8"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        }
+      ],
+      "subtitle": "8 · 8"
+    },
+    "created_at": "2026-09-14T21:20:26.000Z",
+    "updated_at": "2026-08-19T21:20:43.000Z",
+    "openid": "dev-openid-client-1789449585184-gcey804g"
+  },
+  {
+    "id": "trial-1789450387584",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1789449585184-gcey804g",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1789449585184-gcey804g",
+      "badge": "家庭",
+      "title": "ttt",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "ttt"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "t"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "t"
+        },
+        {
+          "label": "微信号",
+          "value": "t"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市青羊区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "讲解清晰有条理，能化繁为简"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "课后能与我简单沟通本次辅导内容和孩子表现。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "基本了解，愿意尝试。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "t"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "t"
+        },
+        {
+          "label": "额外备注",
+          "value": "t"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "t"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市青羊区"
+    },
+    "created_at": "2026-09-14T21:33:07.000Z",
+    "updated_at": "2026-09-06T06:14:10.000Z",
+    "openid": "dev-openid-client-1789450300455-7ve2svkj"
+  },
+  {
+    "id": "trial-1789450416023",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044767504-gcg4ir94",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044767504-gcg4ir94",
+      "badge": "家庭",
+      "title": "111",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "111"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1"
+        },
+        {
+          "label": "微信号",
+          "value": "1"
+        },
+        {
+          "label": "常住区域",
+          "value": "1"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "考试时容易紧张，发挥失常"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "认真负责，守时，沟通及时",
+            "有耐心，善于鼓励，不轻易发脾气"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "不太需要，主要辅导好知识点即可"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "1"
+        },
+        {
+          "label": "额外备注",
+          "value": "1"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "1"
+    },
+    "created_at": "2026-09-14T21:33:36.000Z",
+    "updated_at": "2026-08-21T05:33:36.000Z",
+    "openid": "dev-openid-client-1789450300455-7ve2svkj"
+  },
+  {
+    "id": "trial-1789482291775",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1789449585184-gcey804g",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1789449585184-gcey804g",
+      "badge": "家庭",
+      "title": "ttt",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "ttt"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "t"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "t"
+        },
+        {
+          "label": "微信号",
+          "value": "t"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市青羊区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "讲解清晰有条理，能化繁为简"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "课后能与我简单沟通本次辅导内容和孩子表现。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "基本了解，愿意尝试。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "t"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "t"
+        },
+        {
+          "label": "额外备注",
+          "value": "t"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "t"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市青羊区"
+    },
+    "created_at": "2026-09-15T06:24:51.000Z",
+    "updated_at": "2026-09-04T14:10:55.000Z",
+    "openid": "dev-openid-client-1789482263819-ey12ipnt"
+  },
+  {
+    "id": "trial-1789482292018",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044767504-gcg4ir94",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044767504-gcg4ir94",
+      "badge": "家庭",
+      "title": "111",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "111"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1"
+        },
+        {
+          "label": "微信号",
+          "value": "1"
+        },
+        {
+          "label": "常住区域",
+          "value": "1"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "考试时容易紧张，发挥失常"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "认真负责，守时，沟通及时",
+            "有耐心，善于鼓励，不轻易发脾气"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "不太需要，主要辅导好知识点即可"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "1"
+        },
+        {
+          "label": "额外备注",
+          "value": "1"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "1"
+    },
+    "created_at": "2026-09-15T06:24:52.000Z",
+    "updated_at": "2026-09-04T22:10:56.000Z",
+    "openid": "dev-openid-client-1789482263819-ey12ipnt"
+  },
+  {
+    "id": "trial-1789482292229",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044661567-j5d1adqh",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044661567-j5d1adqh",
+      "badge": "家庭",
+      "title": "哈哈哈",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "哈哈哈"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1500742584"
+        },
+        {
+          "label": "微信号",
+          "value": "afaf"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市锦江区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "学习效率低，容易拖延",
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "鼓励陪伴型",
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "5"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市锦江区"
+    },
+    "created_at": "2026-09-15T06:24:52.000Z",
+    "updated_at": "2026-08-26T01:54:35.000Z",
+    "openid": "dev-openid-client-1789482263819-ey12ipnt"
+  },
+  {
+    "id": "trial-1789560285030",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1789449585184-gcey804g",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1789449585184-gcey804g",
+      "badge": "家庭",
+      "title": "ttt",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "ttt"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "t"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "t"
+        },
+        {
+          "label": "微信号",
+          "value": "t"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市青羊区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "讲解清晰有条理，能化繁为简"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "课后能与我简单沟通本次辅导内容和孩子表现。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "基本了解，愿意尝试。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "t"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "t"
+        },
+        {
+          "label": "额外备注",
+          "value": "t"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "t"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市青羊区"
+    },
+    "created_at": "2026-09-16T04:04:45.000Z",
+    "updated_at": "2026-08-30T12:52:40.000Z",
+    "openid": "dev-openid-client-1789560203315-q4zsvi37"
+  },
+  {
+    "id": "trial-1789560285659",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044767504-gcg4ir94",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044767504-gcg4ir94",
+      "badge": "家庭",
+      "title": "111",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "111"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1"
+        },
+        {
+          "label": "微信号",
+          "value": "1"
+        },
+        {
+          "label": "常住区域",
+          "value": "1"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "考试时容易紧张，发挥失常"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "认真负责，守时，沟通及时",
+            "有耐心，善于鼓励，不轻易发脾气"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "不太需要，主要辅导好知识点即可"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "1"
+        },
+        {
+          "label": "额外备注",
+          "value": "1"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "1"
+    },
+    "created_at": "2026-09-16T04:04:45.000Z",
+    "updated_at": "2026-09-10T08:11:08.000Z",
+    "openid": "dev-openid-client-1789560203315-q4zsvi37"
+  },
+  {
+    "id": "trial-1789561109165",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785043845394-5vdletqp",
+    "status": "pending",
+    "continue_choice": "需要调整后再试一次",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785043845394-5vdletqp",
+      "badge": "家庭",
+      "title": "777777777",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "777777777"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "77"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "77"
+        },
+        {
+          "label": "微信号",
+          "value": "7"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市高新区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺",
+            "学习效率低，容易拖延"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "7"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "7"
+        },
+        {
+          "label": "额外备注",
+          "value": "7"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "77"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市高新区"
+    },
+    "created_at": "2026-09-16T04:18:29.000Z",
+    "updated_at": "2026-09-10T16:11:20.000Z",
+    "openid": "dev-openid-client-1789560203315-q4zsvi37"
+  },
+  {
+    "id": "trial-1789561109841",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785042644023-ugs60ojj",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785042644023-ugs60ojj",
+      "badge": "家庭",
+      "title": "小孩",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小孩"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "f"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "f"
+        },
+        {
+          "label": "微信号",
+          "value": "f"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市高新区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学",
+            "数学",
+            "英语",
+            "政治"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "学习效率低，容易拖延",
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "f"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "f"
+        },
+        {
+          "label": "额外备注",
+          "value": "f"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "f"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学",
+            "数学",
+            "英语",
+            "政治"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市高新区"
+    },
+    "created_at": "2026-09-16T04:18:29.000Z",
+    "updated_at": "2026-09-11T09:21:19.000Z",
+    "openid": "dev-openid-client-1789560203315-q4zsvi37"
+  },
+  {
+    "id": "trial-1789563160209-9qwpi3",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+    "status": "removed",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+      "badge": "骨干成员",
+      "title": "2026.9.16",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "2026.9.16"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "软件工程"
+        },
+        {
+          "label": "学院",
+          "value": "软件学院"
+        },
+        {
+          "label": "微信号",
+          "value": "33"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "3"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "3"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "44"
+        },
+        {
+          "label": "上课频率",
+          "value": "88"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "3"
+        }
+      ],
+      "subtitle": "四川大学 · 软件工程"
+    },
+    "created_at": "2026-09-16T04:52:40.000Z",
+    "updated_at": "2026-08-30T12:52:40.000Z",
+    "openid": "dev-openid-client-1789449585184-gcey804g"
+  },
+  {
+    "id": "trial-1789563344923",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044661567-j5d1adqh",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044661567-j5d1adqh",
+      "badge": "家庭",
+      "title": "哈哈哈",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "哈哈哈"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1500742584"
+        },
+        {
+          "label": "微信号",
+          "value": "afaf"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市锦江区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "学习效率低，容易拖延",
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "鼓励陪伴型",
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "5"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市锦江区"
+    },
+    "created_at": "2026-09-16T04:55:44.000Z",
+    "updated_at": "2026-08-31T04:55:44.000Z",
+    "openid": "dev-openid-client-1789560203315-q4zsvi37"
+  },
+  {
+    "id": "trial-1789563344923-7id1e7",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+      "badge": "骨干成员",
+      "title": "2026.9.16",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "2026.9.16"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "软件工程"
+        },
+        {
+          "label": "学院",
+          "value": "软件学院"
+        },
+        {
+          "label": "微信号",
+          "value": "33"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "3"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "3"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "44"
+        },
+        {
+          "label": "上课频率",
+          "value": "88"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "3"
+        }
+      ],
+      "subtitle": "四川大学 · 软件工程"
+    },
+    "created_at": "2026-09-16T04:55:44.000Z",
+    "updated_at": "2026-08-31T04:55:44.000Z",
+    "openid": "dev-openid-client-1785044661567-j5d1adqh"
+  },
+  {
+    "id": "trial-1789563704309-nn4ff2",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+      "badge": "骨干成员",
+      "title": "2026.9.16",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "2026.9.16"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "软件工程"
+        },
+        {
+          "label": "学院",
+          "value": "软件学院"
+        },
+        {
+          "label": "微信号",
+          "value": "33"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "3"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "3"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "44"
+        },
+        {
+          "label": "上课频率",
+          "value": "88"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "3"
+        }
+      ],
+      "subtitle": "四川大学 · 软件工程"
+    },
+    "created_at": "2026-09-16T05:01:44.000Z",
+    "updated_at": "2026-09-11T09:21:19.000Z",
+    "openid": "dev-openid-client-1785042644023-ugs60ojj"
+  },
+  {
+    "id": "trial-1789565029575",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1784999000363-3j81jb6p",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1784999000363-3j81jb6p",
+      "badge": "家庭",
+      "title": "卢智泓",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "卢智泓"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "15007742584"
+        },
+        {
+          "label": "微信号",
+          "value": "asdf"
+        },
+        {
+          "label": "常住区域",
+          "value": "广西"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "解题思路不清晰，方法欠缺",
+            "对科目缺乏兴趣，动力不足",
+            "学习效率低，容易拖延"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "鼓励陪伴型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "完全理解并认同，相信其专业性。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "商量"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "无"
+        },
+        {
+          "label": "额外备注",
+          "value": "无"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "广西"
+    },
+    "created_at": "2026-09-16T05:23:49.000Z",
+    "updated_at": "2026-09-02T05:23:49.000Z",
+    "openid": "dev-openid-client-1789560203315-q4zsvi37"
+  },
+  {
+    "id": "trial-1789565029575-2jjdte",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1789560203315-q4zsvi37",
+      "badge": "骨干成员",
+      "title": "2026.9.16",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "2026.9.16"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "软件工程"
+        },
+        {
+          "label": "学院",
+          "value": "软件学院"
+        },
+        {
+          "label": "微信号",
+          "value": "33"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "3"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "3"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "44"
+        },
+        {
+          "label": "上课频率",
+          "value": "88"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "3"
+        }
+      ],
+      "subtitle": "四川大学 · 软件工程"
+    },
+    "created_at": "2026-09-16T05:23:49.000Z",
+    "updated_at": "2026-09-02T05:23:49.000Z",
+    "openid": "dev-openid-client-1784999000363-3j81jb6p"
+  },
+  {
+    "id": "trial-1789565686636",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1789482263819-ey12ipnt",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1789482263819-ey12ipnt",
+      "badge": "普通成员",
+      "title": "方法",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "方法"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "女"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "k"
+        },
+        {
+          "label": "专业",
+          "value": "k"
+        },
+        {
+          "label": "学院",
+          "value": "h"
+        },
+        {
+          "label": "微信号",
+          "value": "h"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "h"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "h"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "h"
+        },
+        {
+          "label": "上课频率",
+          "value": "h"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "女"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "h"
+        }
+      ],
+      "subtitle": "k · k"
+    },
+    "created_at": "2026-09-16T05:34:46.000Z",
+    "updated_at": "2026-09-02T21:35:17.000Z",
+    "openid": "dev-openid-client-1784999000363-3j81jb6p"
+  },
+  {
+    "id": "trial-1789565686636-d6lvkv",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1784999000363-3j81jb6p",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1784999000363-3j81jb6p",
+      "badge": "家庭",
+      "title": "卢智泓",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "卢智泓"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "15007742584"
+        },
+        {
+          "label": "微信号",
+          "value": "asdf"
+        },
+        {
+          "label": "常住区域",
+          "value": "广西"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "解题思路不清晰，方法欠缺",
+            "对科目缺乏兴趣，动力不足",
+            "学习效率低，容易拖延"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "鼓励陪伴型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "完全理解并认同，相信其专业性。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "商量"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "无"
+        },
+        {
+          "label": "额外备注",
+          "value": "无"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "广西"
+    },
+    "created_at": "2026-09-16T05:34:46.000Z",
+    "updated_at": "2026-09-02T21:35:17.000Z",
+    "openid": "dev-openid-client-1789482263819-ey12ipnt"
+  },
+  {
+    "id": "trial-1789566918564",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785043845394-5vdletqp",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785043845394-5vdletqp",
+      "badge": "家庭",
+      "title": "777777777",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "777777777"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "77"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "77"
+        },
+        {
+          "label": "微信号",
+          "value": "7"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市高新区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺",
+            "学习效率低，容易拖延"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "7"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "7"
+        },
+        {
+          "label": "额外备注",
+          "value": "7"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "77"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市高新区"
+    },
+    "created_at": "2026-09-16T05:55:18.000Z",
+    "updated_at": "2026-09-03T13:55:56.000Z",
+    "openid": "dev-openid-client-1789482263819-ey12ipnt"
+  },
+  {
+    "id": "trial-1789566918564-z9jhmv",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1789482263819-ey12ipnt",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1789482263819-ey12ipnt",
+      "badge": "普通成员",
+      "title": "方法",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "方法"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "女"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "k"
+        },
+        {
+          "label": "专业",
+          "value": "k"
+        },
+        {
+          "label": "学院",
+          "value": "h"
+        },
+        {
+          "label": "微信号",
+          "value": "h"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "h"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "h"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "h"
+        },
+        {
+          "label": "上课频率",
+          "value": "h"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "女"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "h"
+        }
+      ],
+      "subtitle": "k · k"
+    },
+    "created_at": "2026-09-16T05:55:18.000Z",
+    "updated_at": "2026-09-03T13:55:56.000Z",
+    "openid": "dev-openid-client-1785043845394-5vdletqp"
+  },
+  {
+    "id": "trial-1789567849860",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0c3fBp0006DVNW1Nfo000Lh49k4fBp0N",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-0c3fBp0006DVNW1Nfo000Lh49k4fBp0N",
+      "badge": "家庭",
+      "title": "回合",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "回合"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "5"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "5"
+        },
+        {
+          "label": "微信号",
+          "value": "5"
+        },
+        {
+          "label": "常住区域",
+          "value": "5"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "解题思路不清晰，方法欠缺",
+            "对科目缺乏兴趣，动力不足",
+            "其他：5"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "系统讲解型",
+            "问题向导型",
+            "启发引导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "5"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "5"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "5"
+    },
+    "created_at": "2026-09-16T06:10:49.000Z",
+    "updated_at": "2026-09-04T06:10:54.000Z",
+    "openid": "dev-openid-client-1789482263819-ey12ipnt"
+  },
+  {
+    "id": "trial-1789567849861-5mllpw",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1789482263819-ey12ipnt",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1789482263819-ey12ipnt",
+      "badge": "普通成员",
+      "title": "方法",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "方法"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "女"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "k"
+        },
+        {
+          "label": "专业",
+          "value": "k"
+        },
+        {
+          "label": "学院",
+          "value": "h"
+        },
+        {
+          "label": "微信号",
+          "value": "h"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "h"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "h"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "h"
+        },
+        {
+          "label": "上课频率",
+          "value": "h"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "女"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "h"
+        }
+      ],
+      "subtitle": "k · k"
+    },
+    "created_at": "2026-09-16T06:10:49.000Z",
+    "updated_at": "2026-09-04T06:10:54.000Z",
+    "openid": "dev-openid-0c3fBp0006DVNW1Nfo000Lh49k4fBp0N"
+  },
+  {
+    "id": "trial-1789567861960",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+      "badge": "家庭",
+      "title": "小苹果",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小苹果"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "55"
+        },
+        {
+          "label": "微信号",
+          "value": "55"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市金牛区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "基础知识不牢固"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型",
+            "启发引导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "55"
+        },
+        {
+          "label": "额外备注",
+          "value": "555"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市金牛区"
+    },
+    "created_at": "2026-09-16T06:11:01.000Z",
+    "updated_at": "2026-09-05T06:11:01.000Z",
+    "openid": "dev-openid-client-1789482263819-ey12ipnt"
+  },
+  {
+    "id": "trial-1789567861960-fbot2t",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1789482263819-ey12ipnt",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1789482263819-ey12ipnt",
+      "badge": "普通成员",
+      "title": "方法",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "方法"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "女"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "k"
+        },
+        {
+          "label": "专业",
+          "value": "k"
+        },
+        {
+          "label": "学院",
+          "value": "h"
+        },
+        {
+          "label": "微信号",
+          "value": "h"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "h"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "h"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "h"
+        },
+        {
+          "label": "上课频率",
+          "value": "h"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "女"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "h"
+        }
+      ],
+      "subtitle": "k · k"
+    },
+    "created_at": "2026-09-16T06:11:01.000Z",
+    "updated_at": "2026-09-05T06:11:01.000Z",
+    "openid": "dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH"
+  },
+  {
+    "id": "trial-1789573592281",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044661567-j5d1adqh",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044661567-j5d1adqh",
+      "badge": "家庭",
+      "title": "哈哈哈",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "哈哈哈"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1500742584"
+        },
+        {
+          "label": "微信号",
+          "value": "afaf"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市锦江区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "学习效率低，容易拖延",
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "鼓励陪伴型",
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "5"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市锦江区"
+    },
+    "created_at": "2026-09-16T07:46:32.000Z",
+    "updated_at": "2026-09-07T15:46:32.000Z",
+    "openid": "dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P"
+  },
+  {
+    "id": "trial-1789573592281-qbqubr",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+      "badge": "骨干成员",
+      "title": "卢生",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "卢生"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "8"
+        },
+        {
+          "label": "专业",
+          "value": "8"
+        },
+        {
+          "label": "学院",
+          "value": "8"
+        },
+        {
+          "label": "微信号",
+          "value": "8"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "灵活应变型",
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "8"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "8"
+        },
+        {
+          "label": "上课频率",
+          "value": "8"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        }
+      ],
+      "subtitle": "8 · 8"
+    },
+    "created_at": "2026-09-16T07:46:32.000Z",
+    "updated_at": "2026-09-07T15:46:32.000Z",
+    "openid": "dev-openid-client-1785044661567-j5d1adqh"
+  },
+  {
+    "id": "trial-1789573594853",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1784999000363-3j81jb6p",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1784999000363-3j81jb6p",
+      "badge": "家庭",
+      "title": "卢智泓",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "卢智泓"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "15007742584"
+        },
+        {
+          "label": "微信号",
+          "value": "asdf"
+        },
+        {
+          "label": "常住区域",
+          "value": "广西"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "解题思路不清晰，方法欠缺",
+            "对科目缺乏兴趣，动力不足",
+            "学习效率低，容易拖延"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "鼓励陪伴型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "完全理解并认同，相信其专业性。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "商量"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "无"
+        },
+        {
+          "label": "额外备注",
+          "value": "无"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "广西"
+    },
+    "created_at": "2026-09-16T07:46:34.000Z",
+    "updated_at": "2026-09-07T23:46:34.000Z",
+    "openid": "dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P"
+  },
+  {
+    "id": "trial-1789573594853-dhw6le",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+      "badge": "骨干成员",
+      "title": "卢生",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "卢生"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "8"
+        },
+        {
+          "label": "专业",
+          "value": "8"
+        },
+        {
+          "label": "学院",
+          "value": "8"
+        },
+        {
+          "label": "微信号",
+          "value": "8"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "灵活应变型",
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "8"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "8"
+        },
+        {
+          "label": "上课频率",
+          "value": "8"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        }
+      ],
+      "subtitle": "8 · 8"
+    },
+    "created_at": "2026-09-16T07:46:34.000Z",
+    "updated_at": "2026-09-07T23:46:34.000Z",
+    "openid": "dev-openid-client-1784999000363-3j81jb6p"
+  },
+  {
+    "id": "trial-1789573595571",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785039392408-t1wbg02d",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785039392408-t1wbg02d",
+      "badge": "家庭",
+      "title": "笑笑",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "笑笑"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小妮"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学六年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "15007742584"
+        },
+        {
+          "label": "微信号",
+          "value": "safadvsfbs"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市锦江区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "生物",
+            "政治",
+            "历史"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "解题思路不清晰，方法欠缺",
+            "学习效率低，容易拖延",
+            "对科目缺乏兴趣，动力不足"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "鼓励陪伴型",
+            "系统讲解型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "每周一次"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "无"
+        },
+        {
+          "label": "额外备注",
+          "value": "无"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小妮"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学六年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "生物",
+            "政治",
+            "历史"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市锦江区"
+    },
+    "created_at": "2026-09-16T07:46:35.000Z",
+    "updated_at": "2026-09-08T07:46:35.000Z",
+    "openid": "dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P"
+  },
+  {
+    "id": "trial-1789573595571-qcnecc",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+      "badge": "骨干成员",
+      "title": "卢生",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "卢生"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "8"
+        },
+        {
+          "label": "专业",
+          "value": "8"
+        },
+        {
+          "label": "学院",
+          "value": "8"
+        },
+        {
+          "label": "微信号",
+          "value": "8"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "灵活应变型",
+            "鼓励启发型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "8"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "8"
+        },
+        {
+          "label": "上课频率",
+          "value": "8"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "语文",
+            "生物"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "8"
+        }
+      ],
+      "subtitle": "8 · 8"
+    },
+    "created_at": "2026-09-16T07:46:35.000Z",
+    "updated_at": "2026-09-08T07:46:35.000Z",
+    "openid": "dev-openid-client-1785039392408-t1wbg02d"
+  },
+  {
+    "id": "trial-1789574247368",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1789449585184-gcey804g",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1789449585184-gcey804g",
+      "badge": "家庭",
+      "title": "ttt",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "ttt"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "t"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "t"
+        },
+        {
+          "label": "微信号",
+          "value": "t"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市青羊区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "讲解清晰有条理，能化繁为简"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "课后能与我简单沟通本次辅导内容和孩子表现。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "基本了解，愿意尝试。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "t"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "t"
+        },
+        {
+          "label": "额外备注",
+          "value": "t"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "t"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市青羊区"
+    },
+    "created_at": "2026-09-16T07:57:27.000Z",
+    "updated_at": "2026-09-13T10:26:59.000Z",
+    "openid": "dev-openid-client-1784996196015-qec9q95u"
+  },
+  {
+    "id": "trial-1789574247368-n6u5k0",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+    "status": "removed",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+      "badge": "普通成员",
+      "title": "真机调试账号",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "真机调试账号"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "s"
+        },
+        {
+          "label": "学院",
+          "value": "s"
+        },
+        {
+          "label": "微信号",
+          "value": "s"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "s"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "s"
+        },
+        {
+          "label": "上课频率",
+          "value": "s"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        }
+      ],
+      "subtitle": "四川大学 · s"
+    },
+    "created_at": "2026-09-16T07:57:27.000Z",
+    "updated_at": "2026-09-13T10:26:59.000Z",
+    "openid": "dev-openid-client-1789449585184-gcey804g"
+  },
+  {
+    "id": "trial-1789574248418",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044767504-gcg4ir94",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044767504-gcg4ir94",
+      "badge": "家庭",
+      "title": "111",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "111"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1"
+        },
+        {
+          "label": "微信号",
+          "value": "1"
+        },
+        {
+          "label": "常住区域",
+          "value": "1"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "考试时容易紧张，发挥失常"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "认真负责，守时，沟通及时",
+            "有耐心，善于鼓励，不轻易发脾气"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "不太需要，主要辅导好知识点即可"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "1"
+        },
+        {
+          "label": "额外备注",
+          "value": "1"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "1"
+    },
+    "created_at": "2026-09-16T07:57:28.000Z",
+    "updated_at": "2026-09-09T23:57:45.000Z",
+    "openid": "dev-openid-client-1784996196015-qec9q95u"
+  },
+  {
+    "id": "trial-1789574248418-1ycyv1",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+      "badge": "普通成员",
+      "title": "真机调试账号",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "真机调试账号"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "s"
+        },
+        {
+          "label": "学院",
+          "value": "s"
+        },
+        {
+          "label": "微信号",
+          "value": "s"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "s"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "s"
+        },
+        {
+          "label": "上课频率",
+          "value": "s"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        }
+      ],
+      "subtitle": "四川大学 · s"
+    },
+    "created_at": "2026-09-16T07:57:28.000Z",
+    "updated_at": "2026-09-09T23:57:45.000Z",
+    "openid": "dev-openid-client-1785044767504-gcg4ir94"
+  },
+  {
+    "id": "trial-1789609162906",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1785043393047-s0lh0fuj",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1785043393047-s0lh0fuj",
+      "badge": "普通成员",
+      "title": "卢智浩",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "卢智浩"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大三"
+        },
+        {
+          "label": "学校",
+          "value": "g"
+        },
+        {
+          "label": "专业",
+          "value": "g"
+        },
+        {
+          "label": "学院",
+          "value": "g"
+        },
+        {
+          "label": "微信号",
+          "value": "g"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "数学",
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "g"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "鼓励启发型",
+            "情感支持型",
+            "灵活应变型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "g"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "g"
+        },
+        {
+          "label": "上课频率",
+          "value": "g"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "数学",
+            "化学"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "g"
+        }
+      ],
+      "subtitle": "g · g"
+    },
+    "created_at": "2026-09-16T17:39:22.000Z",
+    "updated_at": "2026-09-12T01:39:22.000Z",
+    "openid": "dev-openid-client-1785042644023-ugs60ojj"
+  },
+  {
+    "id": "trial-1789609162908-7bq0jy",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785042644023-ugs60ojj",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785042644023-ugs60ojj",
+      "badge": "家庭",
+      "title": "小孩",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小孩"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "f"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "f"
+        },
+        {
+          "label": "微信号",
+          "value": "f"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市高新区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学",
+            "数学",
+            "英语",
+            "政治"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "学习效率低，容易拖延",
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "f"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "f"
+        },
+        {
+          "label": "额外备注",
+          "value": "f"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "f"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学",
+            "数学",
+            "英语",
+            "政治"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市高新区"
+    },
+    "created_at": "2026-09-16T17:39:22.000Z",
+    "updated_at": "2026-09-12T01:39:22.000Z",
+    "openid": "dev-openid-client-1785043393047-s0lh0fuj"
+  },
+  {
+    "id": "trial-1789609163554",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1785042113258-iqyi6n5p",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1785042113258-iqyi6n5p",
+      "badge": "骨干成员",
+      "title": "真实测试",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "真实测试"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大三"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "人工智能"
+        },
+        {
+          "label": "学院",
+          "value": "人工智能"
+        },
+        {
+          "label": "微信号",
+          "value": "sdsabab"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "生物",
+            "政治",
+            "历史"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "5"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "鼓励启发型",
+            "灵活应变型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "梧州"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "成都"
+        },
+        {
+          "label": "上课频率",
+          "value": "商量"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "生物",
+            "政治",
+            "历史"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "5"
+        }
+      ],
+      "subtitle": "四川大学 · 人工智能"
+    },
+    "created_at": "2026-09-16T17:39:23.000Z",
+    "updated_at": "2026-09-12T09:39:23.000Z",
+    "openid": "dev-openid-client-1785042644023-ugs60ojj"
+  },
+  {
+    "id": "trial-1789609163554-3cml6b",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785042644023-ugs60ojj",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785042644023-ugs60ojj",
+      "badge": "家庭",
+      "title": "小孩",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小孩"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "f"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "f"
+        },
+        {
+          "label": "微信号",
+          "value": "f"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市高新区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学",
+            "数学",
+            "英语",
+            "政治"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "学习效率低，容易拖延",
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "f"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "f"
+        },
+        {
+          "label": "额外备注",
+          "value": "f"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "f"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "化学",
+            "数学",
+            "英语",
+            "政治"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市高新区"
+    },
+    "created_at": "2026-09-16T17:39:23.000Z",
+    "updated_at": "2026-09-12T09:39:23.000Z",
+    "openid": "dev-openid-client-1785042113258-iqyi6n5p"
+  },
+  {
+    "id": "trial-1789612027676",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044661567-j5d1adqh",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044661567-j5d1adqh",
+      "badge": "家庭",
+      "title": "哈哈哈",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "哈哈哈"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1500742584"
+        },
+        {
+          "label": "微信号",
+          "value": "afaf"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市锦江区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "学习效率低，容易拖延",
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "鼓励陪伴型",
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "5"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市锦江区"
+    },
+    "created_at": "2026-09-16T18:27:07.000Z",
+    "updated_at": "2026-09-14T18:27:39.000Z",
+    "openid": "dev-openid-client-1784996196015-qec9q95u"
+  },
+  {
+    "id": "trial-1789612027676-xwnmw9",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+    "status": "formal",
+    "continue_choice": "愿意",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+      "badge": "普通成员",
+      "title": "真机调试账号",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "真机调试账号"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "s"
+        },
+        {
+          "label": "学院",
+          "value": "s"
+        },
+        {
+          "label": "微信号",
+          "value": "s"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "s"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "s"
+        },
+        {
+          "label": "上课频率",
+          "value": "s"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        }
+      ],
+      "subtitle": "四川大学 · s"
+    },
+    "created_at": "2026-09-16T18:27:07.000Z",
+    "updated_at": "2026-09-14T18:27:39.000Z",
+    "openid": "dev-openid-client-1785044661567-j5d1adqh"
+  },
+  {
+    "id": "trial-1789612029159",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785043845394-5vdletqp",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785043845394-5vdletqp",
+      "badge": "家庭",
+      "title": "777777777",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "777777777"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "77"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "77"
+        },
+        {
+          "label": "微信号",
+          "value": "7"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市高新区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺",
+            "学习效率低，容易拖延"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯",
+            "性格开朗，有亲和力，能调动孩子积极性"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "7"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "7"
+        },
+        {
+          "label": "额外备注",
+          "value": "7"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "77"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学一年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "英语",
+            "化学",
+            "生物"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市高新区"
+    },
+    "created_at": "2026-09-16T18:27:09.000Z",
+    "updated_at": "2026-09-14T02:27:09.000Z",
+    "openid": "dev-openid-client-1784996196015-qec9q95u"
+  },
+  {
+    "id": "trial-1789612029159-y6oghw",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+      "badge": "普通成员",
+      "title": "真机调试账号",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "真机调试账号"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "s"
+        },
+        {
+          "label": "学院",
+          "value": "s"
+        },
+        {
+          "label": "微信号",
+          "value": "s"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "s"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "s"
+        },
+        {
+          "label": "上课频率",
+          "value": "s"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        }
+      ],
+      "subtitle": "四川大学 · s"
+    },
+    "created_at": "2026-09-16T18:27:09.000Z",
+    "updated_at": "2026-09-14T02:27:09.000Z",
+    "openid": "dev-openid-client-1785043845394-5vdletqp"
+  },
+  {
+    "id": "trial-1789612036639",
+    "role": "mentor",
+    "card_id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+      "badge": "家庭",
+      "title": "小苹果",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "小苹果"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "55"
+        },
+        {
+          "label": "微信号",
+          "value": "55"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市金牛区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "基础知识不牢固"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "问题向导型",
+            "启发引导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "55"
+        },
+        {
+          "label": "额外备注",
+          "value": "555"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "dd"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "生物",
+            "化学",
+            "英语",
+            "数学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市金牛区"
+    },
+    "created_at": "2026-09-16T18:27:16.000Z",
+    "updated_at": "2026-09-14T10:27:16.000Z",
+    "openid": "dev-openid-client-1784996196015-qec9q95u"
+  },
+  {
+    "id": "trial-1789612036639-xyzr9v",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1784996196015-qec9q95u",
+      "badge": "普通成员",
+      "title": "真机调试账号",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "真机调试账号"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "否"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大二"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "s"
+        },
+        {
+          "label": "学院",
+          "value": "s"
+        },
+        {
+          "label": "微信号",
+          "value": "s"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "s"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "s"
+        },
+        {
+          "label": "上课频率",
+          "value": "s"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "否"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "s"
+        }
+      ],
+      "subtitle": "四川大学 · s"
+    },
+    "created_at": "2026-09-16T18:27:16.000Z",
+    "updated_at": "2026-09-14T10:27:16.000Z",
+    "openid": "dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH"
+  },
+  {
+    "id": "trial-1789613060087",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044767504-gcg4ir94",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044767504-gcg4ir94",
+      "badge": "家庭",
+      "title": "111",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "111"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1"
+        },
+        {
+          "label": "微信号",
+          "value": "1"
+        },
+        {
+          "label": "常住区域",
+          "value": "1"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "解题思路不清晰，方法欠缺",
+            "考试时容易紧张，发挥失常"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "能帮助孩子建立良好的学习习惯",
+            "认真负责，守时，沟通及时",
+            "有耐心，善于鼓励，不轻易发脾气"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "问题向导型",
+            "鼓励陪伴型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "紧跟学校进度，预习复习，解答作业疑问"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "不太需要，主要辅导好知识点即可"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "除非有特殊情况，否则不需要额外沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线下",
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "1"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "1"
+        },
+        {
+          "label": "额外备注",
+          "value": "1"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "1"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学四年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "语文",
+            "绘画"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "1"
+    },
+    "created_at": "2026-09-16T18:44:20.000Z",
+    "updated_at": "2026-09-15T02:44:20.000Z",
+    "openid": "dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8"
+  },
+  {
+    "id": "trial-1789613060087-0wutbw",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8",
+      "badge": "骨干成员",
+      "title": "香蕉",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "香蕉"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大三"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "软件工程"
+        },
+        {
+          "label": "学院",
+          "value": "软件学院"
+        },
+        {
+          "label": "微信号",
+          "value": "5555"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "生物",
+            "政治"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "高中"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "鼓励启发型",
+            "灵活应变型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "梅州"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "成都"
+        },
+        {
+          "label": "上课频率",
+          "value": "每周一次"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "生物",
+            "政治"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "高中"
+        }
+      ],
+      "subtitle": "四川大学 · 软件工程"
+    },
+    "created_at": "2026-09-16T18:44:20.000Z",
+    "updated_at": "2026-09-15T02:44:20.000Z",
+    "openid": "dev-openid-client-1785044767504-gcg4ir94"
+  },
+  {
+    "id": "trial-1789613060556",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1785044661567-j5d1adqh",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1785044661567-j5d1adqh",
+      "badge": "家庭",
+      "title": "哈哈哈",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "哈哈哈"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "1500742584"
+        },
+        {
+          "label": "微信号",
+          "value": "afaf"
+        },
+        {
+          "label": "常住区域",
+          "value": "四川省成都市锦江区"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "学习效率低，容易拖延",
+            "对科目缺乏兴趣，动力不足",
+            "解题思路不清晰，方法欠缺"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "讲解清晰有条理，能化繁为简",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "鼓励陪伴型",
+            "启发引导型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "查缺补漏，专项攻克孩子的薄弱环节"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "希望了解更多细节。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "愿意积极配合。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "5"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "5"
+        },
+        {
+          "label": "额外备注",
+          "value": "5"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "小米"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "语文",
+            "英语",
+            "化学",
+            "体育"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "四川省成都市锦江区"
+    },
+    "created_at": "2026-09-16T18:44:20.000Z",
+    "updated_at": "2026-09-15T10:44:20.000Z",
+    "openid": "dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8"
+  },
+  {
+    "id": "trial-1789613060556-sn8g4t",
+    "role": "family",
+    "card_id": "mentor-dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8",
+      "badge": "骨干成员",
+      "title": "香蕉",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "香蕉"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大三"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "软件工程"
+        },
+        {
+          "label": "学院",
+          "value": "软件学院"
+        },
+        {
+          "label": "微信号",
+          "value": "5555"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "生物",
+            "政治"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "高中"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "鼓励启发型",
+            "灵活应变型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "梅州"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "成都"
+        },
+        {
+          "label": "上课频率",
+          "value": "每周一次"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "生物",
+            "政治"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "高中"
+        }
+      ],
+      "subtitle": "四川大学 · 软件工程"
+    },
+    "created_at": "2026-09-16T18:44:20.000Z",
+    "updated_at": "2026-09-15T10:44:20.000Z",
+    "openid": "dev-openid-client-1785044661567-j5d1adqh"
+  },
+  {
+    "id": "trial-1789616614481",
+    "role": "family",
+    "card_id": "mentor-dev-openid-client-1785042113258-iqyi6n5p",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "mentor-dev-openid-client-1785042113258-iqyi6n5p",
+      "badge": "骨干成员",
+      "title": "真实测试",
+      "details": [
+        {
+          "label": "姓名",
+          "value": "真实测试"
+        },
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "骨干成员",
+          "value": "是"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "大三"
+        },
+        {
+          "label": "学校",
+          "value": "四川大学"
+        },
+        {
+          "label": "专业",
+          "value": "人工智能"
+        },
+        {
+          "label": "学院",
+          "value": "人工智能"
+        },
+        {
+          "label": "微信号",
+          "value": "sdsabab"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "生物",
+            "政治",
+            "历史"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "5"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "情感支持型",
+            "鼓励启发型",
+            "灵活应变型"
+          ],
+          "label": "风格类型"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上",
+            "线下"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "暑假所在地",
+          "value": "梧州"
+        },
+        {
+          "label": "开学后所在地",
+          "value": "成都"
+        },
+        {
+          "label": "上课频率",
+          "value": "商量"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "性别",
+          "value": "男"
+        },
+        {
+          "kind": "single",
+          "label": "项目参与",
+          "value": "是"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学",
+            "生物",
+            "政治",
+            "历史"
+          ],
+          "label": "擅长科目"
+        },
+        {
+          "label": "意向教学年级",
+          "value": "5"
+        }
+      ],
+      "subtitle": "四川大学 · 人工智能"
+    },
+    "created_at": "2026-09-16T19:43:34.000Z",
+    "updated_at": "2026-09-16T19:43:39.000Z",
+    "openid": "dev-openid-client-1784999000363-3j81jb6p"
+  },
+  {
+    "id": "trial-1789616614481-w1gk94",
+    "role": "mentor",
+    "card_id": "family-dev-openid-client-1784999000363-3j81jb6p",
+    "status": "pending",
+    "continue_choice": "",
+    "card_data_json": {
+      "id": "family-dev-openid-client-1784999000363-3j81jb6p",
+      "badge": "家庭",
+      "title": "卢智泓",
+      "details": [
+        {
+          "label": "孩子姓名",
+          "value": "卢智泓"
+        },
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "label": "电话号码",
+          "value": "15007742584"
+        },
+        {
+          "label": "微信号",
+          "value": "asdf"
+        },
+        {
+          "label": "常住区域",
+          "value": "广西"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "基础知识不牢固",
+            "解题思路不清晰，方法欠缺",
+            "对科目缺乏兴趣，动力不足",
+            "学习效率低，容易拖延"
+          ],
+          "label": "学习困难"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "学科知识扎实，讲题能力强",
+            "讲解清晰有条理，能化繁为简",
+            "有耐心，善于鼓励，不轻易发脾气",
+            "能帮助孩子建立良好的学习习惯"
+          ],
+          "label": "老师特质"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "启发引导型",
+            "鼓励陪伴型",
+            "问题向导型"
+          ],
+          "label": "教学风格"
+        },
+        {
+          "kind": "single",
+          "label": "辅导侧重点",
+          "value": "能力拓展，进行拔高训练，提升思维深度"
+        },
+        {
+          "kind": "single",
+          "label": "关注学习状态",
+          "value": "可以接受，顺其自然。"
+        },
+        {
+          "kind": "single",
+          "label": "沟通期望",
+          "value": "定期（如每周/每月）有一次详细沟通。"
+        },
+        {
+          "kind": "single",
+          "label": "项目理解",
+          "value": "完全理解并认同，相信其专业性。"
+        },
+        {
+          "kind": "single",
+          "label": "反馈意愿",
+          "value": "需了解具体内容和频率后再决定。"
+        },
+        {
+          "kind": "multi",
+          "items": [
+            "线上"
+          ],
+          "label": "上课方式"
+        },
+        {
+          "label": "上课频率",
+          "value": "商量"
+        },
+        {
+          "label": "过往辅导经历",
+          "value": "无"
+        },
+        {
+          "label": "额外备注",
+          "value": "无"
+        }
+      ],
+      "preview": [
+        {
+          "kind": "single",
+          "label": "孩子性别",
+          "value": "男"
+        },
+        {
+          "label": "家长称呼",
+          "value": "卢"
+        },
+        {
+          "kind": "single",
+          "label": "年级",
+          "value": "小学二年级"
+        },
+        {
+          "kind": "sort",
+          "items": [
+            "数学",
+            "英语",
+            "化学"
+          ],
+          "label": "需要辅导科目"
+        }
+      ],
+      "subtitle": "广西"
+    },
+    "created_at": "2026-09-16T19:43:34.000Z",
+    "updated_at": "2026-09-16T19:43:39.000Z",
+    "openid": "dev-openid-client-1785042113258-iqyi6n5p"
+  }
+]

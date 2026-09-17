@@ -14,6 +14,7 @@ const {
   readUnifiedDb,
   getUserRecords
 } = require('../utils/unified-db')
+const { scoreProfiles } = require('../utils/match-score')
 
 // 保证结果是数组：过滤掉空值，非数组输入返回 []。
 const list = (items = []) => {
@@ -149,7 +150,7 @@ const buildMentorCard = (user = {}) => {
       single('性别', profile.gender),
       single('项目参与', profile.mentorProject),
       sort('擅长科目', mentorSubjectItems),
-      plain('意向教学年级', profile.mentorTeachingGradeRange)
+      multi('意向教学年级段', profile.mentorTeachingGradeRange)
     ],
     details: [
       plain('姓名', profile.name),
@@ -162,7 +163,7 @@ const buildMentorCard = (user = {}) => {
       plain('学院', profile.college),
       plain('微信号', profile.wechat),
       sort('擅长科目', mentorSubjectItems),
-      plain('意向教学年级', profile.mentorTeachingGradeRange),
+      multi('意向教学年级段', profile.mentorTeachingGradeRange),
       multi('风格类型', profile.mentorStyleTypes),
       multi('上课方式', profile.mentorTeachingModes),
       plain('暑假所在地', profile.mentorSummerLocation),
@@ -233,8 +234,63 @@ const getMyMatchCard = async (openid = '', role = 'family') => {
   }
 }
 
+// 我自己名下处于活跃状态（待试课 / 正式上课）的卡片 id 集合。
+// 这些卡片已经申请过了，不再进推荐 —— 和前端 visiblePool 的隐藏规则保持一致，
+// 免得推荐里出现一张点「进行试课」会说「已存在」的卡。
+const getActiveCardIds = (db = {}, openid = '', role = 'family') => {
+  const records = db.trialRecords || []
+  const activeIds = records
+    .filter((item) => item.openid === openid && item.role === role)
+    .filter((item) => ['pending', 'formal'].includes(item.status))
+    .map((item) => String(item.cardId))
+
+  return new Set(activeIds)
+}
+
+// 推荐匹配：GET /api/match/recommend?openid=xxx&role=mentor&limit=5
+// 给对侧的每一张卡片算一个匹配分，按分数从高到低取前 limit 张。
+// 卡片结构和 /api/match/list 完全一样，只是多带一个 matchScore（0~1），
+// 前端拿它直接显示「匹配度 xx%」。
+const getRecommendedList = async (openid = '', role = 'family', limit = 5) => {
+  const db = await readUnifiedDb()
+  const users = getUserRecords(db)
+  const me = users.find((item) => item.openid === openid && item.role === role)
+
+  // 自己还没填资料就没法算分，返回空列表让前端显示空状态
+  if (!me || !me.profile) {
+    return {
+      success: true,
+      role,
+      list: []
+    }
+  }
+
+  const oppositeRole = role === 'mentor' ? 'family' : 'mentor'
+  const hiddenIds = getActiveCardIds(db, openid, role)
+
+  const scored = users
+    .filter((item) => item.role === oppositeRole && item.profile)
+    .map((user) => {
+      const card = role === 'mentor' ? buildFamilyCard(user) : buildMentorCard(user)
+      return {
+        ...card,
+        matchScore: scoreProfiles(role, me.profile, user.profile)
+      }
+    })
+    .filter((card) => !hiddenIds.has(String(card.id)))
+
+  scored.sort((left, right) => right.matchScore - left.matchScore)
+
+  return {
+    success: true,
+    role,
+    list: scored.slice(0, limit)
+  }
+}
+
 module.exports = {
   getMatchList,
   getMyMatchCard,
+  getRecommendedList,
   buildPoolFromUsers
 }

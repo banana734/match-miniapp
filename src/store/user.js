@@ -8,7 +8,8 @@
  *   - 登录态：token / openid / isLoggedIn / setLoginInfo
  *   - 身份：role（当前使用的身份）、boundRole（后端绑定的锁定身份，一个微信只能绑一种）
  *   - 资料：profile（家长端 / 导师端共用的字段池）、updateProfile、completeProfile
- *   - 试课：pendingTrialCards（待试课）、formalClassCards（正式上课）、
+ *   - 试课：pendingTrialCards（待试课）、
+ *           formalClassCards（正式上课）、
  *           「联系」tab 数字徽标 unreadMessageCount + syncMessageBadge + markMessageViewed
  *   - 持久化：persistUserState（写缓存）/ restoreUserState（store 创建时读缓存）
  *
@@ -57,7 +58,7 @@ export const useUserStore = defineStore('user', () => {
     gradeOther: '',//年级选「其他」时手填的具体内容（家庭端）
     mentorSubjects: [],//可辅导科目（有序多选，点击顺序=熟练度排序）（导师端）
     mentorSubjectOther: '',//科目选「其他」时手填（导师端）
-    mentorTeachingGradeRange: '',//可辅导的年级范围（导师端）
+    mentorTeachingGradeRange: [],//意向教学年级段：小学/初中/高中（多选、无序）（导师端）
     mentorStyleTypes: [],//辅导风格类型（多选）（导师端）
     mentorTeachingModes: [],//辅导形式：线上/线下（多选）（导师端）
     mentorSummerLocation: '',//暑假期间所在地（导师端）

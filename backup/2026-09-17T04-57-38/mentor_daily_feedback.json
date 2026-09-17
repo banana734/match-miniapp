@@ -1,0 +1,98 @@
+[
+  {
+    "id": "daily-mentor-1789563746086-ecs8xv",
+    "openid": "dev-openid-client-1789560203315-q4zsvi37",
+    "trial_record_id": "trial-1789561109841",
+    "card_id": "family-dev-openid-client-1785042644023-ugs60ojj",
+    "target_title": "小孩",
+    "target_subtitle": "四川省成都市高新区",
+    "class_date": "2026-09-16",
+    "class_duration": "4",
+    "satisfaction_points_json": [
+      "知识点理解到位"
+    ],
+    "satisfaction_point_other": "",
+    "objective_unsatisfied_json": [
+      "时间紧张，内容没讲完"
+    ],
+    "objective_unsatisfied_other": "",
+    "subjective_unsatisfied_json": [
+      "备课不够充分"
+    ],
+    "subjective_unsatisfied_other": "",
+    "continue_choice": "不愿意",
+    "continue_choice_other": "",
+    "status_after_feedback": "terminated",
+    "feedback_json": {
+      "classDate": "2026-09-16",
+      "classDuration": "4",
+      "continueChoice": "不愿意",
+      "satisfactionPoints": [
+        "知识点理解到位"
+      ],
+      "continueChoiceOther": "",
+      "objectiveUnsatisfied": [
+        "时间紧张，内容没讲完"
+      ],
+      "subjectiveUnsatisfied": [
+        "备课不够充分"
+      ],
+      "satisfactionPointOther": "",
+      "objectiveUnsatisfiedOther": "",
+      "subjectiveUnsatisfiedOther": ""
+    },
+    "created_at": "2026-09-16T05:02:26.000Z",
+    "updated_at": "2026-09-16T05:02:26.000Z"
+  },
+  {
+    "id": "daily-mentor-1789574279698-a5443t",
+    "openid": "dev-openid-client-1784996196015-qec9q95u",
+    "trial_record_id": "trial-1789574248418",
+    "card_id": "family-dev-openid-client-1785044767504-gcg4ir94",
+    "target_title": "111",
+    "target_subtitle": "1",
+    "class_date": "2026-09-18",
+    "class_duration": "60",
+    "satisfaction_points_json": [
+      "学习态度积极，愿意配合",
+      "能主动提问或回应"
+    ],
+    "satisfaction_point_other": "",
+    "objective_unsatisfied_json": [
+      "学生状态不佳，比较疲惫",
+      "基础薄弱，进度偏慢"
+    ],
+    "objective_unsatisfied_other": "",
+    "subjective_unsatisfied_json": [
+      "我的讲解节奏没把握好",
+      "互动不够充分"
+    ],
+    "subjective_unsatisfied_other": "",
+    "continue_choice": "愿意",
+    "continue_choice_other": "",
+    "status_after_feedback": "maintained",
+    "feedback_json": {
+      "classDate": "2026-09-18",
+      "classDuration": "60",
+      "continueChoice": "愿意",
+      "satisfactionPoints": [
+        "学习态度积极，愿意配合",
+        "能主动提问或回应"
+      ],
+      "continueChoiceOther": "",
+      "objectiveUnsatisfied": [
+        "学生状态不佳，比较疲惫",
+        "基础薄弱，进度偏慢"
+      ],
+      "subjectiveUnsatisfied": [
+        "我的讲解节奏没把握好",
+        "互动不够充分"
+      ],
+      "satisfactionPointOther": "",
+      "objectiveUnsatisfiedOther": "",
+      "subjectiveUnsatisfiedOther": ""
+    },
+    "created_at": "2026-09-16T07:57:59.000Z",
+    "updated_at": "2026-09-16T07:57:59.000Z"
+  }
+]

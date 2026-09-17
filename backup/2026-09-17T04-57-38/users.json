@@ -1,0 +1,895 @@
+[
+  {
+    "openid": "dev-openid-0b3syG000aJ0OW1t1S200Uyqib2syG0P",
+    "role": "mentor",
+    "profile_json": {
+      "name": "卢生",
+      "grade": "大二",
+      "major": "8",
+      "gender": "男",
+      "school": "8",
+      "wechat": "8",
+      "college": "8",
+      "coreMember": "是",
+      "gradeOther": "",
+      "mentorProject": "是",
+      "mentorSubjects": [
+        "数学",
+        "英语",
+        "化学",
+        "语文",
+        "生物"
+      ],
+      "mentorStyleTypes": [
+        "情感支持型",
+        "灵活应变型",
+        "鼓励启发型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线上",
+        "线下"
+      ],
+      "mentorClassFrequency": "8",
+      "mentorSchoolLocation": "8",
+      "mentorSummerLocation": "8",
+      "mentorTeachingGradeRange": "8"
+    },
+    "created_at": "2026-07-02T14:39:17.000Z",
+    "updated_at": "2026-05-30T22:39:17.000Z"
+  },
+  {
+    "openid": "dev-openid-0c3fBp0006DVNW1Nfo000Lh49k4fBp0N",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "其他",
+      "name": "回合",
+      "grade": "小学一年级",
+      "intro": "5",
+      "phone": "5",
+      "gender": "男",
+      "wechat": "5",
+      "subjects": [
+        "语文",
+        "英语",
+        "化学",
+        "生物"
+      ],
+      "areaOther": "5",
+      "extraNote": "5",
+      "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+      "classModes": [
+        "线下"
+      ],
+      "parentName": "5",
+      "difficulties": [
+        "基础知识不牢固",
+        "解题思路不清晰，方法欠缺",
+        "对科目缺乏兴趣，动力不足",
+        "其他"
+      ],
+      "subjectOther": "",
+      "learningState": "可以接受，顺其自然。",
+      "teacherTraits": [
+        "学科知识扎实，讲题能力强",
+        "有耐心，善于鼓励，不轻易发脾气",
+        "能帮助孩子建立良好的学习习惯"
+      ],
+      "understanding": "希望了解更多细节。",
+      "classFrequency": "5",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "系统讲解型",
+        "问题向导型",
+        "启发引导型"
+      ],
+      "difficultyOther": "5",
+      "feedbackWillingness": "愿意积极配合。",
+      "communicationExpectation": "除非有特殊情况，否则不需要额外沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-02T14:41:38.000Z",
+    "updated_at": "2026-05-30T22:41:38.000Z"
+  },
+  {
+    "openid": "dev-openid-0d3W21Ga1Uci7M0WI4Ja1ttwuK2W21G8",
+    "role": "mentor",
+    "profile_json": {
+      "name": "香蕉",
+      "grade": "大三",
+      "major": "软件工程",
+      "gender": "男",
+      "school": "四川大学",
+      "wechat": "5555",
+      "college": "软件学院",
+      "coreMember": "是",
+      "gradeOther": "",
+      "mentorProject": "是",
+      "mentorSubjects": [
+        "数学",
+        "英语",
+        "生物",
+        "政治"
+      ],
+      "mentorStyleTypes": [
+        "情感支持型",
+        "鼓励启发型",
+        "灵活应变型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线上",
+        "线下"
+      ],
+      "mentorClassFrequency": "每周一次",
+      "mentorSchoolLocation": "成都",
+      "mentorSummerLocation": "梅州",
+      "mentorTeachingGradeRange": "高中"
+    },
+    "created_at": "2026-07-02T01:00:07.000Z",
+    "updated_at": "2026-05-30T09:00:12.000Z"
+  },
+  {
+    "openid": "dev-openid-0e3gfhll2gZD8i4Tvtll2m4XrI0gfhlG",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "四川省成都市锦江区",
+      "name": "小米",
+      "grade": "小学一年级",
+      "intro": "5",
+      "phone": "5",
+      "gender": "男",
+      "wechat": "5",
+      "subjects": [
+        "数学"
+      ],
+      "areaOther": "",
+      "extraNote": "55",
+      "mainFocus": "紧跟学校进度，预习复习，解答作业疑问",
+      "classModes": [
+        "线上"
+      ],
+      "parentName": "5",
+      "difficulties": [
+        "基础知识不牢固",
+        "对科目缺乏兴趣，动力不足"
+      ],
+      "subjectOther": "",
+      "learningState": "非常希望，这有助于提高学习效率。",
+      "teacherTraits": [
+        "学科知识扎实，讲题能力强",
+        "有耐心，善于鼓励，不轻易发脾气",
+        "性格开朗，有亲和力，能调动孩子积极性"
+      ],
+      "understanding": "完全理解并认同，相信其专业性。",
+      "classFrequency": "5",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "启发引导型",
+        "问题向导型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "需了解具体内容和频率后再决定。",
+      "communicationExpectation": "定期（如每周/每月）有一次详细沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-02T14:07:43.000Z",
+    "updated_at": "2026-05-30T22:07:43.000Z"
+  },
+  {
+    "openid": "dev-openid-0e3s4RGa1cDy7M0jdPFa1c8yYM0s4RGY",
+    "role": "mentor",
+    "profile_json": {
+      "name": "对对对",
+      "grade": "大二",
+      "major": "5",
+      "gender": "男",
+      "school": "5",
+      "wechat": "5",
+      "college": "5",
+      "coreMember": "否",
+      "gradeOther": "",
+      "mentorProject": "是",
+      "mentorSubjects": [
+        "语文",
+        "数学",
+        "英语",
+        "化学"
+      ],
+      "mentorStyleTypes": [
+        "情感支持型",
+        "鼓励启发型",
+        "灵活应变型",
+        "结构化引导型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线上",
+        "线下"
+      ],
+      "mentorClassFrequency": "5",
+      "mentorSchoolLocation": "5",
+      "mentorSummerLocation": "5",
+      "mentorTeachingGradeRange": "5"
+    },
+    "created_at": "2026-07-02T15:24:06.000Z",
+    "updated_at": "2026-05-30T23:24:06.000Z"
+  },
+  {
+    "openid": "dev-openid-0f3cgmIa1RbbbM0IbjJa18Kril4cgmIH",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "四川省成都市金牛区",
+      "name": "小苹果",
+      "grade": "小学二年级",
+      "intro": "55",
+      "phone": "55",
+      "gender": "男",
+      "wechat": "55",
+      "subjects": [
+        "生物",
+        "化学",
+        "英语",
+        "数学"
+      ],
+      "areaOther": "",
+      "extraNote": "555",
+      "mainFocus": "能力拓展，进行拔高训练，提升思维深度",
+      "classModes": [
+        "线上",
+        "线下"
+      ],
+      "parentName": "dd",
+      "difficulties": [
+        "解题思路不清晰，方法欠缺",
+        "基础知识不牢固"
+      ],
+      "subjectOther": "",
+      "learningState": "可以接受，顺其自然。",
+      "teacherTraits": [
+        "有耐心，善于鼓励，不轻易发脾气",
+        "讲解清晰有条理，能化繁为简",
+        "能帮助孩子建立良好的学习习惯"
+      ],
+      "understanding": "希望了解更多细节。",
+      "classFrequency": "1",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "问题向导型",
+        "启发引导型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "愿意积极配合",
+      "communicationExpectation": "定期（如每周/每月）有一次详细沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-02T12:43:49.000Z",
+    "updated_at": "2026-05-30T20:43:49.000Z"
+  },
+  {
+    "openid": "dev-openid-0f3Y2ZFa1lfH8M02uWFa1u72gA2Y2ZFS",
+    "role": "mentor",
+    "profile_json": {
+      "name": "小卢",
+      "grade": "大四",
+      "major": "4",
+      "gender": "男",
+      "school": "四川大学",
+      "wechat": "4",
+      "college": "4",
+      "coreMember": "是",
+      "gradeOther": "",
+      "mentorProject": "是",
+      "mentorSubjects": [
+        "英语",
+        "数学",
+        "化学",
+        "生物",
+        "政治"
+      ],
+      "mentorStyleTypes": [
+        "情感支持型",
+        "鼓励启发型",
+        "灵活应变型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线上",
+        "线下"
+      ],
+      "mentorClassFrequency": "4",
+      "mentorSchoolLocation": "4",
+      "mentorSummerLocation": "4",
+      "mentorTeachingGradeRange": "4"
+    },
+    "created_at": "2026-07-02T14:27:18.000Z",
+    "updated_at": "2026-05-30T22:27:18.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1784996196015-qec9q95u",
+    "role": "mentor",
+    "profile_json": {
+      "name": "真机调试账号",
+      "grade": "大二",
+      "major": "s",
+      "gender": "男",
+      "school": "四川大学",
+      "wechat": "s",
+      "college": "s",
+      "coreMember": "否",
+      "gradeOther": "",
+      "mentorProject": "否",
+      "mentorSubjects": [
+        "语文"
+      ],
+      "mentorStyleTypes": [
+        "情感支持型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线下"
+      ],
+      "mentorClassFrequency": "s",
+      "mentorSchoolLocation": "s",
+      "mentorSummerLocation": "s",
+      "mentorTeachingGradeRange": "s"
+    },
+    "created_at": "2026-09-16T07:57:12.000Z",
+    "updated_at": "2026-09-08T15:57:12.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1784999000363-3j81jb6p",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "其他",
+      "name": "卢智泓",
+      "grade": "小学二年级",
+      "intro": "无",
+      "phone": "15007742584",
+      "gender": "男",
+      "wechat": "asdf",
+      "subjects": [
+        "数学",
+        "英语",
+        "化学"
+      ],
+      "areaOther": "广西",
+      "extraNote": "无",
+      "mainFocus": "能力拓展，进行拔高训练，提升思维深度",
+      "classModes": [
+        "线上"
+      ],
+      "parentName": "卢",
+      "difficulties": [
+        "基础知识不牢固",
+        "解题思路不清晰，方法欠缺",
+        "对科目缺乏兴趣，动力不足",
+        "学习效率低，容易拖延"
+      ],
+      "subjectOther": "",
+      "learningState": "可以接受，顺其自然。",
+      "teacherTraits": [
+        "学科知识扎实，讲题能力强",
+        "讲解清晰有条理，能化繁为简",
+        "有耐心，善于鼓励，不轻易发脾气",
+        "能帮助孩子建立良好的学习习惯"
+      ],
+      "understanding": "完全理解并认同，相信其专业性。",
+      "classFrequency": "商量",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "启发引导型",
+        "鼓励陪伴型",
+        "问题向导型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "需了解具体内容和频率后再决定。",
+      "communicationExpectation": "定期（如每周/每月）有一次详细沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-03T17:04:16.000Z",
+    "updated_at": "2026-06-01T01:04:16.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1785039392408-t1wbg02d",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "四川省成都市锦江区",
+      "name": "笑笑",
+      "grade": "小学六年级",
+      "intro": "无",
+      "phone": "15007742584",
+      "gender": "男",
+      "wechat": "safadvsfbs",
+      "subjects": [
+        "数学",
+        "英语",
+        "生物",
+        "政治",
+        "历史"
+      ],
+      "areaOther": "",
+      "extraNote": "无",
+      "mainFocus": "能力拓展，进行拔高训练，提升思维深度",
+      "classModes": [
+        "线上",
+        "线下"
+      ],
+      "parentName": "小妮",
+      "difficulties": [
+        "基础知识不牢固",
+        "解题思路不清晰，方法欠缺",
+        "学习效率低，容易拖延",
+        "对科目缺乏兴趣，动力不足"
+      ],
+      "subjectOther": "",
+      "learningState": "可以接受，顺其自然。",
+      "teacherTraits": [
+        "学科知识扎实，讲题能力强",
+        "讲解清晰有条理，能化繁为简",
+        "能帮助孩子建立良好的学习习惯",
+        "性格开朗，有亲和力，能调动孩子积极性"
+      ],
+      "understanding": "希望了解更多细节。",
+      "classFrequency": "每周一次",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "启发引导型",
+        "鼓励陪伴型",
+        "系统讲解型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "需了解具体内容和频率后再决定。",
+      "communicationExpectation": "除非有特殊情况，否则不需要额外沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-05T20:17:33.000Z",
+    "updated_at": "2026-06-03T04:17:33.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1785042113258-iqyi6n5p",
+    "role": "mentor",
+    "profile_json": {
+      "name": "真实测试",
+      "grade": "大三",
+      "major": "人工智能",
+      "gender": "男",
+      "school": "四川大学",
+      "wechat": "sdsabab",
+      "college": "人工智能",
+      "coreMember": "是",
+      "gradeOther": "",
+      "mentorProject": "是",
+      "mentorSubjects": [
+        "数学",
+        "英语",
+        "化学",
+        "生物",
+        "政治",
+        "历史"
+      ],
+      "mentorStyleTypes": [
+        "情感支持型",
+        "鼓励启发型",
+        "灵活应变型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线上",
+        "线下"
+      ],
+      "mentorClassFrequency": "商量",
+      "mentorSchoolLocation": "成都",
+      "mentorSummerLocation": "梧州",
+      "mentorTeachingGradeRange": "5"
+    },
+    "created_at": "2026-07-07T21:02:49.000Z",
+    "updated_at": "2026-06-05T05:02:49.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1785042644023-ugs60ojj",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "四川省成都市高新区",
+      "name": "小孩",
+      "grade": "小学四年级",
+      "intro": "f",
+      "phone": "f",
+      "gender": "男",
+      "wechat": "f",
+      "subjects": [
+        "化学",
+        "数学",
+        "英语",
+        "政治"
+      ],
+      "areaOther": "",
+      "extraNote": "f",
+      "mainFocus": "紧跟学校进度，预习复习，解答作业疑问",
+      "classModes": [
+        "线上",
+        "线下"
+      ],
+      "parentName": "f",
+      "difficulties": [
+        "解题思路不清晰，方法欠缺",
+        "学习效率低，容易拖延",
+        "基础知识不牢固",
+        "对科目缺乏兴趣，动力不足"
+      ],
+      "subjectOther": "",
+      "learningState": "可以接受，顺其自然。",
+      "teacherTraits": [
+        "能帮助孩子建立良好的学习习惯",
+        "有耐心，善于鼓励，不轻易发脾气",
+        "学科知识扎实，讲题能力强",
+        "讲解清晰有条理，能化繁为简",
+        "性格开朗，有亲和力，能调动孩子积极性"
+      ],
+      "understanding": "希望了解更多细节。",
+      "classFrequency": "f",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "启发引导型",
+        "问题向导型",
+        "鼓励陪伴型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "需了解具体内容和频率后再决定。",
+      "communicationExpectation": "除非有特殊情况，否则不需要额外沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-09T13:11:35.000Z",
+    "updated_at": "2026-06-06T21:11:35.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1785043393047-s0lh0fuj",
+    "role": "mentor",
+    "profile_json": {
+      "name": "卢智浩",
+      "grade": "大三",
+      "major": "g",
+      "gender": "男",
+      "school": "g",
+      "wechat": "g",
+      "college": "g",
+      "coreMember": "否",
+      "gradeOther": "",
+      "mentorProject": "是",
+      "mentorSubjects": [
+        "语文",
+        "数学",
+        "化学"
+      ],
+      "mentorStyleTypes": [
+        "鼓励启发型",
+        "情感支持型",
+        "灵活应变型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线下",
+        "线上"
+      ],
+      "mentorClassFrequency": "g",
+      "mentorSchoolLocation": "g",
+      "mentorSummerLocation": "g",
+      "mentorTeachingGradeRange": "g"
+    },
+    "created_at": "2026-07-10T21:23:43.000Z",
+    "updated_at": "2026-06-08T05:23:43.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1785043845394-5vdletqp",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "四川省成都市高新区",
+      "name": "777777777",
+      "grade": "小学一年级",
+      "intro": "7",
+      "phone": "77",
+      "gender": "男",
+      "wechat": "7",
+      "subjects": [
+        "语文",
+        "英语",
+        "化学",
+        "生物"
+      ],
+      "areaOther": "",
+      "extraNote": "7",
+      "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+      "classModes": [
+        "线下",
+        "线上"
+      ],
+      "parentName": "77",
+      "difficulties": [
+        "基础知识不牢固",
+        "对科目缺乏兴趣，动力不足",
+        "解题思路不清晰，方法欠缺",
+        "学习效率低，容易拖延"
+      ],
+      "subjectOther": "",
+      "learningState": "可以接受，顺其自然。",
+      "teacherTraits": [
+        "学科知识扎实，讲题能力强",
+        "讲解清晰有条理，能化繁为简",
+        "有耐心，善于鼓励，不轻易发脾气",
+        "能帮助孩子建立良好的学习习惯",
+        "性格开朗，有亲和力，能调动孩子积极性"
+      ],
+      "understanding": "希望了解更多细节。",
+      "classFrequency": "7",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "启发引导型",
+        "问题向导型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "需了解具体内容和频率后再决定。",
+      "communicationExpectation": "定期（如每周/每月）有一次详细沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-12T13:31:18.000Z",
+    "updated_at": "2026-06-09T21:31:18.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1785044661567-j5d1adqh",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "四川省成都市锦江区",
+      "name": "哈哈哈",
+      "grade": "小学二年级",
+      "intro": "5",
+      "phone": "1500742584",
+      "gender": "男",
+      "wechat": "afaf",
+      "subjects": [
+        "数学",
+        "语文",
+        "英语",
+        "化学",
+        "体育"
+      ],
+      "areaOther": "",
+      "extraNote": "5",
+      "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+      "classModes": [
+        "线上",
+        "线下"
+      ],
+      "parentName": "小米",
+      "difficulties": [
+        "基础知识不牢固",
+        "学习效率低，容易拖延",
+        "对科目缺乏兴趣，动力不足",
+        "解题思路不清晰，方法欠缺"
+      ],
+      "subjectOther": "",
+      "learningState": "可以接受，顺其自然。",
+      "teacherTraits": [
+        "学科知识扎实，讲题能力强",
+        "有耐心，善于鼓励，不轻易发脾气",
+        "讲解清晰有条理，能化繁为简",
+        "能帮助孩子建立良好的学习习惯"
+      ],
+      "understanding": "希望了解更多细节。",
+      "classFrequency": "5",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "鼓励陪伴型",
+        "启发引导型",
+        "问题向导型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "愿意积极配合。",
+      "communicationExpectation": "定期（如每周/每月）有一次详细沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-13T13:45:07.000Z",
+    "updated_at": "2026-06-10T21:45:07.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1785044767504-gcg4ir94",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "其他",
+      "name": "111",
+      "grade": "小学四年级",
+      "intro": "1",
+      "phone": "1",
+      "gender": "男",
+      "wechat": "1",
+      "subjects": [
+        "语文",
+        "绘画"
+      ],
+      "areaOther": "1",
+      "extraNote": "1",
+      "mainFocus": "紧跟学校进度，预习复习，解答作业疑问",
+      "classModes": [
+        "线下",
+        "线上"
+      ],
+      "parentName": "1",
+      "difficulties": [
+        "解题思路不清晰，方法欠缺",
+        "考试时容易紧张，发挥失常"
+      ],
+      "subjectOther": "",
+      "learningState": "不太需要，主要辅导好知识点即可",
+      "teacherTraits": [
+        "能帮助孩子建立良好的学习习惯",
+        "认真负责，守时，沟通及时",
+        "有耐心，善于鼓励，不轻易发脾气"
+      ],
+      "understanding": "希望了解更多细节。",
+      "classFrequency": "1",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "启发引导型",
+        "问题向导型",
+        "鼓励陪伴型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "愿意积极配合。",
+      "communicationExpectation": "除非有特殊情况，否则不需要额外沟通。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-07-14T21:46:39.000Z",
+    "updated_at": "2026-06-12T05:46:39.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1789449585184-gcey804g",
+    "role": "family",
+    "profile_json": {
+      "age": "",
+      "area": "四川省成都市青羊区",
+      "name": "ttt",
+      "grade": "小学一年级",
+      "intro": "t",
+      "phone": "t",
+      "gender": "男",
+      "wechat": "t",
+      "subjects": [
+        "语文",
+        "绘画"
+      ],
+      "areaOther": "",
+      "extraNote": "t",
+      "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+      "classModes": [
+        "线上"
+      ],
+      "parentName": "t",
+      "difficulties": [
+        "对科目缺乏兴趣，动力不足",
+        "解题思路不清晰，方法欠缺"
+      ],
+      "subjectOther": "",
+      "learningState": "可以接受，顺其自然。",
+      "teacherTraits": [
+        "讲解清晰有条理，能化繁为简"
+      ],
+      "understanding": "基本了解，愿意尝试。",
+      "classFrequency": "t",
+      "mainFocusOther": "",
+      "teachingStyles": [
+        "问题向导型"
+      ],
+      "difficultyOther": "",
+      "feedbackWillingness": "愿意积极配合。",
+      "communicationExpectation": "课后能与我简单沟通本次辅导内容和孩子表现。",
+      "communicationExpectationOther": ""
+    },
+    "created_at": "2026-09-14T21:20:17.000Z",
+    "updated_at": "2026-08-18T21:20:17.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1789450300455-7ve2svkj",
+    "role": "mentor",
+    "profile_json": {
+      "name": "ttt",
+      "grade": "大五",
+      "major": "e",
+      "gender": "男",
+      "school": "e",
+      "wechat": "t",
+      "college": "e",
+      "coreMember": "是",
+      "gradeOther": "",
+      "mentorProject": "否",
+      "mentorSubjects": [
+        "英语"
+      ],
+      "mentorStyleTypes": [
+        "情感支持型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线上"
+      ],
+      "mentorClassFrequency": "e",
+      "mentorSchoolLocation": "e",
+      "mentorSummerLocation": "e",
+      "mentorTeachingGradeRange": "e"
+    },
+    "created_at": "2026-09-14T21:33:05.000Z",
+    "updated_at": "2026-08-20T13:33:05.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1789482263819-ey12ipnt",
+    "role": "mentor",
+    "profile_json": {
+      "name": "方法",
+      "grade": "大二",
+      "major": "k",
+      "gender": "女",
+      "school": "k",
+      "wechat": "h",
+      "college": "h",
+      "coreMember": "否",
+      "gradeOther": "",
+      "mentorProject": "否",
+      "mentorSubjects": [
+        "化学"
+      ],
+      "mentorStyleTypes": [
+        "鼓励启发型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线上"
+      ],
+      "mentorClassFrequency": "h",
+      "mentorSchoolLocation": "h",
+      "mentorSummerLocation": "h",
+      "mentorTeachingGradeRange": "h"
+    },
+    "created_at": "2026-09-15T06:24:47.000Z",
+    "updated_at": "2026-08-22T06:24:47.000Z"
+  },
+  {
+    "openid": "dev-openid-client-1789560203315-q4zsvi37",
+    "role": "mentor",
+    "profile_json": {
+      "name": "2026.9.16",
+      "grade": "大二",
+      "major": "软件工程",
+      "gender": "男",
+      "school": "四川大学",
+      "wechat": "33",
+      "college": "软件学院",
+      "coreMember": "是",
+      "gradeOther": "",
+      "mentorProject": "是",
+      "mentorSubjects": [
+        "数学",
+        "语文"
+      ],
+      "mentorStyleTypes": [
+        "鼓励启发型"
+      ],
+      "mentorSubjectOther": "",
+      "mentorTeachingModes": [
+        "线上"
+      ],
+      "mentorClassFrequency": "88",
+      "mentorSchoolLocation": "44",
+      "mentorSummerLocation": "3",
+      "mentorTeachingGradeRange": "3"
+    },
+    "created_at": "2026-09-16T04:04:39.000Z",
+    "updated_at": "2026-08-27T20:04:39.000Z"
+  }
+]

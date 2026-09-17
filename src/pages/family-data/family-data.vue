@@ -115,6 +115,10 @@
           <text>四川省成都市青羊区</text>
         </label>
         <label class="option-item">
+          <radio value="四川省成都市成华区" :checked="form.area === '四川省成都市成华区'" />
+          <text>四川省成都市成华区</text>
+        </label>
+        <label class="option-item">
           <radio value="四川省成都市其他区县" :checked="form.area === '四川省成都市其他区县'" />
           <text>四川省成都市其他区县</text>
         </label>

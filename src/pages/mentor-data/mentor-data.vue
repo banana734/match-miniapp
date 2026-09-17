@@ -133,12 +133,26 @@
         placeholder="请输入其他擅长科目"
       />
 
-      <text class="question-label">11. 意向教学年级段</text>
-      <input
-        v-model="form.mentorTeachingGradeRange"
-        class="input"
-        placeholder="例如：小学 / 初一-初二 / 高一-高三"
-      />
+      <text class="question-label">11. 意向教学年级段（可多选）</text>
+      <view class="subject-list">
+        <view
+          v-for="stage in selectedMentorGradeRanges"
+          :key="stage"
+          class="subject-tag"
+          :class="{ active: true }"
+          @tap="toggleMentorGradeRange(stage)"
+        >
+          <text>{{ stage }}</text>
+        </view>
+        <view
+          v-for="stage in unselectedMentorGradeRanges"
+          :key="`unselected-stage-${stage}`"
+          class="subject-tag"
+          @tap="toggleMentorGradeRange(stage)"
+        >
+          <text>{{ stage }}</text>
+        </view>
+      </view>
 
       <text class="question-label">12. 风格类型</text>
       <view class="subject-list">
@@ -217,6 +231,14 @@ import { onBackPress, onLoad, onShow, onUnload } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
 // 引入后端接口基地址常量
 import { API_BASE_URL } from '@/utils/api'
+// 引入科目 / 风格类型 / 上课形式的选项 —— 和家庭端共用同一份常量，
+// 避免两边各写一份、改了一边忘了另一边（选项表不一致会让匹配算法直接对不上）
+import {
+  mentorSubjectOptions,
+  mentorStyleTypeOptions,
+  mentorTeachingModeOptions,
+  mentorTeachingGradeRangeOptions
+} from '@/constants/profile-options'
 
 // 获取全局仓库实例
 const userStore = useUserStore()
@@ -231,10 +253,11 @@ const isEditMode = () => {
   return currentPage?.options?.mode === 'edit'
 }
 
-// 导师可辅导科目、教学风格类型、授课方式的可选项
-const subjectOptions = ['语文', '数学', '英语', '化学', '生物', '政治', '历史', '体育', '绘画', '音乐', '地理', '其他']
-const mentorStyleTypeOptions = ['情感支持型', '鼓励启发型', '灵活应变型', '结构化引导型', '耐心倾听型']
-const mentorTeachingModeOptions = ['线上', '线下']
+// 「意向教学年级段」以前是自由输入框（存的是字符串），现在改成多选（存数组）。
+// 这里统一折成数组：遇到老的字符串值就丢掉，不回显 —— 避免把 "高中" 拆成 ['高','中']。
+const toStageArray = (value) => {
+  return Array.isArray(value) ? value.filter(Boolean) : []
+}
 
 // 导师资料表单：从全局仓库里的 profile 取值（允许后端回填 / 上次填写内容）
 // 数组字段必须复制一份（[...])，避免表单直接引用仓库里的数组导致双向污染
@@ -251,7 +274,7 @@ const form = reactive({
   wechat: userStore.profile.wechat || '',
   mentorSubjects: [...(userStore.profile.mentorSubjects || [])],
   mentorSubjectOther: userStore.profile.mentorSubjectOther || '',
-  mentorTeachingGradeRange: userStore.profile.mentorTeachingGradeRange || '',
+  mentorTeachingGradeRange: toStageArray(userStore.profile.mentorTeachingGradeRange),
   mentorStyleTypes: [...(userStore.profile.mentorStyleTypes || [])],
   mentorTeachingModes: [...(userStore.profile.mentorTeachingModes || [])],
   mentorSummerLocation: userStore.profile.mentorSummerLocation || '',
@@ -273,7 +296,7 @@ const syncFormFromProfile = (profile = {}) => {
   form.wechat = profile.wechat || ''
   form.mentorSubjects = [...(profile.mentorSubjects || [])]
   form.mentorSubjectOther = profile.mentorSubjectOther || ''
-  form.mentorTeachingGradeRange = profile.mentorTeachingGradeRange || ''
+  form.mentorTeachingGradeRange = toStageArray(profile.mentorTeachingGradeRange)
   form.mentorStyleTypes = [...(profile.mentorStyleTypes || [])]
   form.mentorTeachingModes = [...(profile.mentorTeachingModes || [])]
   form.mentorSummerLocation = profile.mentorSummerLocation || ''
@@ -325,11 +348,11 @@ const getMentorSubjectOrder = (subject) => {
 
 // 已选 / 未选辅导科目（供模板渲染高亮与剩余选项）
 const selectedMentorSubjects = computed(() => {
-  return form.mentorSubjects.filter((subject) => subjectOptions.includes(subject))
+  return form.mentorSubjects.filter((subject) => mentorSubjectOptions.includes(subject))
 })
 
 const unselectedMentorSubjects = computed(() => {
-  return subjectOptions.filter((subject) => !form.mentorSubjects.includes(subject))
+  return mentorSubjectOptions.filter((subject) => !form.mentorSubjects.includes(subject))
 })
 
 // 教学风格标签切换：已选则移除，未选则追加
@@ -349,6 +372,25 @@ const selectedMentorStyleTypes = computed(() => {
 
 const unselectedMentorStyleTypes = computed(() => {
   return mentorStyleTypeOptions.filter((style) => !form.mentorStyleTypes.includes(style))
+})
+
+// 意向教学年级段标签切换：已选则移除，未选则追加
+const toggleMentorGradeRange = (stage) => {
+  const index = form.mentorTeachingGradeRange.indexOf(stage)
+  if (index > -1) {
+    form.mentorTeachingGradeRange.splice(index, 1)
+    return
+  }
+  form.mentorTeachingGradeRange.push(stage)
+}
+
+// 已选 / 未选意向教学年级段
+const selectedMentorGradeRanges = computed(() => {
+  return form.mentorTeachingGradeRange.filter((stage) => mentorTeachingGradeRangeOptions.includes(stage))
+})
+
+const unselectedMentorGradeRanges = computed(() => {
+  return mentorTeachingGradeRangeOptions.filter((stage) => !form.mentorTeachingGradeRange.includes(stage))
 })
 
 // 授课方式标签切换：已选则移除，未选则追加
@@ -419,7 +461,7 @@ onShow(() => {
 
 // 表单提交：先做必填校验，再提交到后端 /profile/save
 const submitProfile = () => {
-  if (!form.name || !form.gender || !form.mentorProject || !form.coreMember || !form.grade || !form.school || !form.major || !form.college || !form.wechat || !form.mentorSubjects.length || !form.mentorTeachingGradeRange || !form.mentorStyleTypes.length || !form.mentorTeachingModes.length || !form.mentorSummerLocation || !form.mentorSchoolLocation || !form.mentorClassFrequency) {
+  if (!form.name || !form.gender || !form.mentorProject || !form.coreMember || !form.grade || !form.school || !form.major || !form.college || !form.wechat || !form.mentorSubjects.length || !form.mentorTeachingGradeRange.length || !form.mentorStyleTypes.length || !form.mentorTeachingModes.length || !form.mentorSummerLocation || !form.mentorSchoolLocation || !form.mentorClassFrequency) {
     uni.showToast({ title: '请先补全资料', icon: 'none' })
     return
   }

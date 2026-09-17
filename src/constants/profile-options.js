@@ -8,7 +8,9 @@
  */
 
 // 科目选项（家长端「需要辅导的科目」和导师端「可辅导科目」共用）
-const subjectOptions = ['语文', '数学', '英语', '化学', '生物', '政治', '历史', '体育', '绘画', '音乐', '地理', '其他']
+// 物理、舞蹈是 2026-09-17 根据真实报名数据补进来的 —— 原选项表里没有这两科，
+// 导致这两科的填答存不进去、匹配算法也认不出，覆盖率会算成 0。
+const subjectOptions = ['语文', '数学', '英语', '物理', '化学', '生物', '政治', '历史', '体育', '绘画', '音乐', '舞蹈', '地理', '其他']
 // 上课形式选项（家长端「希望的上课形式」和导师端「辅导形式」共用）
 const modeOptions = ['线上', '线下']
 
@@ -16,6 +18,11 @@ const modeOptions = ['线上', '线下']
 export const mentorSubjectOptions = subjectOptions
 // 家长端：需要辅导的科目
 export const familySubjectOptions = subjectOptions
+
+// 导师端：意向教学年级段（多选、无序）
+// 2026-09-17 由「自由输入框」改成三个学段 —— 家庭侧填的是一个具体年级（如「小学三年级」），
+// 匹配时先折算成学段再比，所以两边只需要「小学 / 初中 / 高中」三档。
+export const mentorTeachingGradeRangeOptions = ['小学', '初中', '高中']
 
 // 导师端：辅导风格类型（多选）
 export const mentorStyleTypeOptions = ['情感支持型', '鼓励启发型', '灵活应变型', '结构化引导型', '耐心倾听型']

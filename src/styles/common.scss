@@ -173,12 +173,20 @@
   margin-bottom: 18rpx;
 }
 
+/* 底卡标题（匹配 / 待试课 / 正式上课 / 试课反馈 / 日常反馈 / 我的 / 开发调试 都用这个）。
+   注意：模板里写的是 class="section-title section-title-sm" 两个类，
+   同优先级下后定义的 .section-title-sm 会盖掉 .section-title 的 font-size ——
+   所以**改字号只改这里这一处，7 个标题会一起变**。 */
 .section-title-sm {
-  font-size: 28rpx;
+  font-size: 34rpx;
   font-weight: 700;
   color: #111827;
   margin-bottom: 0;
+  text-align: center;
 }
+
+/* 标题单独成行（不跟角标并排）时，仍保持居中。
+   .summary-top 已改成「竖排 + 居中」，角标会掉到标题下一行，所以这里不再需要 flex:1。 */
 
 .primary-btn,
 .secondary-btn {
@@ -417,6 +425,12 @@
   white-space: nowrap;
 }
 
+/* 详情弹层里的自由文本（额外备注、辅导经历这类长内容）要完整显示：
+   卡片正面高度固定保持单行省略，详情弹层空间够，放开成多行换行。 */
+.detail-panel .field-text {
+  white-space: normal;
+}
+
 .capsule-row {
   display: flex;
   flex-wrap: wrap;
@@ -427,6 +441,15 @@
 .capsule-column {
   flex-direction: column;
   width: 100%;
+}
+
+/* 卡片正面（.match-card）里的排序字段改成横排一行。
+   原因：卡片高度是固定的 400rpx，而 .line-block 是 overflow: hidden，
+   竖排时第 2 项开始连同末尾的「…」都会被裁掉 —— 看起来像只填了一项。
+   详情弹层里的 .capsule-column 不在 .match-card 内，仍是竖排，能把全部项列清楚。 */
+.match-card .capsule-column {
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .capsule {
@@ -550,10 +573,12 @@
   margin-top: 8rpx;
 }
 
+/* 标题 + 数量角标：标题在第一行居中，角标自动掉到下一行、同样居中。 */
 .summary-top {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 12rpx;
 }
 
 .count-badge {

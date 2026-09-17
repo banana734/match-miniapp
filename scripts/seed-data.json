@@ -1,0 +1,854 @@
+{
+  "family": [
+    {
+      "rowNumber": 29,
+      "filled": 24,
+      "profile": {
+        "name": "严耀国",
+        "gender": "男",
+        "grade": "小学四年级",
+        "parentName": "蹦蹦妈妈",
+        "phone": "13980086000",
+        "wechat": "Jiang2L",
+        "area": "四川省成都市高新区",
+        "areaOther": "",
+        "subjects": [
+          "体育",
+          "语文",
+          "数学",
+          "英语",
+          "地理",
+          "化学"
+        ],
+        "subjectOther": "孩子对历史和地理比较感兴趣，他的身体比较瘦，专注力比较差，我们希望找到一个热爱运动，活泼开朗有耐心的老师。",
+        "difficulties": [
+          "学习效率低，容易拖延",
+          "对科目缺乏兴趣，动力不足",
+          "解题思路不清晰，方法欠缺",
+          "基础知识不牢固",
+          "其他"
+        ],
+        "difficultyOther": "华西附二院诊断他有轻微的抽动症",
+        "intro": "他曾经学过硬笔书法，篮球、游泳、羽毛球，英语，国学古诗词。",
+        "teacherTraits": [
+          "能帮助孩子建立良好的学习习惯",
+          "有耐心，善于鼓励，不轻易发脾气",
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "讲解清晰有条理，能化繁为简",
+          "能洞察孩子学习中的困难点，针对性解决"
+        ],
+        "teachingStyles": [
+          "启发引导型",
+          "鼓励陪伴型",
+          "问题向导型"
+        ],
+        "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+        "mainFocusOther": "希望每一次课都有涉及一些有趣的知识环节，可以是大学自己所学相关专业的兴趣分享，可以让小朋友们建立更深的友谊和信任。",
+        "learningState": "可以接受，顺其自然。",
+        "communicationExpectation": "课后能与我简单沟通本次辅导内容和孩子表现。",
+        "communicationExpectationOther": "希望老师能够通过自身的学习经验，正确引导，让他能够提高一些学习效率。",
+        "understanding": "完全理解并认同，相信其专业性。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "从2024年张骏老师团队在高新区分享青少年成长问题，就有关注，但那个时候觉得孩子可能年龄还比较小，自认为还没有达到匹配程度，所以也一直在持续关注。",
+        "classModes": [
+          "线下"
+        ],
+        "classFrequency": "工作日每天"
+      }
+    },
+    {
+      "rowNumber": 64,
+      "filled": 24,
+      "profile": {
+        "name": "黄斯燕",
+        "gender": "女",
+        "grade": "高二",
+        "parentName": "谢阿姨",
+        "phone": "19950718717",
+        "wechat": "innay2025",
+        "area": "其他",
+        "areaOther": "四川省宜宾市",
+        "subjects": [
+          "数学",
+          "语文",
+          "英语"
+        ],
+        "subjectOther": "物理，化学",
+        "difficulties": [
+          "基础知识不牢固",
+          "解题思路不清晰，方法欠缺"
+        ],
+        "difficultyOther": "欠了很多课没学，学习人际压力，有抑郁焦虑情绪，回避上学在家过度上网",
+        "intro": "参加过课外辅导，坚持了的效果还可以",
+        "teacherTraits": [
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "有耐心，善于鼓励，不轻易发脾气",
+          "能洞察孩子学习中的困难点，针对性解决"
+        ],
+        "teachingStyles": [
+          "鼓励陪伴型"
+        ],
+        "mainFocus": "其他",
+        "mainFocusOther": "讲解基础知识和重要知识点，并进行巩固拔高",
+        "learningState": "非常希望，这有助于提高学习效率。",
+        "communicationExpectation": "课后能与我简单沟通本次辅导内容和孩子表现。",
+        "communicationExpectationOther": "",
+        "understanding": "基本了解，愿意尝试。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "在现实世界给孩子找一个陪伴和榜样，提升孩子积极心态、学习兴趣和学习能力，拓展视野",
+        "classModes": [
+          "线上",
+          "线下"
+        ],
+        "classFrequency": "一周1-2次，以后可以根据孩子意愿增加"
+      }
+    },
+    {
+      "rowNumber": 71,
+      "filled": 24,
+      "profile": {
+        "name": "七七",
+        "gender": "女",
+        "grade": "初一",
+        "parentName": "七七妈妈",
+        "phone": "18982812939",
+        "wechat": "18982812939",
+        "area": "其他",
+        "areaOther": "四川达州大竹",
+        "subjects": [
+          "数学",
+          "英语"
+        ],
+        "subjectOther": "",
+        "difficulties": [
+          "考试时容易紧张，发挥失常",
+          "解题思路不清晰，方法欠缺",
+          "学习效率低，容易拖延"
+        ],
+        "difficultyOther": "孩子在用药治疗，情绪稳定、记忆力下降、注意力无法集中没有得到改善、焦虑还比较明显，经常抠指甲咬指甲；怀疑自己的学习能力，说前面学过的内容都忘光了。",
+        "intro": "有参加过其他补习，但是学过就忘",
+        "teacherTraits": [
+          "有耐心，善于鼓励，不轻易发脾气",
+          "能帮助孩子建立良好的学习习惯",
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "能洞察孩子学习中的困难点，针对性解决",
+          "讲解清晰有条理，能化繁为简"
+        ],
+        "teachingStyles": [
+          "鼓励陪伴型",
+          "启发引导型"
+        ],
+        "mainFocus": "其他",
+        "mainFocusOther": "怀疑自己的学习能力，已经处于习得性无助状态。需要先建立她对学习的信心和兴趣。",
+        "learningState": "非常希望，这有助于提高学习效率。",
+        "communicationExpectation": "定期（如每周/每月）有一次详细沟通。",
+        "communicationExpectationOther": "老师能给予孩子情感上的陪伴和支持",
+        "understanding": "基本了解，愿意尝试。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "项目对老师的工作怎么进行监管？",
+        "classModes": [
+          "线上"
+        ],
+        "classFrequency": "老师根据孩子状态来安排"
+      }
+    },
+    {
+      "rowNumber": 33,
+      "filled": 23,
+      "profile": {
+        "name": "孙逸宸",
+        "gender": "男",
+        "grade": "初二",
+        "parentName": "冯女士",
+        "phone": "",
+        "wechat": "13438889034",
+        "area": "四川省成都市金牛区",
+        "areaOther": "",
+        "subjects": [
+          "语文",
+          "数学"
+        ],
+        "subjectOther": "心理抗拒语文",
+        "difficulties": [
+          "其他"
+        ],
+        "difficultyOther": "有退缩行为",
+        "intro": "多次参加",
+        "teacherTraits": [
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "讲解清晰有条理，能化繁为简",
+          "能洞察孩子学习中的困难点，针对性解决",
+          "认真负责，守时，沟通及时"
+        ],
+        "teachingStyles": [
+          "问题向导型",
+          "鼓励陪伴型"
+        ],
+        "mainFocus": "能力拓展，进行拔高训练，提升思维深度",
+        "mainFocusOther": "孩子学习能力较强，就是无主动学习的意识。",
+        "learningState": "非常希望，这有助于提高学习效率。",
+        "communicationExpectation": "课后能与我简单沟通本次辅导内容和孩子表现。",
+        "communicationExpectationOther": "认知上的引导",
+        "understanding": "希望了解更多细节。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "孩子上学很老火，存在一定的躯体化反应",
+        "classModes": [
+          "线下"
+        ],
+        "classFrequency": "根据孩子具体情况，老师决定"
+      }
+    },
+    {
+      "rowNumber": 36,
+      "filled": 23,
+      "profile": {
+        "name": "阳张新一",
+        "gender": "男",
+        "grade": "小学三年级",
+        "parentName": "张萍",
+        "phone": "13541262373",
+        "wechat": "13541262373",
+        "area": "四川省成都市锦江区",
+        "areaOther": "",
+        "subjects": [
+          "语文",
+          "数学"
+        ],
+        "subjectOther": "",
+        "difficulties": [
+          "对科目缺乏兴趣，动力不足",
+          "学习效率低，容易拖延",
+          "解题思路不清晰，方法欠缺"
+        ],
+        "difficultyOther": "畏难情绪比较严重",
+        "intro": "数学有参加课外辅导 效果不太好",
+        "teacherTraits": [
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "能洞察孩子学习中的困难点，针对性解决",
+          "能帮助孩子建立良好的学习习惯"
+        ],
+        "teachingStyles": [
+          "启发引导型",
+          "问题向导型"
+        ],
+        "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+        "mainFocusOther": "建立清晰的思维逻辑",
+        "learningState": "非常希望，这有助于提高学习效率。",
+        "communicationExpectation": "定期（如每周/每月）有一次详细沟通。",
+        "communicationExpectationOther": "及时给家长反馈观察到的问题",
+        "understanding": "完全理解并认同，相信其专业性。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "我也曾是华西的学生 相信每一次项目的意义 很愿意积极参与该项目 最终达到双赢",
+        "classModes": [
+          "线下"
+        ],
+        "classFrequency": "每周一次"
+      }
+    },
+    {
+      "rowNumber": 37,
+      "filled": 23,
+      "profile": {
+        "name": "徐佳音",
+        "gender": "女",
+        "grade": "初一",
+        "parentName": "余女士",
+        "phone": "13980700789",
+        "wechat": "13980700789",
+        "area": "四川省成都市青羊区",
+        "areaOther": "",
+        "subjects": [
+          "数学",
+          "英语"
+        ],
+        "subjectOther": "语文",
+        "difficulties": [
+          "基础知识不牢固",
+          "解题思路不清晰，方法欠缺",
+          "学习效率低，容易拖延",
+          "对科目缺乏兴趣，动力不足"
+        ],
+        "difficultyOther": "畏难情绪严重",
+        "intro": "有，效果一般",
+        "teacherTraits": [
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "认真负责，守时，沟通及时",
+          "能洞察孩子学习中的困难点，针对性解决"
+        ],
+        "teachingStyles": [
+          "系统讲解型",
+          "鼓励陪伴型",
+          "严格督促型"
+        ],
+        "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+        "mainFocusOther": "激发学习内驱力，改善畏难情绪",
+        "learningState": "非常希望，这有助于提高学习效率。",
+        "communicationExpectation": "课后能与我简单沟通本次辅导内容和孩子表现。",
+        "communicationExpectationOther": "",
+        "understanding": "完全理解并认同，相信其专业性。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "孩子言语发音不清晰，自尊心强",
+        "classModes": [
+          "线下"
+        ],
+        "classFrequency": "视情况而定"
+      }
+    },
+    {
+      "rowNumber": 46,
+      "filled": 23,
+      "profile": {
+        "name": "严一一",
+        "gender": "女",
+        "grade": "小学二年级",
+        "parentName": "一一妈妈",
+        "phone": "13980086000",
+        "wechat": "Jiang2L",
+        "area": "四川省成都市高新区",
+        "areaOther": "",
+        "subjects": [
+          "数学",
+          "语文",
+          "英语",
+          "体育"
+        ],
+        "subjectOther": "小朋友属于比较自律的孩子，希望找到一个陪伴的大哥哥姐姐，有经验能够理解这么大的孩子的思维",
+        "difficulties": [
+          "基础知识不牢固",
+          "解题思路不清晰，方法欠缺",
+          "其他"
+        ],
+        "difficultyOther": "他们数学老师是一个比较年轻的新老师，对于孩子的引导上面，方法稍微少了一些。",
+        "intro": "我们的课外辅导都是运动和音乐美术类的",
+        "teacherTraits": [
+          "学科知识扎实，讲题能力强",
+          "讲解清晰有条理，能化繁为简",
+          "有耐心，善于鼓励，不轻易发脾气",
+          "能帮助孩子建立良好的学习习惯",
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "能洞察孩子学习中的困难点，针对性解决"
+        ],
+        "teachingStyles": [
+          "鼓励陪伴型",
+          "问题向导型",
+          "系统讲解型",
+          "启发引导型"
+        ],
+        "mainFocus": "紧跟学校进度，预习复习，解答作业疑问",
+        "mainFocusOther": "解决完作业的疑点难点后，能够查漏补缺。",
+        "learningState": "非常希望，这有助于提高学习效率。",
+        "communicationExpectation": "课后能与我简单沟通本次辅导内容和孩子表现。",
+        "communicationExpectationOther": "希望哥哥或姐姐活泼，爱聊天。因为我们家孩子在学校属于比较乖的，我不希望她只是比较沉闷的做题，希望他也可以了解现在川大优秀的哥哥姐姐的生活。",
+        "understanding": "完全理解并认同，相信其专业性。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "",
+        "classModes": [
+          "线下"
+        ],
+        "classFrequency": "最好是周一至周五，一周2次"
+      }
+    },
+    {
+      "rowNumber": 50,
+      "filled": 23,
+      "profile": {
+        "name": "周正扬",
+        "gender": "男",
+        "grade": "初三",
+        "parentName": "潘俊",
+        "phone": "13981737968",
+        "wechat": "13981737968",
+        "area": "四川省成都市其他区县",
+        "areaOther": "新都区大丰博雅新城D区",
+        "subjects": [
+          "数学",
+          "英语",
+          "物理",
+          "化学"
+        ],
+        "subjectOther": "",
+        "difficulties": [
+          "基础知识不牢固",
+          "解题思路不清晰，方法欠缺"
+        ],
+        "difficultyOther": "心理能力比较弱，自我否定",
+        "intro": "小学三年级后没有补课，开始厌学",
+        "teacherTraits": [
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "能洞察孩子学习中的困难点，针对性解决",
+          "能帮助孩子建立良好的学习习惯",
+          "讲解清晰有条理，能化繁为简",
+          "学科知识扎实，讲题能力强"
+        ],
+        "teachingStyles": [
+          "启发引导型",
+          "鼓励陪伴型",
+          "系统讲解型"
+        ],
+        "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+        "mainFocusOther": "跟孩子多交流，陪孩子找到学习的动力和方法",
+        "learningState": "可以接受，顺其自然。",
+        "communicationExpectation": "定期（如每周/每月）有一次详细沟通。",
+        "communicationExpectationOther": "关注孩子情绪和状态",
+        "understanding": "完全理解并认同，相信其专业性。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "",
+        "classModes": [
+          "线下"
+        ],
+        "classFrequency": "每周一次"
+      }
+    },
+    {
+      "rowNumber": 59,
+      "filled": 23,
+      "profile": {
+        "name": "陈柔山",
+        "gender": "男",
+        "grade": "高二",
+        "parentName": "山妈",
+        "phone": "13608060777",
+        "wechat": "13608060777",
+        "area": "四川省成都市高新区",
+        "areaOther": "",
+        "subjects": [
+          "其他"
+        ],
+        "subjectOther": "AI、游戏编程和运动",
+        "difficulties": [
+          "对科目缺乏兴趣，动力不足",
+          "其他"
+        ],
+        "difficultyOther": "起床困难",
+        "intro": "是",
+        "teacherTraits": [
+          "性格开朗，有亲和力，能调动孩子积极性",
+          "能洞察孩子学习中的困难点，针对性解决",
+          "有耐心，善于鼓励，不轻易发脾气"
+        ],
+        "teachingStyles": [
+          "鼓励陪伴型",
+          "启发引导型"
+        ],
+        "mainFocus": "其他",
+        "mainFocusOther": "大哥哥帮助他正确认识理解生活学习上的困难、积极阳光的态度面对生活",
+        "learningState": "非常希望，这有助于提高学习效率。",
+        "communicationExpectation": "其他",
+        "communicationExpectationOther": "多和孩子玩儿，在游戏和运动中让孩子体验乐趣和快乐",
+        "understanding": "希望了解更多细节。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "",
+        "classModes": [
+          "线下"
+        ],
+        "classFrequency": "每周一次"
+      }
+    },
+    {
+      "rowNumber": 67,
+      "filled": 23,
+      "profile": {
+        "name": "李璐",
+        "gender": "女",
+        "grade": "高二",
+        "parentName": "曲",
+        "phone": "13541226138",
+        "wechat": "13541226138",
+        "area": "四川省成都市锦江区",
+        "areaOther": "",
+        "subjects": [
+          "数学",
+          "物理",
+          "化学"
+        ],
+        "subjectOther": "英语",
+        "difficulties": [
+          "对科目缺乏兴趣，动力不足",
+          "学习效率低，容易拖延",
+          "基础知识不牢固",
+          "解题思路不清晰，方法欠缺"
+        ],
+        "difficultyOther": "不想学 碰到问题不愿思考",
+        "intro": "参加过，效果不好",
+        "teacherTraits": [
+          "能洞察孩子学习中的困难点，针对性解决",
+          "能帮助孩子建立良好的学习习惯",
+          "性格开朗，有亲和力，能调动孩子积极性"
+        ],
+        "teachingStyles": [
+          "启发引导型"
+        ],
+        "mainFocus": "查缺补漏，专项攻克孩子的薄弱环节",
+        "mainFocusOther": "提升学生的内驱力",
+        "learningState": "非常希望，这有助于提高学习效率。",
+        "communicationExpectation": "课后能与我简单沟通本次辅导内容和孩子表现。",
+        "communicationExpectationOther": "激发学生学习兴趣",
+        "understanding": "基本了解，愿意尝试。",
+        "feedbackWillingness": "愿意积极配合。",
+        "extraNote": "",
+        "classModes": [
+          "线下"
+        ],
+        "classFrequency": "每周3-5次"
+      }
+    }
+  ],
+  "mentor": [
+    {
+      "rowNumber": 16,
+      "filled": 18,
+      "profile": {
+        "name": "易灵苓",
+        "gender": "女",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "华西公共卫生学院",
+        "major": "预防医学",
+        "grade": "2024级",
+        "phone": "13479282296",
+        "wechat": "IcebergLettuces",
+        "mentorSubjects": [
+          "语文",
+          "英语",
+          "生物",
+          "数学",
+          "物理",
+          "化学"
+        ],
+        "mentorSubjectOther": "更擅长偏文科的科目，但高中学的全理，也可以提供物化辅导。高考英语146",
+        "mentorTeachingGradeRange": "小学——高中",
+        "mentorStyleTypes": [
+          "结构化引导型",
+          "耐心倾听型",
+          "情感支持型"
+        ],
+        "mentorTeachingModes": [
+          "线下",
+          "线上"
+        ],
+        "mentorSummerLocation": "江西",
+        "mentorSchoolLocation": "成都",
+        "mentorClassFrequency": "线下一周1-2次，线上可以更多一些"
+      }
+    },
+    {
+      "rowNumber": 22,
+      "filled": 18,
+      "profile": {
+        "name": "杨红娟",
+        "gender": "女",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "文学与新闻学院",
+        "major": "汉语言文学",
+        "grade": "2024级",
+        "phone": "13708209324",
+        "wechat": "yhj18129221651",
+        "mentorSubjects": [
+          "语文",
+          "英语",
+          "历史"
+        ],
+        "mentorSubjectOther": "小学阶段数学",
+        "mentorTeachingGradeRange": "小学，初一初二",
+        "mentorStyleTypes": [
+          "鼓励启发型",
+          "情感支持型",
+          "耐心倾听型"
+        ],
+        "mentorTeachingModes": [
+          "线上",
+          "线下"
+        ],
+        "mentorSummerLocation": "乌鲁木齐",
+        "mentorSchoolLocation": "成都",
+        "mentorClassFrequency": "一周一到两回(可以商议)"
+      }
+    },
+    {
+      "rowNumber": 58,
+      "filled": 18,
+      "profile": {
+        "name": "严艺萌",
+        "gender": "女",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "历史文化学院（考古文博学院）",
+        "major": "文物与博物馆学",
+        "grade": "2025级",
+        "phone": "15388117397",
+        "wechat": "wxyym0707070q",
+        "mentorSubjects": [
+          "英语",
+          "语文"
+        ],
+        "mentorSubjectOther": "历史、地理、政治、音乐（长笛）",
+        "mentorTeachingGradeRange": "小学、初高中",
+        "mentorStyleTypes": [
+          "情感支持型",
+          "鼓励启发型",
+          "耐心倾听型"
+        ],
+        "mentorTeachingModes": [
+          "线下",
+          "线上"
+        ],
+        "mentorSummerLocation": "四川省成都市武侯区",
+        "mentorSchoolLocation": "四川省成都市双流区",
+        "mentorClassFrequency": "一周一次"
+      }
+    },
+    {
+      "rowNumber": 63,
+      "filled": 18,
+      "profile": {
+        "name": "李冀宽",
+        "gender": "男",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "华西基础医学与法医学院",
+        "major": "基础医学",
+        "grade": "2025",
+        "phone": "18225142676",
+        "wechat": "wxid_i9qoajhvc2ju12 电话：18225142676",
+        "mentorSubjects": [
+          "英语",
+          "生物",
+          "数学"
+        ],
+        "mentorSubjectOther": "物理、化学",
+        "mentorTeachingGradeRange": "小学初高中",
+        "mentorStyleTypes": [
+          "结构化引导型",
+          "情感支持型",
+          "鼓励启发型",
+          "灵活应变型",
+          "耐心倾听型"
+        ],
+        "mentorTeachingModes": [
+          "线上",
+          "线下"
+        ],
+        "mentorSummerLocation": "重庆市南川区",
+        "mentorSchoolLocation": "成都市双流区",
+        "mentorClassFrequency": "一周一次"
+      }
+    },
+    {
+      "rowNumber": 20,
+      "filled": 17,
+      "profile": {
+        "name": "康元松",
+        "gender": "男",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "化学学院",
+        "major": "化学类",
+        "grade": "大一",
+        "phone": "19720332646",
+        "wechat": "wx19720332646",
+        "mentorSubjects": [
+          "化学",
+          "物理"
+        ],
+        "mentorSubjectOther": "",
+        "mentorTeachingGradeRange": "高二，高三",
+        "mentorStyleTypes": [
+          "鼓励启发型"
+        ],
+        "mentorTeachingModes": [
+          "线上"
+        ],
+        "mentorSummerLocation": "成都",
+        "mentorSchoolLocation": "成都",
+        "mentorClassFrequency": "一周一到两次，周六末"
+      }
+    },
+    {
+      "rowNumber": 34,
+      "filled": 17,
+      "profile": {
+        "name": "罗桂英",
+        "gender": "女",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "文学与新闻学院",
+        "major": "汉语言文学",
+        "grade": "2024级",
+        "phone": "18982849139",
+        "wechat": "18982849139",
+        "mentorSubjects": [
+          "语文",
+          "数学",
+          "英语"
+        ],
+        "mentorSubjectOther": "历史",
+        "mentorTeachingGradeRange": "",
+        "mentorStyleTypes": [
+          "情感支持型",
+          "鼓励启发型",
+          "结构化引导型",
+          "耐心倾听型"
+        ],
+        "mentorTeachingModes": [
+          "线上",
+          "线下"
+        ],
+        "mentorSummerLocation": "成都",
+        "mentorSchoolLocation": "成都",
+        "mentorClassFrequency": "暑假期间可以两天一节（可以调整）"
+      }
+    },
+    {
+      "rowNumber": 57,
+      "filled": 17,
+      "profile": {
+        "name": "张梓彤",
+        "gender": "女",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "马克思主义学院",
+        "major": "马克思主义理论",
+        "grade": "2025级",
+        "phone": "18628007560",
+        "wechat": "18628007560",
+        "mentorSubjects": [
+          "语文",
+          "数学",
+          "历史",
+          "体育",
+          "政治",
+          "地理"
+        ],
+        "mentorSubjectOther": "陪伴",
+        "mentorTeachingGradeRange": "",
+        "mentorStyleTypes": [
+          "情感支持型",
+          "耐心倾听型",
+          "鼓励启发型",
+          "灵活应变型"
+        ],
+        "mentorTeachingModes": [
+          "线上",
+          "线下"
+        ],
+        "mentorSummerLocation": "云南省",
+        "mentorSchoolLocation": "成都市双流区四川大学江安校区",
+        "mentorClassFrequency": "每周2—3次"
+      }
+    },
+    {
+      "rowNumber": 62,
+      "filled": 17,
+      "profile": {
+        "name": "蒋慧博（现在还可接课）",
+        "gender": "女",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "外国语学院",
+        "major": "英语",
+        "grade": "2024级",
+        "phone": "",
+        "wechat": "jhy15506108308",
+        "mentorSubjects": [
+          "英语"
+        ],
+        "mentorSubjectOther": "语文",
+        "mentorTeachingGradeRange": "小学，初中，高中均可",
+        "mentorStyleTypes": [
+          "结构化引导型",
+          "情感支持型",
+          "鼓励启发型",
+          "灵活应变型",
+          "耐心倾听型"
+        ],
+        "mentorTeachingModes": [
+          "线下",
+          "线上"
+        ],
+        "mentorSummerLocation": "8.15前在江苏，8.16后都在成都",
+        "mentorSchoolLocation": "成都，川大江安校区",
+        "mentorClassFrequency": "暑期可以每天上课，开学后一周1-2次"
+      }
+    },
+    {
+      "rowNumber": 64,
+      "filled": 17,
+      "profile": {
+        "name": "李悦涵",
+        "gender": "女",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "数学学院",
+        "major": "数学与智能科技",
+        "grade": "2025级",
+        "phone": "13778218937",
+        "wechat": "13778218937",
+        "mentorSubjects": [
+          "语文",
+          "数学",
+          "英语"
+        ],
+        "mentorSubjectOther": "",
+        "mentorTeachingGradeRange": "高中",
+        "mentorStyleTypes": [
+          "灵活应变型",
+          "耐心倾听型",
+          "结构化引导型",
+          "鼓励启发型"
+        ],
+        "mentorTeachingModes": [
+          "线下"
+        ],
+        "mentorSummerLocation": "成都",
+        "mentorSchoolLocation": "成都",
+        "mentorClassFrequency": "一周一次"
+      }
+    },
+    {
+      "rowNumber": 67,
+      "filled": 17,
+      "profile": {
+        "name": "王士豪",
+        "gender": "男",
+        "mentorProject": "是",
+        "coreMember": "否",
+        "school": "四川大学",
+        "college": "华西临床医学院",
+        "major": "临床医学五年制",
+        "grade": "2024级",
+        "phone": "17682968376",
+        "wechat": "17682968376",
+        "mentorSubjects": [
+          "物理",
+          "数学",
+          "化学",
+          "生物"
+        ],
+        "mentorSubjectOther": "",
+        "mentorTeachingGradeRange": "初高中",
+        "mentorStyleTypes": [
+          "结构化引导型",
+          "耐心倾听型",
+          "情感支持型",
+          "鼓励启发型"
+        ],
+        "mentorTeachingModes": [
+          "线下"
+        ],
+        "mentorSummerLocation": "四川省成都市川大华西校区",
+        "mentorSchoolLocation": "四川省成都市川大华西校区",
+        "mentorClassFrequency": "每周一次"
+      }
+    }
+  ]
+}
