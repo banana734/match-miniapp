@@ -610,35 +610,52 @@ onShow(() => {
 
 // 表单提交校验与保存逻辑
 const submitProfile = () => {
-  // 基础必填项校验（含联系方式：家长称呼/电话/微信号，缺了匹配后联系不上）
-  if (!form.name || !form.gender || !form.grade || !form.area || !form.parentName || !form.phone || !form.wechat || !form.subjects.length || !form.difficulties.length || !form.teacherTraits.length || !form.teachingStyles.length || !form.mainFocus || !form.learningState || !form.communicationExpectation || !form.understanding || !form.feedbackWillingness || !form.intro) {
-    uni.showToast({ title: '请先补全资料', icon: 'none' })
-    return
+  // 必填项清单（按题目顺序）。key 对应 form 字段，label 是给用户看的中文提示，
+  // isArray 表示该项存的是数组（按长度判断是否为空）。
+  // 这样校验不通过时，能直接告诉用户「缺的是哪一题」，而不是笼统一句「请补全资料」。
+  const requiredFields = [
+    { key: 'name', label: '第1题 孩子姓名' },
+    { key: 'gender', label: '第2题 孩子性别' },
+    { key: 'grade', label: '第3题 孩子年级' },
+    { key: 'parentName', label: '第4题 家长称呼' },
+    { key: 'phone', label: '第5题 家长电话号码' },
+    { key: 'wechat', label: '第6题 微信号' },
+    { key: 'area', label: '第7题 家庭常住区域' },
+    { key: 'subjects', label: '第8题 辅导科目', isArray: true },
+    { key: 'difficulties', label: '第9题 学习困难', isArray: true },
+    { key: 'intro', label: '第10题 辅导经历' },
+    { key: 'teacherTraits', label: '第11题 老师特质', isArray: true },
+    { key: 'teachingStyles', label: '第12题 教学风格', isArray: true },
+    { key: 'mainFocus', label: '第13题 辅导侧重点' },
+    { key: 'learningState', label: '第14题 学习状态关注' },
+    { key: 'communicationExpectation', label: '第15题 沟通期待' },
+    { key: 'understanding', label: '第16题 项目理解' },
+    { key: 'feedbackWillingness', label: '第17题 反馈意愿' }
+  ]
+
+  // 按顺序检查，命中第一个没填的字段就提示并停下
+  for (const f of requiredFields) {
+    const val = form[f.key]
+    const empty = f.isArray ? !(Array.isArray(val) && val.length) : !val
+    if (empty) {
+      uni.showToast({ title: `请先补全：${f.label}`, icon: 'none' })
+      return
+    }
   }
-  // 区域选其他，必须填写自定义区域
-  if (form.area === '其他' && !form.areaOther) {
-    uni.showToast({ title: '请先补全资料', icon: 'none' })
-    return
-  }
-  // 科目选其他，必填自定义科目
-  if (form.subjects.includes('其他') && !form.subjectOther) {
-    uni.showToast({ title: '请先补全资料', icon: 'none' })
-    return
-  }
-  // 困难选其他，必填自定义困难
-  if (form.difficulties.includes('其他') && !form.difficultyOther) {
-    uni.showToast({ title: '请先补全资料', icon: 'none' })
-    return
-  }
-  // 侧重点选其他，必填内容
-  if (form.mainFocus === '其他' && !form.mainFocusOther) {
-    uni.showToast({ title: '请先补全资料', icon: 'none' })
-    return
-  }
-  // 沟通选其他，必填内容
-  if (form.communicationExpectation === '其他' && !form.communicationExpectationOther) {
-    uni.showToast({ title: '请先补全资料', icon: 'none' })
-    return
+
+  // 选了「其他」的自定义项，必须填写对应的自定义内容
+  const otherChecks = [
+    { cond: form.area === '其他', val: form.areaOther, label: '其他区域' },
+    { cond: form.subjects.includes('其他'), val: form.subjectOther, label: '其他科目' },
+    { cond: form.difficulties.includes('其他'), val: form.difficultyOther, label: '其他困难' },
+    { cond: form.mainFocus === '其他', val: form.mainFocusOther, label: '其他侧重点' },
+    { cond: form.communicationExpectation === '其他', val: form.communicationExpectationOther, label: '其他沟通期待' }
+  ]
+  for (const c of otherChecks) {
+    if (c.cond && !c.val) {
+      uni.showToast({ title: `请填写：${c.label}`, icon: 'none' })
+      return
+    }
   }
 
   if (!userStore.openid) {

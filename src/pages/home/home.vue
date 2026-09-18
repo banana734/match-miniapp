@@ -39,17 +39,11 @@ import { useUserStore } from '@/store/user'
 // 获取全局仓库实例
 const userStore = useUserStore()
 
-// 每次进入首页时：已登录但还没选身份的用户，强制回身份选择页，
-// 不允许在未选身份的情况下停留在首页或去填资料。
+// 每次进入首页时：
+// 首页内容（项目简介 / 匹配指南）是静态介绍，不依赖身份，所以不再强制把
+// 未选身份的用户弹走 —— 开发调试重置后希望能直接停在首页。
+// 真正需要身份的地方（填资料、匹配等）自会在各自页面再引导选身份。
 onShow(() => {
-  if (userStore.isLoggedIn && !userStore.boundRole) {
-    // 延后一帧再跳转，避开和页面加载/切换生命周期的竞态，避免 reLaunch:fail timeout
-    setTimeout(() => {
-      uni.reLaunch({ url: '/pages/role-first/role-first' })
-    }, 60)
-    return
-  }
-
   // 静默刷新联系页的试课列表：如果联系页有新变化（对方发来试课、卡片转正式等），
   // 底部「联系」tab 会自动挂上数字徽标
   if (userStore.isLoggedIn && userStore.boundRole && userStore.profileCompleted) {

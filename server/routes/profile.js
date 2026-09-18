@@ -76,6 +76,41 @@ const bindRole = async (body = {}) => {
   }
 }
 
+// 解绑身份：POST /api/profile/unbind  body: { openid }
+// 把某微信账号已锁定的身份「释放」，使其能重新选身份。
+// 做法：把 role_bindings 里该 openid 的 role 置空，users 表里同 openid 记录的 role 也置空。
+// 统一数据层只支持 upsert、没有物理删除，置空后 getBoundRole 判定为「未绑定」，
+// 但会留下 role 为空的孤儿行——无害，重选身份时会新建带真实 role 的记录。
+const unbindRole = async (body = {}) => {
+  const { openid = '' } = body
+  if (!openid) {
+    return { success: false, message: '缺少 openid' }
+  }
+
+  const db = await readUnifiedDb()
+  const bindings = getRoleBindings(db)
+  const users = getUserRecords(db)
+  const binding = bindings.find((item) => item.openid === openid)
+
+  if (binding) {
+    binding.role = ''
+    binding.unboundAt = new Date().toISOString()
+  }
+  users.forEach((u) => {
+    if (u.openid === openid) {
+      u.role = ''
+    }
+  })
+
+  await writeUnifiedDb(db)
+
+  return {
+    success: true,
+    message: '身份已解绑，可重新选择',
+    boundRole: ''
+  }
+}
+
 // 保存资料：POST /api/profile/save  body: { openid, role, profile }
 // 保存前先做身份锁定校验（和 bindRole 同一套规则），然后：
 //   1. 同步写入 / 更新 role_bindings（保证绑定关系不丢）
@@ -161,6 +196,7 @@ const getProfileDetail = async (openid = '', role = '') => {
 
 module.exports = {
   bindRole,
+  unbindRole,
   getBoundRole,
   saveProfile,
   getProfileDetail

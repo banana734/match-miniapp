@@ -54,9 +54,22 @@ export const useProfileForm = (defaults, arrayKeys = []) => {
   // 响应式表单对象，初始为全默认值的快照
   const form = reactive(createSnapshot())
 
-  // 回显：用 store 里的 profile 生成快照后整体覆盖表单（Object.assign 保留响应式）
+  // 回显：用 store 里的 profile 生成快照后覆盖表单。
+  // ⚠️ 数组字段不能走 Object.assign 换成新数组——页面上的有序标签组
+  // （useOrderedTagGroup）持有的是原数组的引用，一旦被换成新数组，
+  // 后续点标签都在改那个「脱离了 form 的旧数组」：UI 看着选中了，
+  // form 里却永远是空的，保存校验会误报「请先补全」。
+  // 所以数组字段用 splice 原地替换内容，保住引用不变。
   const syncFormFromProfile = (profile = {}) => {
-    Object.assign(form, createSnapshot(profile))
+    const snapshot = createSnapshot(profile)
+
+    for (const key of Object.keys(snapshot)) {
+      if (isArrayKey(arrayKeys, key)) {
+        form[key].splice(0, form[key].length, ...snapshot[key])
+      } else {
+        form[key] = snapshot[key]
+      }
+    }
   }
 
   // 提交：浅拷贝表单，并把数组字段替换成独立副本，避免外部改动表单

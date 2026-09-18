@@ -267,24 +267,71 @@ const goToProfileForm = () => {
   })
 }
 
-// 开发调试：一键重置登录态与本地缓存，回到全新账号，重新走完整流程。
+// 开发调试：一键重置登录态与本地缓存，变成一个全新账号，并直接回到首页。
 const resetDevIdentity = () => {
   uni.showModal({
     title: '重置开发身份',
-    content: '这会清除当前登录态并生成一个全新账号，确定吗？',
+    content: '这会清除当前登录态并解绑身份、生成一个全新账号，确定吗？',
     confirmText: '确定',
     cancelText: '取消',
-    success: (res) => {
+    success: async (res) => {
       if (!res.confirm) {
         return
       }
 
+      // 先通知后端解绑：把当前 openid 锁定的身份释放，否则真实微信 openid
+      // 还会记住旧身份，重登后还是同一账号。这里 await 等请求真正发出，
+      // 避免紧接着的页面跳转把请求打断、导致解绑没生效。
+      // 解绑失败也不阻断本地重置（开发调试场景优先保证能重来）。
+      if (userStore.openid) {
+        await new Promise((resolve) => {
+          uni.request({
+            url: `${API_BASE_URL}/profile/unbind`,
+            method: 'POST',
+            data: { openid: userStore.openid },
+            complete: resolve
+          })
+        })
+      }
+
       userStore.resetLoginState()
-      uni.showToast({
-        title: '已重置，请重新登录',
-        icon: 'success',
-        complete: () => {
-          uni.reLaunch({ url: '/pages/login/login' })
+
+      // 重新生成一个全新的开发客户端 ID（resetLoginState 已删掉旧的），
+      // 直接以新账号自动登录，免得重置后又卡在登录页。
+      const newClientId = `client-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
+      uni.setStorageSync('match-dev-client-id', newClientId)
+
+      uni.request({
+        url: `${API_BASE_URL}/auth/wechat`,
+        method: 'POST',
+        data: { code: '', devClientId: newClientId },
+        success: (r) => {
+          const result = r.data || {}
+          if (result.success) {
+            userStore.setLoginInfo({
+              token: result.token,
+              openid: result.openid,
+              boundRole: result.boundRole
+            })
+          }
+          uni.showToast({
+            title: '已重置为新账号',
+            icon: 'success',
+            complete: () => {
+              // 首页是 tabBar 页，用 switchTab 跳转
+              uni.switchTab({ url: '/pages/home/home' })
+            }
+          })
+        },
+        fail: () => {
+          // 后端连不上就只清本地，停在登录页让用户手动登录
+          uni.showToast({
+            title: '本地已重置，请手动登录',
+            icon: 'none',
+            complete: () => {
+              uni.reLaunch({ url: '/pages/login/login' })
+            }
+          })
         }
       })
     }

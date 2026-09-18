@@ -34,7 +34,7 @@ const {
 } = require('./routes/admin')
 const { postWechatLogin } = require('./routes/auth-real')
 const { getMatchList, getMyMatchCard, getRecommendedList } = require('./routes/match')
-const { bindRole, saveProfile, getProfileDetail } = require('./routes/profile')
+const { bindRole, unbindRole, saveProfile, getProfileDetail } = require('./routes/profile')
 const {
   applyTrial,
   getTrialList,
@@ -141,6 +141,7 @@ const postRoutes = {
   '/api/trial/apply': applyTrial,
   '/api/profile/save': saveProfile,
   '/api/profile/bind-role': bindRole,
+  '/api/profile/unbind': unbindRole,
   '/api/trial/feedback': submitTrialFeedback,
   '/api/trial/remove': removeTrialRecord,
   '/api/daily/feedback': submitDailyFeedback,
