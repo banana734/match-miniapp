@@ -296,43 +296,57 @@ const resetDevIdentity = () => {
 
       userStore.resetLoginState()
 
-      // 重新生成一个全新的开发客户端 ID（resetLoginState 已删掉旧的），
-      // 直接以新账号自动登录，免得重置后又卡在登录页。
+      // 重新生成一个全新的开发客户端 ID（resetLoginState 已删掉旧的）。
+      // 注意：后端 /auth/wechat 必须要有微信登录 code（线上走真实微信登录），
+      // 所以这里和登录页一样先调 uni.login 拿 code，再带着它去登录，
+      // 登录成功就是「全新账号」的登录态，直接回首页。
       const newClientId = `client-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
       uni.setStorageSync('match-dev-client-id', newClientId)
 
-      uni.request({
-        url: `${API_BASE_URL}/auth/wechat`,
-        method: 'POST',
-        data: { code: '', devClientId: newClientId },
-        success: (r) => {
-          const result = r.data || {}
-          if (result.success) {
-            userStore.setLoginInfo({
-              token: result.token,
-              openid: result.openid,
-              boundRole: result.boundRole
-            })
+      // 重置失败时的统一回退：只清本地，让用户自己去登录页登录
+      const fallbackToLogin = () => {
+        uni.showToast({
+          title: '本地已重置，请手动登录',
+          icon: 'none',
+          complete: () => {
+            uni.reLaunch({ url: '/pages/login/login' })
           }
-          uni.showToast({
-            title: '已重置为新账号',
-            icon: 'success',
-            complete: () => {
-              // 首页是 tabBar 页，用 switchTab 跳转
-              uni.switchTab({ url: '/pages/home/home' })
-            }
+        })
+      }
+
+      uni.login({
+        provider: 'weixin',
+        success: (loginRes) => {
+          uni.request({
+            url: `${API_BASE_URL}/auth/wechat`,
+            method: 'POST',
+            data: { code: loginRes.code, devClientId: newClientId },
+            success: (r) => {
+              const result = r.data || {}
+              if (!result.success) {
+                fallbackToLogin()
+                return
+              }
+
+              userStore.setLoginInfo({
+                token: result.token,
+                openid: result.openid,
+                boundRole: result.boundRole
+              })
+
+              uni.showToast({
+                title: '已重置为新账号',
+                icon: 'success',
+                complete: () => {
+                  // 首页是 tabBar 页，用 switchTab 跳转
+                  uni.switchTab({ url: '/pages/home/home' })
+                }
+              })
+            },
+            fail: fallbackToLogin
           })
         },
-        fail: () => {
-          // 后端连不上就只清本地，停在登录页让用户手动登录
-          uni.showToast({
-            title: '本地已重置，请手动登录',
-            icon: 'none',
-            complete: () => {
-              uni.reLaunch({ url: '/pages/login/login' })
-            }
-          })
-        }
+        fail: fallbackToLogin
       })
     }
   })
