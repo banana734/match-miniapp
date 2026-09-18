@@ -4,6 +4,8 @@
   getUserRecords,
   getRoleBindings
 } = require('../utils/unified-db')
+// 重置身份要真删数据，统一数据层只有 upsert，所以这里直接用数据层的删除能力
+const { deleteAccountData } = require('../db/database')
 
 /**
  * 身份绑定与资料路由。
@@ -26,8 +28,12 @@ const getBoundRole = async (openid = '') => {
   const users = getUserRecords(db)
   const binding = bindings.find((item) => item.openid === openid)
 
-  if (binding?.role) {
-    return binding.role
+  // 绑定表里有这个 openid，就以它为准：role 为空说明「明确解绑过」。
+  // ⚠️ 这里不能因为 role 为空就继续回退去查 users：users 的主键是 (openid, role)，
+  // 早期解绑只把 role 置空，会在表里留下一条 (openid, 原role) 的历史行，
+  // 一旦回退就会被误判成「又绑定了」，重置看起来完全无效。
+  if (binding) {
+    return binding.role || ''
   }
 
   const user = users.find((item) => item.openid === openid && item.role)
@@ -77,36 +83,22 @@ const bindRole = async (body = {}) => {
 }
 
 // 解绑身份：POST /api/profile/unbind  body: { openid }
-// 把某微信账号已锁定的身份「释放」，使其能重新选身份。
-// 做法：把 role_bindings 里该 openid 的 role 置空，users 表里同 openid 记录的 role 也置空。
-// 统一数据层只支持 upsert、没有物理删除，置空后 getBoundRole 判定为「未绑定」，
-// 但会留下 role 为空的孤儿行——无害，重选身份时会新建带真实 role 的记录。
+// 把某微信账号的绑定身份和资料**整套删掉**，做成一个全新账号。
+// 做法：物理删除该 openid 在 users / role_bindings 等表里的所有行（见 database.deleteAccountData）。
+// 为什么不能只把 role 置空：users 主键是 (openid, role)，置空等于换主键，
+//   只会新增一行、旧的 (openid, 原role) 行永久残留 ——
+//   于是①被 getBoundRole 回退查到时仍判「已绑定」②旧资料还会显示在「我的」页。
 const unbindRole = async (body = {}) => {
   const { openid = '' } = body
   if (!openid) {
     return { success: false, message: '缺少 openid' }
   }
 
-  const db = await readUnifiedDb()
-  const bindings = getRoleBindings(db)
-  const users = getUserRecords(db)
-  const binding = bindings.find((item) => item.openid === openid)
-
-  if (binding) {
-    binding.role = ''
-    binding.unboundAt = new Date().toISOString()
-  }
-  users.forEach((u) => {
-    if (u.openid === openid) {
-      u.role = ''
-    }
-  })
-
-  await writeUnifiedDb(db)
+  await deleteAccountData(openid)
 
   return {
     success: true,
-    message: '身份已解绑，可重新选择',
+    message: '身份与资料已重置，可重新选择',
     boundRole: ''
   }
 }

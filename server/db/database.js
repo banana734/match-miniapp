@@ -645,11 +645,44 @@ const queryRows = async (sql, params = []) => {
   return rows
 }
 
+// 一个 openid 名下会挂数据的全部表（删除时逐张清一遍）。
+const ACCOUNT_TABLES = [
+  'users',
+  'role_bindings',
+  'trial_records',
+  'family_trial_feedback',
+  'mentor_trial_feedback',
+  'family_daily_feedback',
+  'mentor_daily_feedback'
+]
+
+// 物理删除某个 openid 的全部数据（开发调试「重置身份」专用）。
+//
+// 为什么必须真删、而不能只把 role 置空：
+//   users 表主键是 (openid, role)。把 role 从 'family' 改成 '' 相当于换了主键，
+//   ON DUPLICATE KEY UPDATE 只会插一条新行，旧的 (openid, 'family') 行永远留着。
+//   后果有两个：① getBoundRole 回退查 users 时又会命中旧行，判定「仍已绑定」；
+//   ② 旧行的 profile_json 还在，「我的」页照样显示上一次的资料。
+//   所以重置必须走 DELETE。
+const deleteAccountData = async (openid = '') => {
+  if (!openid) {
+    return
+  }
+
+  await ensureDatabase()
+  const mysqlPool = ensurePool()
+
+  for (const table of ACCOUNT_TABLES) {
+    await mysqlPool.query(`DELETE FROM ${table} WHERE openid = ?`, [openid])
+  }
+}
+
 module.exports = {
   MYSQL_CONFIG_PATH,
   getMysqlConfig,
   ensureDatabase,
   readDatabase,
   upsertDatabase,
-  queryRows
+  queryRows,
+  deleteAccountData
 }
