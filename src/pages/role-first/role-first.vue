@@ -35,7 +35,8 @@ const userStore = useUserStore()
 // 防抖标记：避免短时间内重复点击两张身份卡导致重复请求
 let choosing = false
 
-// 选择参与身份（mentor 友导师 / family 家庭）并提交后端绑定
+// 选择身份入口：先弹二次确认，确认后才真正绑定。
+// 身份一经绑定就不能再改，误触代价高，所以不能让用户一点就进去。
 const chooseRole = (role) => {
   // 防抖：上一次请求尚未结束
   if (choosing) {
@@ -51,9 +52,25 @@ const chooseRole = (role) => {
     return
   }
 
+  const roleLabel = role === 'mentor' ? '友导师' : '家庭'
+
+  uni.showModal({
+    title: '确认身份',
+    content: `你将绑定为「${roleLabel}」。身份绑定后无法更换，确定继续吗？`,
+    confirmText: '确定绑定',
+    cancelText: '再想想',
+    success: (res) => {
+      if (res.confirm) {
+        submitRole(role)
+      }
+    }
+  })
+}
+
+// 真正提交绑定：把 openid 和所选身份发给后端落库
+const submitRole = (role) => {
   choosing = true
 
-  // 调用后端绑定接口，把 openid 和所选身份落库
   uni.request({
     url: `${API_BASE_URL}/profile/bind-role`,
     method: 'POST',
