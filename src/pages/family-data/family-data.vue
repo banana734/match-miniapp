@@ -610,8 +610,8 @@ onShow(() => {
 
 // 表单提交校验与保存逻辑
 const submitProfile = () => {
-  // 基础必填项校验
-  if (!form.name || !form.gender || !form.grade || !form.area || !form.subjects.length || !form.difficulties.length || !form.teacherTraits.length || !form.teachingStyles.length || !form.mainFocus || !form.learningState || !form.communicationExpectation || !form.understanding || !form.feedbackWillingness || !form.intro) {
+  // 基础必填项校验（含联系方式：家长称呼/电话/微信号，缺了匹配后联系不上）
+  if (!form.name || !form.gender || !form.grade || !form.area || !form.parentName || !form.phone || !form.wechat || !form.subjects.length || !form.difficulties.length || !form.teacherTraits.length || !form.teachingStyles.length || !form.mainFocus || !form.learningState || !form.communicationExpectation || !form.understanding || !form.feedbackWillingness || !form.intro) {
     uni.showToast({ title: '请先补全资料', icon: 'none' })
     return
   }

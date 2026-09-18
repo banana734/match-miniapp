@@ -10,6 +10,7 @@ server/server-error.log
 server/server.out.log
 server/server.err.log
 server/db/mysql.local.json
+server/db/cloud.local.json
 server/db/match-cloud-migration.sql
 
 .DS_Store

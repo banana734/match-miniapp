@@ -647,6 +647,7 @@ const queryRows = async (sql, params = []) => {
 
 module.exports = {
   MYSQL_CONFIG_PATH,
+  getMysqlConfig,
   ensureDatabase,
   readDatabase,
   upsertDatabase,

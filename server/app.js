@@ -43,6 +43,7 @@ const {
 } = require('./routes/trial')
 const { submitDailyFeedback } = require('./routes/daily')
 const { getMyFeedback } = require('./routes/feedback')
+const { handleSync } = require('./routes/sync')
 
 const PORT = Number(process.env.PORT || 3000)// 监听端口，可用环境变量 PORT 覆盖
 const HOST = process.env.HOST || '0.0.0.0'// 监听地址，0.0.0.0 表示所有网卡都能访问
@@ -129,7 +130,8 @@ const getRoutes = {
   '/api/admin/family-feedbacks': () => getAdminFamilyFeedbacks(),
   '/api/admin/mentor-feedbacks': () => getAdminMentorFeedbacks(),
   '/api/admin/pairings': () => getAdminPairings(),
-  '/api/admin/feedbacks': () => getAdminFeedbacks()
+  '/api/admin/feedbacks': () => getAdminFeedbacks(),
+  '/api/sync': (query) => handleSync(query)
 }
 
 // POST 接口表：路径 → 业务处理函数，入参是解析后的请求体 JSON。
