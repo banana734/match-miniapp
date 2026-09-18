@@ -22,7 +22,8 @@
 - **推送代码**：默认 credential.helper 是垫片 `helper-selector`，非交互推会报 `could not read Username`；用 `git -c credential.helper=wincred push origin main` 可直接推成功。
 - **后端镜像更新链路**：提交并推送 `server/**` 到 main → GitHub Actions（docker-publish.yml）自动构建 → 推 Docker Hub `bananawz/match-server:latest` + `sha-<commit>` → **需在 Sealos 手动把镜像 tag 改成 `sha-<commit>` 或重启 Pod** 才会生效（约 30-40s 构建）。
 - **`POST /api/auth/wechat` 必须带非空 `code`**（auth-real.js：空 code 直接 `success:false`）。线上配了 WECHAT_APP_ID/SECRET 走真实微信登录，openid 由微信 code 决定、客户端清不掉；没配才回退 `dev-openid-${devClientId}`。任何「自动登录」都要先 `uni.login` 拿 code。
-- **`src/utils/api.js` 必须填电脑局域网 IP，不能 127.0.0.1**（真机 127.0.0.1 指向手机自己）。⚠️ IP 是 DHCP 动态分配的，换网就变（当前 `192.168.2.152`）。排查：`netstat -ano|grep :3000` → node `os.networkInterfaces()` 认准 WLAN 别选 VMnet/WSL → `curl http://<IP>:3000/api/admin/families` 自测 200。
+- **`src/utils/api.js` 必须填电脑局域网 IP，不能 127.0.0.1**（真机 127.0.0.1 指向手机自己）。⚠️ IP 是 DHCP 动态分配的，换网就变（2026-09-18 实测 **WLAN `10.135.48.154`**，此前的 192.168.2.152 已失效）。排查：`netstat -ano|grep :3000` → node `os.networkInterfaces()` 认准 WLAN 别选 VMnet/WSL → `curl http://<IP>:3000/api/admin/families` 自测 200。
+- ⚠️ **本地后端进程常是旧的**：源码加了新路由后，必须**重启 node app.js** 才生效（实测端口 3000 在跑、admin 200，但 `/api/profile/unbind` 仍 404 = 旧进程）。判断方式：直接 curl 新路由，404 就是没重启。
 - dev watcher 自动重建 `dist/dev/mp-weixin`（含 `pages.json` 变更）；但 `dist/build/mp-weixin` **不**自动更新，发布前手动 `npm run build:mp-weixin`。
 - 🚨 **`npm run build` 会因 safe-delete 垫片失败**：先删 `dist/build/mp-weixin` 再 build。**删不掉时的可靠绕过 = 改名移走**（`fs.renameSync` 到 `.workbuddy/` 下），`rm -rf` 和 `node fs.rmSync` 都会被垫片拦（阈值 50 文件）。`dist/build/app.wxss` 是压缩单行，grep 别带空格。
 - ⚠️ **`dist/build` 里搜不到「开发调试」相关代码是正常的**：`My.vue` 的 `resetDevIdentity`、切换测试账号、查看用户数据整块由 `isDev`(`NODE_ENV!=='production'`) 门控，生产构建整体摇树剔除。只有 `dist/dev` 有。别因此误判「构建过期」。
