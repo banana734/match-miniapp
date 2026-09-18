@@ -589,6 +589,16 @@ onLoad(() => {
 
 // 进入页面时尝试从后端读取当前用户已保存的家庭资料。
 onShow(() => {
+  // 身份护栏：家庭资料页保存时会写死 role='family'，
+  // 所以没选身份的人绝不能停在这一页，先去选身份（否则会静默绑成家庭）。
+  if (!userStore.boundRole) {
+    uni.showToast({ title: '请先选择身份', icon: 'none' })
+    setTimeout(() => {
+      uni.reLaunch({ url: '/pages/role-first/role-first' })
+    }, 60)
+    return
+  }
+
   if (!userStore.openid) {
     return
   }

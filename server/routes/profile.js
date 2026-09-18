@@ -22,22 +22,23 @@ const { deleteAccountData } = require('../db/database')
  */
 // 查询某 openid 当前已绑定的身份：先查 role_bindings 绑定表，
 // 没有再退回 users 表里带 role 的记录，都没有返回 ''（未绑定）。
+// 查询某 openid 当前已绑定的身份：**只看 role_bindings 绑定表**。
+// 没有绑定行、或绑定行的 role 为空 → 一律视为「未绑定」，返回 ''。
+//
+// ⚠️ 绝对不要回退去查 users 表：users 的主键是 (openid, role)，解绑之类的操作会在
+// users 里留下 (openid, 旧role) 的历史行。一旦回退，就会被误判成「已绑定」，
+// 表现就是：新账号一登录就"默认"成了家庭（或导师）身份、直接跳过选身份页。
+// 绑定表由 bindRole / saveProfile 双写维护，是身份的唯一权威来源。
 const getBoundRole = async (openid = '') => {
   const db = await readUnifiedDb()
   const bindings = getRoleBindings(db)
-  const users = getUserRecords(db)
   const binding = bindings.find((item) => item.openid === openid)
 
-  // 绑定表里有这个 openid，就以它为准：role 为空说明「明确解绑过」。
-  // ⚠️ 这里不能因为 role 为空就继续回退去查 users：users 的主键是 (openid, role)，
-  // 早期解绑只把 role 置空，会在表里留下一条 (openid, 原role) 的历史行，
-  // 一旦回退就会被误判成「又绑定了」，重置看起来完全无效。
-  if (binding) {
-    return binding.role || ''
+  if (!binding) {
+    return ''
   }
 
-  const user = users.find((item) => item.openid === openid && item.role)
-  return user?.role || ''
+  return binding.role || ''
 }
 
 // 绑定身份：POST /api/profile/bind-role  body: { openid, role }

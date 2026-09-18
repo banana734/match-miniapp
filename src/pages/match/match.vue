@@ -254,7 +254,8 @@ const goHome = () => {
 // 当前身份应看的匹配池：导师看家庭池，家庭看导师池
 // 同时把“待试课 + 正式上课”的卡片 id 收集成 Set，从池子里隐藏，避免重复申请
 const visiblePool = computed(() => {
-  const sourcePool = userStore.role === 'mentor' ? familyPool.value : mentorPool.value
+  // 以已绑定身份（boundRole）为准，不用 role：role 为空时不能兜底成家庭
+  const sourcePool = userStore.boundRole === 'mentor' ? familyPool.value : mentorPool.value
   const hiddenIds = new Set([
     ...userStore.pendingTrialCards.map((item) => String(item.id)),
     ...userStore.formalClassCards.map((item) => String(item.id))

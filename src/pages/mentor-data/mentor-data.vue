@@ -440,6 +440,16 @@ onLoad(() => {
 
 // 每次打开页面时，如果后端里已经有导师资料，就自动回填。
 onShow(() => {
+  // 身份护栏：导师资料页保存时会写死 role='mentor'，
+  // 所以没选身份的人绝不能停在这一页，先去选身份（否则会静默绑成导师）。
+  if (!userStore.boundRole) {
+    uni.showToast({ title: '请先选择身份', icon: 'none' })
+    setTimeout(() => {
+      uni.reLaunch({ url: '/pages/role-first/role-first' })
+    }, 60)
+    return
+  }
+
   if (!userStore.openid) {
     return
   }

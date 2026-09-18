@@ -43,13 +43,19 @@ const markCancelledAndGoHome = () => {
 }
 
 // 跳转到对应身份的资料填写页（导师→mentor-data，家庭→family-data）
+// 还没选身份时先去选身份：绝不兜底成某一端，否则新账号会被当成「家庭」填资料
 const goToProfileForm = () => {
-  const url = userStore.role === 'mentor'
+  skipCancelOnUnload.value = true
+
+  if (!userStore.boundRole) {
+    uni.reLaunch({ url: '/pages/role-first/role-first' })
+    return
+  }
+
+  const url = userStore.boundRole === 'mentor'
     ? '/pages/mentor-data/mentor-data'
     : '/pages/family-data/family-data'
 
-  // 主动跳转，onUnload 不当作放弃处理
-  skipCancelOnUnload.value = true
   uni.navigateTo({
     url
   })

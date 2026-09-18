@@ -241,7 +241,8 @@ const myCardSubtitle = computed(() => {
 
 // 拉取自己的卡片；失败时保持 null，页面走占位文案
 const loadMyCard = () => {
-  const currentRole = userStore.boundRole || userStore.role
+  // 以已绑定身份为准；没绑定就传空，避免被当成默认身份处理
+  const currentRole = userStore.boundRole || ''
 
   uni.request({
     url: `${API_BASE_URL}/match/my-card?openid=${encodeURIComponent(userStore.openid)}&role=${currentRole}`,
@@ -256,9 +257,14 @@ const loadMyCard = () => {
 }
 
 // 跳转到对应身份的资料页，携带 mode=edit 表示进入“修改资料”模式
+// 还没选身份就去选身份，绝不兜底成「家庭资料页」
 const goToProfileForm = () => {
-  const currentRole = userStore.boundRole || userStore.role
-  const url = currentRole === 'mentor'
+  if (!userStore.boundRole) {
+    uni.reLaunch({ url: '/pages/role-first/role-first' })
+    return
+  }
+
+  const url = userStore.boundRole === 'mentor'
     ? '/pages/mentor-data/mentor-data?mode=edit'
     : '/pages/family-data/family-data?mode=edit'
 

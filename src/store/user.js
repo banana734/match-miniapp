@@ -85,9 +85,16 @@ export const useUserStore = defineStore('user', () => {
 
   const profile = ref(createEmptyProfile())
 
-  // 当前身份对应的「后端角色值」：导师返回 'mentor'，其他（含未选/家庭）返回 'family'。
-  // 抽出来是为了替换页面里散落的 `role === 'mentor' ? 'mentor' : 'family'` 三元表达式，集中在一处维护。
-  const currentRole = computed(() => role.value === 'mentor' ? 'mentor' : 'family')
+  // 当前身份对应的「后端角色值」：导师 → 'mentor'，家庭 → 'family'。
+  // ⚠️ 还没选身份时必须返回空串，绝不能兜底成 'family' ——
+  // 否则新账号会被当成家庭去查试课 / 匹配数据，看起来就是「默认家庭身份」。
+  const currentRole = computed(() => {
+    if (role.value === 'mentor' || role.value === 'family') {
+      return role.value
+    }
+
+    return ''
+  })
 
   const persistUserState = () => {// 将当前用户状态持久化到本地缓存。
                                   // 这样即使关闭小程序，重新进入时也能恢复登录态、身份和资料信息。

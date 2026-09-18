@@ -350,8 +350,9 @@ const removeTrialCard = (cardId) => {
 }
 
 // 跳转到试课反馈页，携带卡片 id 和名称（导师/家庭反馈页共用此入口）
+// 以已绑定身份（boundRole）为准：为空时不能兜底成家庭
 const goToTrialFeedback = (item) => {
-  const pagePath = userStore.role === 'mentor'
+  const pagePath = userStore.boundRole === 'mentor'
     ? '/pages/mentor-feedback/mentor-feedback'
     : '/pages/family-feedback/family-feedback'
 
@@ -362,7 +363,7 @@ const goToTrialFeedback = (item) => {
 
 // 跳转到日常反馈页，携带卡片 id 和名称（导师/家庭日常反馈页共用此入口）
 const goToDailyFeedback = (item) => {
-  const pagePath = userStore.role === 'mentor'
+  const pagePath = userStore.boundRole === 'mentor'
     ? '/pages/daily-feedback/mentor-daily-feedback'
     : '/pages/daily-feedback/family-daily-feedback'
 
