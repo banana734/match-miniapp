@@ -240,9 +240,13 @@ const deleteAdminProfile = async ({ openid, role } = {}) => {
     feedbacks: 0
   }
 
+  // 按 openid 删掉该人的**所有** users 行，而不是只删当前角色那一行。
+  // users 主键是 (openid, role)：历史上「解绑」曾把 role 置空，会额外留下一条
+  // (openid, '') 的残行，它同样带着 profile_json 老资料。只按角色删就会漏掉它，
+  // 表现出来就是「后台明明删了，这个人登录后还是能看到之前的资料」。
   const userResult = await queryRows(
-    'DELETE FROM users WHERE openid = ? AND role = ?',
-    [targetOpenid, targetRole]
+    'DELETE FROM users WHERE openid = ?',
+    [targetOpenid]
   )
   deleted.users = userResult.affectedRows || 0
 

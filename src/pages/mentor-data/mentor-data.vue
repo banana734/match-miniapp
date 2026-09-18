@@ -459,6 +459,10 @@ onShow(() => {
     method: 'GET',
     success: (res) => {
       if (!res.data?.success || !res.data?.found || !res.data?.profile) {
+        // 后端已经没有这份资料了（例如管理员在后台把数据删了）→ 本地必须一起清空，
+        // 否则表单会继续显示上一次缓存的旧内容，看起来就像「删不掉」。
+        userStore.clearProfile()
+        syncFormFromProfile({})
         return
       }
 
