@@ -217,6 +217,60 @@ export const useUserStore = defineStore('user', () => {
     profileCompleted.value = false
   }
 
+  // 和后端对一次账，把「已经不存在了」的本地状态回收掉。
+  //
+  // 场景：管理员在后台把这个人的数据删了。后端已经是干净的，
+  // 但本地缓存（match-user-state）里还留着身份和资料，
+  // 于是「我的」页仍然显示「已填写完成 / 友导师」，看起来像没删掉。
+  // 这里拉一次权威状态，后端说没有就把本地也清空，回到空白账号走新流程。
+  // 返回 Promise，方便调用方 await 之后再走页面守卫。
+  const syncAccountFromServer = () => {
+    return new Promise((resolve) => {
+      if (!openid.value) {
+        resolve(false)
+        return
+      }
+
+      uni.request({
+        url: `${API_BASE_URL}/profile/status?openid=${encodeURIComponent(openid.value)}`,
+        method: 'GET',
+        success: (res) => {
+          const data = res.data || {}
+
+          if (!data.success) {
+            resolve(false)
+            return
+          }
+
+          let changed = false
+
+          // 后端已经没有绑定身份 → 本地身份一起回收（会被各页守卫引导去选身份）
+          if (!data.boundRole && boundRole.value) {
+            boundRole.value = ''
+            role.value = ''
+            changed = true
+          }
+
+          // 后端已经没有资料 → 本地资料与「已完成」标记一起清掉
+          if (!data.hasProfile && (profileCompleted.value || Object.keys(profile.value).length)) {
+            profile.value = createEmptyProfile()
+            profileCompleted.value = false
+            changed = true
+          }
+
+          if (changed) {
+            persistUserState()
+          }
+
+          resolve(changed)
+        },
+        fail: () => {
+          resolve(false)
+        }
+      })
+    })
+  }
+
   // 更新表单：合并传入的表单数据，保留原有字段不覆盖
   const updateProfile = (payload) => {
     profile.value = {
@@ -442,6 +496,7 @@ export const useUserStore = defineStore('user', () => {
     resetLoginState,
     clearProfile,
     updateProfile,
+    syncAccountFromServer,
     syncMessageBadge,
     addPendingTrialCard,
     setTrialLists,

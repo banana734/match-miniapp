@@ -34,7 +34,7 @@ const {
 } = require('./routes/admin')
 const { postWechatLogin } = require('./routes/auth-real')
 const { getMatchList, getMyMatchCard, getRecommendedList } = require('./routes/match')
-const { bindRole, unbindRole, saveProfile, getProfileDetail } = require('./routes/profile')
+const { bindRole, unbindRole, saveProfile, getProfileDetail, getProfileStatus } = require('./routes/profile')
 const {
   applyTrial,
   getTrialList,
@@ -120,6 +120,9 @@ const getRoutes = {
   '/api/profile/detail': (query) => getProfileDetail(
     query.get('openid') || '',
     query.get('role') || ''
+  ),
+  '/api/profile/status': (query) => getProfileStatus(
+    query.get('openid') || ''
   ),
   '/api/feedback/list': (query) => getMyFeedback(
     query.get('openid') || '',

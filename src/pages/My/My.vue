@@ -483,7 +483,7 @@ const switchToAccount = (item) => {
 
 // 每次进入「我的」页时检查登录态与身份：
 // 未登录跳登录页；已登录但还没选身份跳身份选择页（不能进“我的”更不能填资料）
-onShow(() => {
+onShow(async () => {
   if (!userStore.isLoggedIn) {
     uni.showToast({ title: '请先登录', icon: 'none' })
     // 延后一帧再跳转，避开和页面加载/切换生命周期的竞态，避免 reLaunch:fail timeout
@@ -492,6 +492,10 @@ onShow(() => {
     }, 60)
     return
   }
+
+  // 先和后端对一次账：管理员可能在后台把这个账号删了，
+  // 那样本地缓存的身份 / 资料也要回收，避免页面还显示「已填写完成 / 友导师」。
+  await userStore.syncAccountFromServer()
 
   if (!userStore.boundRole) {
     uni.showToast({ title: '请先选择身份', icon: 'none' })

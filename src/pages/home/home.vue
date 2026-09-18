@@ -43,10 +43,18 @@ const userStore = useUserStore()
 // 首页内容（项目简介 / 匹配指南）是静态介绍，不依赖身份，所以不再强制把
 // 未选身份的用户弹走 —— 开发调试重置后希望能直接停在首页。
 // 真正需要身份的地方（填资料、匹配等）自会在各自页面再引导选身份。
-onShow(() => {
+onShow(async () => {
+  if (!userStore.isLoggedIn) {
+    return
+  }
+
+  // 和后端对一次账：管理员若在后台删了这个账号，本地缓存的身份 / 资料要一起回收，
+  // 否则别的页面还会以为「资料已填、身份是某某」。
+  await userStore.syncAccountFromServer()
+
   // 静默刷新联系页的试课列表：如果联系页有新变化（对方发来试课、卡片转正式等），
   // 底部「联系」tab 会自动挂上数字徽标
-  if (userStore.isLoggedIn && userStore.boundRole && userStore.profileCompleted) {
+  if (userStore.boundRole && userStore.profileCompleted) {
     userStore.refreshTrialLists()
   }
 })

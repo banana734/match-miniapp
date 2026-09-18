@@ -187,10 +187,44 @@ const getProfileDetail = async (openid = '', role = '') => {
   }
 }
 
+// 查询账号当前状态：GET /api/profile/status?openid=xxx
+// 返回 { success, boundRole, hasProfile }。
+//
+// 用途：客户端的身份 / 资料是本地缓存（match-user-state），管理员在后台把某个人
+// 删掉之后，那个人的手机本地还留着旧的身份和资料，看起来「删不掉」。
+// 客户端用它拉一次权威状态：后端说没身份、没资料，就把本地一起回收，
+// 让这个账号回到「空白号」，重新走选身份 → 填资料的新流程。
+const getProfileStatus = async (openid = '') => {
+  if (!openid) {
+    return {
+      success: false,
+      message: '缺少 openid',
+      boundRole: '',
+      hasProfile: false
+    }
+  }
+
+  const boundRole = await getBoundRole(openid)
+  const db = await readUnifiedDb()
+  const users = getUserRecords(db)
+  // 只要该 openid 名下还有一份「非空资料」，就算有资料
+  const hasProfile = users.some(
+    (item) => item.openid === openid && Object.keys(item.profile || {}).length > 0
+  )
+
+  return {
+    success: true,
+    openid,
+    boundRole,
+    hasProfile
+  }
+}
+
 module.exports = {
   bindRole,
   unbindRole,
   getBoundRole,
   saveProfile,
-  getProfileDetail
+  getProfileDetail,
+  getProfileStatus
 }
